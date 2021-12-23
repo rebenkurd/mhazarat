@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mhazarat</title>
+    <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body id="btnBody">
+    <div class="top-nav">
+        <div class="logo">
+           <a href="">LOGO Title</a>
+        </div>
+        <div class="search">
+            <i class="icon fas fa-search"></i>
+            <input type="text" placeholder="Search Here ..." name="search" id="search">
+        </div>
+        <div class="user">
+            <img src="assets/img/user.png" alt="">
+            <div class="dropdown">
+                <ul>
+                    <a href=""><li><i class="fas fa-user"></i> Profile</li></a>
+                    <a href=""><li><i class="fas fa-cog"></i> Setting</li></a>
+                    <a href=""><li><i class="fas fa-sign-out-alt"></i> Logout</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="toggle toggle-btn">
+            <i class="toggle-btn fas fa-bars "></i>
+        </div>
+        <div class="theme-mode" onclick="switchTheme()">
+            <i class="fas fa-sun light"></i>
+            <i class="fas fa-moon dark"></i>
+        </div>
+    </div>
+    <div class="main">
+    <div class="side-nav">
+        <ul>
+            <a href="index.html"><li><i class="fas fa-tachometer-alt"></i>dashboard</li></a>
+            <li class="btn-dropdown-nav"><i class="fas fa-clock"></i>Time</li>
+            <div class="dropdown-items">
+                   <a href=""><i class="fas fa-eye"></i> New Time</a> 
+                   <a href=""><i class="fas fa-plus"></i> Add Time</a> 
+                   <a href=""><i class="fas fa-eye"></i> New Time</a> 
+                   <a href=""><i class="fas fa-plus"></i> Add Time</a> 
+            </div>
+            <a href="form.html"><li><i class="fas fa-edit"></i>Form</li></a>
+            <a href="alert.html"><li><i class="fas fa-bell"></i>Alert</li></a>
+            <a href="model.html"><li><i class="fas fa-bell"></i>Model</li></a>
+        </ul>
+    </div>
+        <div class="container">
+            <h1>Alerts</h1>
+        <div class="content">
+            <div class="alert-success">
+                Success
+            </div>
+            <div class="alert-primery">
+                Primary
+            </div>
+            <div class="alert-warning">
+                Warning
+            </div>
+            <div class="alert-danger">
+                Danger
+            </div>
+        </div>
+        </div>
+</div>
+<script src="assets/lib/jquery.min.js"></script>
+<script src="assets/lib/all.min.js"></script>
+<script src="assets/lib/jquery.dataTables.min.js"></script>
+<script src="assets/lib/main.js"></script>
+<script>
+    $(document).ready( function () {
+    $('#table').DataTable();
+} );
+</script>
+</body>
+</html>
