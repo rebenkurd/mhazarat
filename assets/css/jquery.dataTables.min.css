@@ -347,16 +347,16 @@ table.dataTable.compact tbody td {
 
 table.dataTable th{
     box-sizing: content-box;
-    font-size: 1.2rem;
+    font-size: .9rem;
     color: var(--main-color);
     font-weight: 900;
-    text-align: left !important;
+    text-align: center !important;
 }
 table.dataTable td {
     box-sizing: content-box;
     font-size: .8rem;
     color: var(--main-color);
-    text-align: left !important;
+    text-align: center !important;
 }
 
 .dataTables_wrapper {
@@ -384,18 +384,18 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_filter input {
     border: 1px solid var(--theard-color);
     border-radius: 20px;
-    padding: 11px 0 10px 35px;
+    padding: 11px 35px 10px 0;
     outline: none;
 }
 .dataTables_wrapper .dataTables_filter label  {
     position: relative;
 }
 .dataTables_wrapper .dataTables_filter label svg {
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: var(--main-color);
     position: absolute;
-    top: 0px;
-    left: 10px;
+    top: 8px;
+    right: 10px;
 }
 
 .dataTables_wrapper .dataTables_info {
