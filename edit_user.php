@@ -11,14 +11,12 @@ if(empty($_GET['id'])){
         $user->last_name=$_POST['last_name'];
         $user->password=$_POST['password'];
         $user->set_file($_FILES['user_image']);
-        if($user){
-            $user->save();
-            $user->image_upload();
+        if($user->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی پاشەکەوتکرا";
             RedirectTo("users.php");
         }else{
             $_SESSION['ErrorMessage']=join("<br>",$user->errors);
-            RedirectTo("add_new_user.php");
+            RedirectTo("edit_user.php");
         }
     }
 }
