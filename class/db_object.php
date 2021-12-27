@@ -1,8 +1,5 @@
 <?php
 class Db_Object{
-    public $type;
-    public $size;
-    public $tmp_path;
     public $errors=array();
     public $upload_errors_array=array(
         UPLOAD_ERR_OK => "There is No Error",
@@ -121,6 +118,7 @@ class Db_Object{
             $properties_pairs[]="{$key}='{$value}'";
         }
         $sql ="UPDATE ". static::$db_table . " SET ";
+        $sql .=implode(", ",$properties_pairs);
         $sql .=" WHERE id='".$database->es($this->id)."' ";
         $database->query($sql);
         return mysqli_affected_rows($database->connection)==1 ? true : false;

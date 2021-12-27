@@ -1,16 +1,15 @@
 <?php include('includes/header.php'); ?>
 <?php include('includes/top_nav.php'); ?>
-
 <?php
     if(isset($_GET['id'])){
         $user=User::find_by_id($_GET['id']);
-        $user->recycle=1;
+        $user->recycle=0;
         if($user->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
-            RedirectTo("users.php");
+            RedirectTo("user_recycle.php");
         }else{
             $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
-            RedirectTo("users.php");
+            RedirectTo("user_recycle.php");
         }
     }
 
@@ -18,14 +17,13 @@
     <div class="main">
     <?php include('includes/side_nav.php'); ?>
     <div class="container">
-        <h1>بەکارهێنەرەکان</h1>
+        <h1>بەکارهێنەرە سڕدراوەکان</h1>
         <div class="content">
-        <?php echo $session->SuccessMessage(); ?>
-        <?php echo $session->ErrorMessage(); ?>
+            <?php echo $session->SuccessMessage(); ?>
+            <?php echo $session->ErrorMessage(); ?>
         <div class="recents">
                 <span>بینینی هەموو بەکارهێنەرەکان</span>
                 <table id="table" class="display" style="width:100%">
-                <a href="add_new_user.php" class="btn btn-primary left"><i class="fas fa-plus"></i> زیادکردنی بەکارهێنەر</a>
                     <thead>
                         <tr>
                             <th>ژمارە</th>
@@ -42,7 +40,7 @@
                             $users = User::find_all();
                             $a=1;
                             foreach($users as $user){
-                                if($user->recycle==0){
+                                if($user->recycle==1){
                         ?>
                         <tr>
                             <td><?php echo $a++; ?></td>
@@ -53,6 +51,7 @@
                             <td><?php echo $user->last_name; ?></td>
                             <td>
                                 <a style="font-size: 1rem;" href="edit_user.php?id=<?php echo $user->id; ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
+                                <a style="font-size: 1rem;" href="user_recycle.php?id=<?php echo $user->id; ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
                                 <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                             <div class="back-model">
                             <div class="model">
@@ -60,10 +59,10 @@
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                    دڵنیایت لە سرینەوەی <?php echo $user->username; ?>
+                                 دڵنیایت لە سرینەوەی بەتەواوی <?php echo $user->username; ?>
                             </div>
                                 <div class="model-footer">
-                                    <button class="btn btn-success"><a href="users.php?id=<?php echo $user->id; ?>" >بەڵێ</a></button>
+                                    <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-success">بەڵێ</a>
                                     <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
                                 </div>
                             </div>

@@ -1,8 +1,8 @@
 <?php 
 
 class User extends Db_Object{
-    public static $db_table="users";
-    public static $db_table_fields=array('id','username','email','password','first_name','last_name','user_image');
+    public static $db_table="tb_users";
+    public static $db_table_fields=array('id','username','email','password','first_name','last_name','user_image','recycle');
     public $id;
     public $username;
     public $email;
@@ -10,7 +10,7 @@ class User extends Db_Object{
     public $first_name;
     public $last_name;
     public $user_image;
-    public $tmp_path;
+    public $recycle;
     public $upload_directory="img";
     public $image_placeholder="http://placehold.it/400x400&text=image";
     public $errors=array();
@@ -74,6 +74,14 @@ class User extends Db_Object{
     }
 
 
+    public static function verify_user($username,$password){
+        global $database;
+        $username=$database->es($username);
+        $password=$database->es($password);
+        $sql="SELECT * FROM ". self::$db_table . " WHERE username='$username' AND password='$password' LIMIT 1";
+        $the_result_array= self::find_by_query($sql);
+        return !empty($the_result_array) ? array_shift($the_result_array):false;
+    }
 
 
 

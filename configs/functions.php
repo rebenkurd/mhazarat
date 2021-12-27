@@ -1,5 +1,4 @@
 <?php
-session_start();
 // Craete Autoloader Method 
 
 function ClassAutoLoader($class){

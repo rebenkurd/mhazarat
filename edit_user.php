@@ -29,8 +29,8 @@ if(empty($_GET['id'])){
         <div class="content">
 
         <form action="" class="form" method="POST" enctype="multipart/form-data">
-                <?php echo SuccessMessage(); ?>
-                <?php echo ErrorMessage(); ?>
+                <?php echo $session->SuccessMessage(); ?>
+                <?php echo $session->ErrorMessage(); ?>
                  <div class="groups">
                  <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>

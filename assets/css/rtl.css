@@ -8,12 +8,72 @@
   font-weight: normal;
   font-style: normal;
   }
+  a{
+    text-decoration: none !important;
+    cursor: pointer !important;
+  }
+  :root {
+    --primary-color: #007bff!important;
+    --success-color: #28a745!important;
+    --warning-color: #ffc107!important;
+    --danger-color: #dc3545!important;
+    --secondary-color: #6c757d!important;
+    --info-color: #17a2b8!important;
+  
+    --light-color: #0984e3;
+    --light-second-color: #74b9ff;
+    --light-background: #FBFCFC;
+    --light-second-background: #ECF0F1;
+  
+    --dark-color: #0984e3;
+    --dark-second-color: #74b9ff;
+    --dark-background: #212121;
+    --dark-second-background: #333333;
+  
+    --light-theard-color: #ddd;
+    --light-theard-background: #ddd;
+    --dark-theard-color: #444444;
+    --dark-theard-background: #444444;
 
+
+    --deep-white:#a09999;
+    --font-en: "DroidKufi-Regular",'Roboto', sans-serif;
+  
+  }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+.light {
+  --main-bg-color: var(--light-background);
+  --second-bg-color: var(--light-second-background);
+
+  --theard-bg-color: var(--light-theard-background);
+  --main-color: var(--light-color);
+  --second-color: var(--light-second-color);
+
+  --theard-color: var(--light-theard-color);
+
+  --deep-white:var(--deep-white);
+}
+
+.dark {
+  --main-bg-color: var(--dark-background);
+  --second-bg-color: var(--dark-second-background);
+  --theard-bg-color: var(--dark-theard-background);
+  --main-color: var(--dark-color);
+  --second-color: var(--dark-second-color);
+  --theard-color: var(--dark-theard-color);
+  --deep-white-color:var(--deep-white);
+
+}
+  body{
+    background-color: var(--main-bg-color);
+    font-family:var(--font-en);
+  }
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -57,34 +117,7 @@
   background: transparent;
 }
 
-:root {
-    --primary-color: #007bff!important;
-    --success-color: #28a745!important;
-    --warning-color: #ffc107!important;
-    --danger-color: #dc3545!important;
-    --secondary-color: #6c757d!important;
-    --info-color: #17a2b8!important;
-  
-    --light-color: #0984e3;
-    --light-second-color: #74b9ff;
-    --light-background: #FBFCFC;
-    --light-second-background: #ECF0F1;
-  
-    --dark-color: #0984e3;
-    --dark-second-color: #74b9ff;
-    --dark-background: #212121;
-    --dark-second-background: #333333;
-  
-    --light-theard-color: #ddd;
-    --light-theard-background: #ddd;
-    --dark-theard-color: #444444;
-    --dark-theard-background: #444444;
 
-
-    --deep-white:#a09999;
-    --font-en: "DroidKufi-Regular",'Roboto', sans-serif;
-  
-  }
   .btn-primary{
     background-color: var(--primary-color);
   }
@@ -139,7 +172,7 @@
   border-radius: 10px;
   padding:8px 10px;
   text-align: center;
-  color: #fff;
+  color: #fff !important;
   font-size: .8rem;
   font-family: var(--font-en);
   font-weight: 500;
@@ -171,33 +204,6 @@
 .left{
   float: left;
 }
-  .light {
-    --main-bg-color: var(--light-background);
-    --second-bg-color: var(--light-second-background);
-  
-    --theard-bg-color: var(--light-theard-background);
-    --main-color: var(--light-color);
-    --second-color: var(--light-second-color);
-  
-    --theard-color: var(--light-theard-color);
-  
-    --deep-white:var(--deep-white);
-  }
-
-  .dark {
-    --main-bg-color: var(--dark-background);
-    --second-bg-color: var(--dark-second-background);
-    --theard-bg-color: var(--dark-theard-background);
-    --main-color: var(--dark-color);
-    --second-color: var(--dark-second-color);
-    --theard-color: var(--dark-theard-color);
-    --deep-white-color:var(--deep-white);
-
-  }
-  body{
-    background-color: var(--main-bg-color);
-    font-family:var(--font-en);
-  }
 
   .theme-mode {
     position: absolute;
@@ -532,6 +538,7 @@
   margin-top: 60px;
   margin-right: 300px;
   transition: .3s;
+  overflow: hidden;
 }
 .container.active{
   margin-right: 60px;
@@ -545,6 +552,7 @@
 }
 
 .container .details{
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-gap: 10px;
@@ -552,9 +560,9 @@
 }
 .container .details .card{
   background-color: var(--second-bg-color);
-  width: 100%;
+  width:100% ;
   height: 100%;
-  padding: 30px 20px;
+  padding: 20px;
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -571,19 +579,19 @@
   color:#fff;
 }
 .container .details .card div{
- margin: 0 25px;
+ margin: 0 15px;
 }
 .container .details .card div .card-name{
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--main-color);
 }
 .container .details .card div .numbers{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #838080;
 }
 
 .container .details .card .iconbx {
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--main-color);
   margin:0 20px;
 }
@@ -647,7 +655,7 @@
   font-weight: 500;
   text-align: right;
 }
-.content .form .input-group input{
+.content .form .input-group .form-controll{
   font-size: .8rem;
   text-align: right;
   padding: 5px 10px;
@@ -1006,4 +1014,69 @@
 
 }
 
+
+
+
+
+/* login page */
+
+.login_content{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+background-color: var(--second-bg-color);
+padding: 20px;
+width: 350px;
+height: 450px;
+border-radius: 20px;
+box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15);
+display: flex;
+justify-content: center;
+
+}
+.login_content form{
+position: relative;
+width: 100%;
+text-align: center;
+}
+.login_content form .img-login{
+width: 100%;
+text-align: center;
+}
+.login_content form .img-login img{
+width: 100px;
+height: 100px;
+border-radius: 50%;
+object-fit: cover;
+}
+.login_content form span{
+width: 100%;
+margin: 10px 0;
+font-size: 1.4rem;
+color: var(--main-color);
+
+}
+.login_content form .input-group{
+width: 100%;
+margin: 10px 0;
+text-align: right;
+}
+.login_content form .input-group label{
+width: 100%;
+margin-right: 10px;
+font-size: 1rem;
+font-family: var(--font-en);
+color: var(--main-color);
+}
+.login_content form .input-group input{
+width: 100%;
+border-radius: 10px;
+padding: 10px 20px;
+margin-top: 10px;
+border: none;
+outline: none;
+text-align: right;
+font-family: var(--font-en);
+}
 
