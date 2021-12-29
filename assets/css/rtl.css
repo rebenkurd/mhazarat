@@ -74,6 +74,52 @@
     font-family:var(--font-en);
   }
 
+  .m-1{
+    margin: 5px !important;
+  }
+  .m-2{
+    margin: 10px !important;
+  }
+  .m-3{
+    margin: 15px !important;
+  }
+  .m-4{
+    margin: 20px !important;
+  }
+  .m-5{
+    margin: 25px !important;
+  }
+  .mx-1{
+    margin:0 5px !important;
+  }
+  .mx-2{
+    margin:0 10px !important;
+  }
+  .mx-3{
+    margin:0 15px !important;
+  }
+  .mx-4{
+    margin:0 20px !important;
+  }
+  .mx-5{
+    margin:0 25px !important;
+  }
+  .my-1{
+    margin:5px 0 !important;
+  }
+  .my-2{
+    margin:10px 0 !important;
+  }
+  .my-3{
+    margin:15px 0 !important;
+  }
+  .my-4{
+    margin:20px 0 !important;
+  }
+  .my-5{
+    margin:25px 0 !important;
+  }
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

@@ -32,28 +32,28 @@
                  <div class="groups">
                  <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>
-                    <input type="text" placeholder="ناوی یەکەم" name="first_name" id="first_name">
+                    <input class="form-controll" type="text" placeholder="ناوی یەکەم" name="first_name" id="first_name">
                 </div>
                 <div class="input-group">
                     <label for="last_name">ناوی دووەم</label>
-                    <input type="text" placeholder="ناوی دووەم" name="last_name" id="last_name">
+                    <input class="form-controll" type="text" placeholder="ناوی دووەم" name="last_name" id="last_name">
                 </div>
             </div>
                 <div class="input-group">
                     <label for="username">بەکارهێنەر</label>
-                    <input type="text" placeholder="بەکارهێنەر" name="username" id="username">
+                    <input class="form-controll" type="text" placeholder="بەکارهێنەر" name="username" id="username">
                 </div>
                 <div class="input-group">
                     <label for="email">ئیمەڵ</label>
-                    <input type="text" placeholder="ئیمەیڵی بەکارهێنەر" name="email" id="email">
+                    <input class="form-controll" type="text" placeholder="ئیمەیڵی بەکارهێنەر" name="email" id="email">
                 </div>
                 <div class="input-group">
                     <label for="password">وشەی تێپەر</label>
-                    <input type="text" placeholder="وشەی تێپەر" name="password" id="password">
+                    <input class="form-controll" type="text" placeholder="وشەی تێپەر" name="password" id="password">
                 </div>
                 <div class="input-group">
                     <label for="user_image">وێنە</label>
-                    <input type="file" name="user_image" id="user_image">
+                    <input class="form-controll" type="file" name="user_image" id="user_image">
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary width-25">Submit</button>
             </form>

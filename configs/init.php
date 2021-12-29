@@ -17,6 +17,8 @@ require_once('class/database.php');
 require_once('class/db_object.php');
 require_once('class/user.php');
 require_once('class/teacher.php');
+require_once('class/time.php');
+require_once('class/lesson.php');
 
 
 
