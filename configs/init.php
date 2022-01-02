@@ -19,6 +19,8 @@ require_once('class/user.php');
 require_once('class/teacher.php');
 require_once('class/time.php');
 require_once('class/lesson.php');
+require_once('class/daily_info.php');
+require_once('class/department.php');
 
 
 

@@ -7,6 +7,7 @@ class Time extends Db_Object{
     public $id;
     public $times;
     public $time_type;
+    public $the_time;
     public $recycle;
 }
 

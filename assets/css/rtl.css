@@ -660,6 +660,28 @@
   font-weight: 600;
   font-size: 1.5rem;
 }
+.table-board{
+  display: grid;
+  grid-template-columns: repeat(3,1fr) ;
+  color: var(--main-color)!important;
+}
+.table-info{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction:column;
+  margin-right: 10px;
+  margin-top: 20px
+}
+
+.teacher-code input{
+  width: 100px;
+}
+.date-board{
+  display: flex;
+  justify-content: center;
+}
+
 .image-flued{
   width: 40px;
   height: 40px;
@@ -682,33 +704,36 @@
   text-align: right;
 }
 
-.content .form .groups{
+.groups{
   display: grid;
   grid-template-columns: repeat(2,1fr);
   grid-gap: 10px;
 }
-.content .form .input-group{
+.input-group{
   margin: 10px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.content .form .input-group label{
+.input-group label{
   font-size: 1rem;
   color: var(--main-color);
   margin-bottom: 10px;
   font-weight: 500;
   text-align: right;
 }
-.content .form .input-group .form-controll{
+.form-controll{
   font-size: .8rem;
   text-align: right;
   padding: 5px 10px;
   border-radius: 10px;
   outline: none;
-  border: none;
+  border: 1px solid var(--theard-color);
   font-family: var(--font-en);
+}
+.form-controll:disabled{
+  border: 1px solid var(--theard-color);
 }
 
 .alert-success{
@@ -858,12 +883,17 @@
 .model .model-footer button.btn-success:hover{
   background-color: #28a745c0;
 }
-
+.content .recents{
+  overflow-x: auto;
+}
 
 /* Responsive  */
 
 @media (max-width:991px){
 
+  .content .recents{
+    overflow-x: auto;
+  }
   .side-nav{
     width: 60px;
   }
@@ -926,6 +956,9 @@
 
 @media (max-width:768px){
 
+  .content .recents{
+    overflow-x: auto;
+  }
   .side-nav{
     width: 60px;
     justify-content:baseline;
