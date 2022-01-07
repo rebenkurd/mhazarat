@@ -20,12 +20,19 @@ notification.addEventListener('click',function(){
   notificationdropdown.classList.toggle('active');
   userdropdown.classList.remove('active');
 });
-// Item dropdown button
+
+
+
+
+// Item 1
 var btndropdown=document.querySelector('.btn-dropdown-nav');
 var dropdownitems=document.querySelector('.dropdown-items');
 btndropdown.addEventListener('click',function(){
   dropdownitems.classList.toggle('active');
 });
+
+
+
 var btnBody=document.querySelector('#btnBody');
 btnBody.addEventListener('dblclick',function(){
   userdropdown.classList.remove('active');

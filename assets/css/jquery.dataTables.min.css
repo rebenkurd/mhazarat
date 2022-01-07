@@ -119,6 +119,7 @@ table.dataTable thead td:active {
     outline: none
 }
 
+
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
@@ -362,7 +363,8 @@ table.dataTable td {
 .dataTables_wrapper {
     position: relative;
     clear: both;
-    margin-top: 20px ;
+    margin-top: 20px ;  
+    overflow-x: auto;
 }
 
 .dataTables_wrapper .dataTables_length {
@@ -378,7 +380,7 @@ table.dataTable td {
 
 .dataTables_wrapper .dataTables_filter {
     float: right;
-    text-align: right
+    text-align: right;
 }
 
 .dataTables_wrapper .dataTables_filter input {

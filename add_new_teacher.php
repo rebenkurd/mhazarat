@@ -26,7 +26,6 @@
     <div class="container">
         <h1>زیادکردنی بەکارهێنەر</h1>
         <div class="content">
-
         <form action="" class="form" method="POST" enctype="multipart/form-data">
                 <?php echo $session->SuccessMessage(); ?>
                 <?php echo $session->ErrorMessage(); ?>

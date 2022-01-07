@@ -40,6 +40,32 @@ class Daily_Info extends Db_Object{
         return self::find_by_query($sql);
     }
 
+    
+    public static function find_daily_info_day($teacher_id=0,$day=0){
+        global $database;
+        $sql="SELECT * FROM ".self::$db_table;
+        $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND day=".$database->es($day);
+        $sql .=" ORDER BY teacher_id ASC";
+        return self::find_by_query($sql);
+    }
+
+    public static function find_daily_info_year($teacher_id=0,$year=0){
+        global $database;
+        $sql="SELECT * FROM ".self::$db_table;
+        $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND year=".$database->es($year);
+        $sql .=" ORDER BY teacher_id ASC";
+        return self::find_by_query($sql);
+    }
+
+    public static function find_daily_info_day_year($teacher_id=0,$day=0,$year=0){
+        global $database;
+        $sql="SELECT * FROM ".self::$db_table;
+        $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND day=".$database->es($day)." AND year=".$database->es($year);
+        $sql .=" ORDER BY teacher_id ASC";
+        return self::find_by_query($sql);
+    }
+
+
 
 }
 

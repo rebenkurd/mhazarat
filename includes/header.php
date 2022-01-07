@@ -14,5 +14,6 @@
     <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/all.min.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
+
 </head>
 <body id="btnBody">
