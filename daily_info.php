@@ -1,4 +1,6 @@
-<?php require_once("configs/init.php"); ?>
+<?php
+
+require_once("configs/init.php"); ?>
 <div class="table-board">
 
 <div class="table-info">
@@ -6,14 +8,16 @@
     <div class="table-select my-1">
         <label for="teachers">گەڕان : </label>
         <div class="teachers">
+            <select name="" id="fullname_teacher" class="form-controll" onchange="getTeacher();">
+            <option value="" disabled selected>ناوی وانەبێژ</option>
             <?php                     
                 $teachers=Teacher::find_all();
                 foreach($teachers as $teacher){
             ?>
-            <a href="index.php?teacher_id=<?php echo $teacher->id; ?>"><?php echo $teacher->fullname; ?></a>
-
-            <?php } ?>
-
+            <option id="item" value="<?php echo $teacher->id; ?>"><?php echo $teacher->fullname; ?></option>
+            <?php } ?> 
+            </select>
+<a href="" class="btn btn-success" id="teacher_value">گەڕان</a>
         </div>
     </div>
 </form>
@@ -48,38 +52,37 @@
 <?php } ?>
 </div>
 <div class="date-board">
+
+
 <div class="day mx-1">
     <label for="day">ڕۆژ : </label>
+    <select name="" id="day" class="form-controll" onchange="getDay()">
+    <option value="" selected disabled>ڕۆژ</option>
     <?php                     
         $days=Day::find_all();
-        if(isset($_GET['teacher_id'])){
-            foreach($days as $day){
-    ?>
-    <a href="index.php?teacher_id=<?php echo $_GET['teacher_id']; ?>&day=<?php echo $day->day; if(isset($_GET['year'])){ echo "&year=".$_GET['year'];}; ?>"><?php echo $day->day; ?></a>
-    <?php }
-  }else{ 
-    $days=Day::find_all();
         foreach($days as $day){
-      ?>
+    ?>
+    <option value="<?php echo $day->day; ?>"><?php echo $day->day; ?></option>
+    <?php } ?>
+    </select>
+    <a href="" id="day_value" class="btn btn-success">باشە</a>
 
-    <a href=""><?php echo $day->day; ?></a>
-  
-    <?php }} ?>
 </div>
+
+
+
 <div class="year mx-1">
     <label for="year">ساڵ : </label>
+    <select name="" id="year" class="form-controll" onchange="getYear()">
+        <option value="" selected disabled>ساڵ</option>
     <?php                     
         $years=Year::find_all();
-        if(isset($_GET['teacher_id'])){
         foreach($years as $year){
     ?>
-    <a href="index.php?teacher_id=<?php echo $_GET['teacher_id']; if(isset($_GET['day'])){ echo "&day=".$_GET['day'];} ?>&year=<?php echo $year->year; ?>"><?php echo $year->year; ?></a>
-    <?php }}else{
-        $years=Year::find_all();
-        foreach($years as $year){
-        ?>
-    <a href=""><?php echo $year->year; ?></a>
-<?php }} ?>
+    <option value="<?php echo $year->year; ?>"><?php echo $year->year; ?></option>
+    <?php } ?>
+    </select>
+    <a href="" id="year_value" class="btn btn-success">باشە</a>
 </div>
 </div>
 
@@ -258,3 +261,61 @@ foreach($daily_infos as $daily_info): ?>
 
 </tbody>
 </table>
+
+
+
+<script>
+
+function getTeacher(){
+   var selectedTeacher= document.getElementById("fullname_teacher").value;
+        document.getElementById("teacher_value").href="index.php?teacher_id="+selectedTeacher;
+}
+getTeacher();
+
+
+<?php if(isset($_GET['teacher_id']) && !isset($_GET['day']) && !isset($_GET['year'])){ ?>
+
+function getDay(){
+   var selectedDay= document.getElementById("day").value;
+       var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
+   if(selectedDay.value!=""){
+       document.getElementById("day_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay;
+   }
+}
+function getYear(){
+   var selectedYear= document.getElementById("year").value;
+   var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
+
+   document.getElementById("year_value").href="index.php?teacher_id="+selectedTeach+"&year="+selectedYear;
+}
+<?php } ?>
+getDay();
+getYear();
+
+<?php if(isset($_GET['teacher_id']) && isset($_GET['day'])){ ?>
+
+function getYear(){
+   var selectedYear= document.getElementById("year").value;
+   var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
+   var selectedDay= <?php echo $_GET['day']; ?>;
+
+   document.getElementById("year_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay+"&year="+selectedYear;
+}
+
+<?php }?>
+
+
+
+<?php if(isset($_GET['teacher_id']) && isset($_GET['year'])){ ?>
+
+function getDay(){
+   var selectedDay=document.getElementById("day").value; 
+   var selectedYear= <?php echo $_GET['year']; ?>;
+   var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
+   document.getElementById("day_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay+"&year="+selectedYear;
+}
+
+<?php } ?>
+
+
+</script>

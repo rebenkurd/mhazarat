@@ -33,6 +33,12 @@ class Session{
         }
     }
 
+    public function logout(){
+        unset($_SESSION['user_id']);
+        unset($this->user_id);
+        $this->signed_in=false;
+    }
+
     public function SuccessMessage()
     {
         if (isset($_SESSION['SuccessMessage'])) {

@@ -2,7 +2,7 @@
 class Daily_Info extends Db_Object{
 
     public static $db_table="tb_daily_info";
-    public static $db_table_fields=array('id','teacher_id','fullname','department','stage','week','num_week','day','date','lesson_name','start_time','end_time','note');
+    public static $db_table_fields=array('id','teacher_id','fullname','department','stage','week','num_week','day','date','lesson_name','start_time','end_time','note','year');
     public $id;
     public $teacher_id;
     public $fullname;
@@ -11,6 +11,7 @@ class Daily_Info extends Db_Object{
     public $week;
     public $num_week;
     public $date;
+    public $year;
     public $day;
     public $lesson_name;
     public $start_time;

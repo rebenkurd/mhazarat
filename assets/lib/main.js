@@ -7,19 +7,13 @@ toggle.addEventListener('click',function(){
     container.classList.toggle('active');
 });
 
-// User Dropdown button
-var notification=document.querySelector('.notification');
-var notificationdropdown=document.querySelector('.notification .dropdown');
+
 var userbtn=document.querySelector('.user');
 var userdropdown=document.querySelector('.user .dropdown');
 userbtn.addEventListener('click',function(){
   userdropdown.classList.toggle('active');
-  notificationdropdown.classList.remove('active');
 });
-notification.addEventListener('click',function(){
-  notificationdropdown.classList.toggle('active');
-  userdropdown.classList.remove('active');
-});
+
 
 
 
