@@ -56,8 +56,8 @@ require_once("configs/init.php"); ?>
 
 <div class="day mx-1">
     <label for="day">ڕۆژ : </label>
-    <select name="" id="day" class="form-controll" onchange="getDay()">
-    <option value="" selected disabled>ڕۆژ</option>
+    <select name="" id="day" class="form-controll" onchange="getDayandYear()">
+    <option value="" selected>ڕۆژ</option>
     <?php                     
         $days=Day::find_all();
         foreach($days as $day){
@@ -65,7 +65,6 @@ require_once("configs/init.php"); ?>
     <option value="<?php echo $day->day; ?>"><?php echo $day->day; ?></option>
     <?php } ?>
     </select>
-    <a href="" id="day_value" class="btn btn-success">باشە</a>
 
 </div>
 
@@ -73,8 +72,8 @@ require_once("configs/init.php"); ?>
 
 <div class="year mx-1">
     <label for="year">ساڵ : </label>
-    <select name="" id="year" class="form-controll" onchange="getYear()">
-        <option value="" selected disabled>ساڵ</option>
+    <select name="" id="year" class="form-controll" onchange="getDayandYear()">
+        <option value="" selected>ساڵ</option>
     <?php                     
         $years=Year::find_all();
         foreach($years as $year){
@@ -82,8 +81,10 @@ require_once("configs/init.php"); ?>
     <option value="<?php echo $year->year; ?>"><?php echo $year->year; ?></option>
     <?php } ?>
     </select>
-    <a href="" id="year_value" class="btn btn-success">باشە</a>
 </div>
+
+<a href="" id="both_value" class="btn btn-success">باشە</a>
+
 </div>
 
 <div class="month-report">
@@ -271,48 +272,26 @@ function getTeacher(){
         document.getElementById("teacher_value").href="index.php?teacher_id="+selectedTeacher;
 }
 getTeacher();
+getDayandYear();
 
 
-<?php if(isset($_GET['teacher_id']) && !isset($_GET['day']) && !isset($_GET['year'])){ ?>
+<?php if(isset($_GET['teacher_id'])){ ?>
 
-function getDay(){
-   var selectedDay= document.getElementById("day").value;
-       var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
-   if(selectedDay.value!=""){
-       document.getElementById("day_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay;
-   }
-}
-function getYear(){
-   var selectedYear= document.getElementById("year").value;
-   var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
+function getDayandYear(){
+    var selectedDay=document.getElementById("day").value; 
+    var selectedYear=document.getElementById("year").value; 
+    var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
+    
+    if(selectedDay.value!="" && selectedYear!=""){
+        document.getElementById("both_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay+"&year="+selectedYear;
+    }else if (selectedDay.value!="" && selectedYear==""){
+        document.getElementById("both_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay;
+    }else if(selectedDay.value=="" && selectedYear!=""){
+        document.getElementById("both_value").href="index.php?teacher_id="+selectedTeach+"&year="+selectedYear;
+    }else{
+        document.getElementById("both_value").href="index.php?teacher_id="+selectedTeach;
+    }
 
-   document.getElementById("year_value").href="index.php?teacher_id="+selectedTeach+"&year="+selectedYear;
-}
-<?php } ?>
-getDay();
-getYear();
-
-<?php if(isset($_GET['teacher_id']) && isset($_GET['day'])){ ?>
-
-function getYear(){
-   var selectedYear= document.getElementById("year").value;
-   var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
-   var selectedDay= <?php echo $_GET['day']; ?>;
-
-   document.getElementById("year_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay+"&year="+selectedYear;
-}
-
-<?php }?>
-
-
-
-<?php if(isset($_GET['teacher_id']) && isset($_GET['year'])){ ?>
-
-function getDay(){
-   var selectedDay=document.getElementById("day").value; 
-   var selectedYear= <?php echo $_GET['year']; ?>;
-   var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
-   document.getElementById("day_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay+"&year="+selectedYear;
 }
 
 <?php } ?>

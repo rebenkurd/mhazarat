@@ -411,7 +411,7 @@
 .top-nav .user .dropdown{
   position: absolute;
   top: 0;
-  left: 0px;
+  left: 1%;
   display: none;
 }
 
@@ -734,8 +734,11 @@
   width: 100px;
 }
 .date-board{
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: baseline;
+  width: 300px;
 }
 
 .image-flued{

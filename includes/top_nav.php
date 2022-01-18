@@ -7,7 +7,7 @@
             <input type="text" placeholder="Search Here ..." name="search" id="search">
         </div>
         <div class="user">
-            <img src="assets/img/user.png" alt="">
+            <img src="img/user.png" alt="">
             <div class="dropdown">
                 <ul>
                     <a href=""><li><i class="fas fa-user"></i> Profile</li></a>
