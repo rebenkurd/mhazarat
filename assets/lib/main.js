@@ -17,13 +17,23 @@ userbtn.addEventListener('click',function(){
 
 
 
-
 // Item 1
-var btndropdown=document.querySelector('.btn-dropdown-nav');
-var dropdownitems=document.querySelector('.dropdown-items');
-btndropdown.addEventListener('click',function(){
-  dropdownitems.classList.toggle('active');
-});
+// var btndropdown=document.querySelector('.btn-dropdown-nav');
+// var dropdownitems=document.querySelector('.dropdown-items');
+// btndropdown.addEventListener('click',function(){
+//   dropdownitems.classList.toggle('active');
+// });
+
+var parent=document.querySelectorAll(".parent");
+
+parent.forEach(function(item){
+  item.addEventListener("click",function(){
+    parent.forEach(function(item){
+    item.classList.remove("active");
+    })
+    item.classList.add("active");
+  })
+})
 
 
 

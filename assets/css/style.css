@@ -344,7 +344,7 @@
   overflow: hidden;
   z-index: 9999;
 }
-
+.dd_menu {display: none;}
 .side-nav ul{
   list-style: none;
   width: 300px;
