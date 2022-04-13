@@ -7,9 +7,9 @@ include('includes/header.php'); ?>
 
 <?php
     if(isset($_GET['id'])){
-        $department==Department::find_by_id($_GET['id']);
-        $department->recycle=1;
-        if($department->save()){
+        $departments==Department::find_by_id($_GET['id']);
+        $departments->recycle=1;
+        if($departments->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
             RedirectTo("departments.php");
         }else{

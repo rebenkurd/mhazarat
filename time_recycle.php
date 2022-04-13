@@ -25,9 +25,7 @@
         <div class="recents">
                 <span>بینینی هەموو کاتەکان</span>
                 <table id="table" class="display" style="width:100%">
-                <a href="add_new_time.php" class="btn btn-primary left mx-1"><i class="fas fa-plus"></i> زیادکردنی کات</a>
-                <a href="time_recycle.php" class="btn btn-success left mx-1"><i class="fas fa-plus"></i> کاتە سڕاوەکان</a>
-                    <thead>
+                <thead>
                         <tr>
                             <th>ژمارە</th>
                             <th>کات</th>
@@ -48,7 +46,6 @@
                             <td><?php echo $time->times; ?></td>
                             <td><?php echo $time->time_type; ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="edit_time.php?id=<?php echo $time->id; ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
                                 <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                             <div class="back-model">
                             <div class="model">

@@ -50,7 +50,6 @@
                             <td><?php echo $user->first_name; ?></td>
                             <td><?php echo $user->last_name; ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="edit_user.php?id=<?php echo $user->id; ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
                                 <a style="font-size: 1rem;" href="user_recycle.php?id=<?php echo $user->id; ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
                                 <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                             <div class="back-model">
