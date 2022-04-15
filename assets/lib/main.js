@@ -37,6 +37,7 @@ parent.forEach(function(item){
 
 
 
+
 var btnBody=document.querySelector('#btnBody');
 btnBody.addEventListener('dblclick',function(){
   userdropdown.classList.remove('active');
@@ -50,6 +51,7 @@ function btnOpenModel(){
   var btnModel=document.querySelector('.btn-model');
   var models=document.querySelector('.model');
   var backmodels=document.querySelector('.back-model');
+
   btnModel.addEventListener('click',function(){
     models.classList.add('active');
     backmodels.classList.add('active');

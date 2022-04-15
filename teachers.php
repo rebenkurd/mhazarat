@@ -25,7 +25,9 @@
         <div class="recents">
                 <span>بینینی هەموو وانەبێژەکان</span>
                 <table id="table" class="display" style="width:100%">
-                <a href="add_new_teacher.php" class="btn btn-primary left"><i class="fas fa-plus"></i> زیادکردنی وانەبێژ</a>
+                <a href="add_new_teacher.php" class="btn btn-primary left mx-1"><i class="fas fa-plus"></i> زیادکردنی وانەبێژ</a>
+                <a href="teacher_recycle.php" class="btn btn-danger left mx-1"><i class="fas fa-trash"></i> وانەبێژە سڕاوەکان</a>
+
                     <thead>
                         <tr>
                             <th>ژمارە</th>

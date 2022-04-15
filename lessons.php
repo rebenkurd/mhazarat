@@ -26,7 +26,7 @@
                 <span>بینینی هەموو وانەکان</span>
                 <table id="table" class="display" style="width:100%">
                 <a href="add_new_lesson.php" class="btn btn-primary left mx-1"><i class="fas fa-plus"></i> زیادکردنی وانە</a>
-                <a href="lesson_recycle.php" class="btn btn-success left mx-1"><i class="fas fa-plus"></i> وانە سڕاوەکان</a>
+                <a href="lesson_recycle.php" class="btn btn-danger left mx-1"><i class="fas fa-trash"></i> وانە سڕاوەکان</a>
                     <thead>
                         <tr>
                             <th>ژمارە</th>

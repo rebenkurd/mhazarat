@@ -25,7 +25,9 @@
         <div class="recents">
                 <span>بینینی هەموو بەکارهێنەرەکان</span>
                 <table id="table" class="display" style="width:100%">
-                <a href="add_new_user.php" class="btn btn-primary left"><i class="fas fa-plus"></i> زیادکردنی بەکارهێنەر</a>
+                <a href="add_new_user.php" class="btn btn-primary left mx-1"><i class="fas fa-plus"></i> زیادکردنی بەکارهێنەر</a>
+                <a href="user_recycle.php" class="btn btn-danger left mx-1"><i class="fas fa-trash"></i> بەکارهێنەرە سڕاوەکان</a>
+
                     <thead>
                         <tr>
                             <th>ژمارە</th>

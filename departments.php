@@ -30,7 +30,7 @@ include('includes/header.php'); ?>
                 <span>بینینی هەموو بەشەکان</span>
                 <table id="table" class="display" style="width:100%">
                 <a href="add_new_department.php" class="btn btn-primary left mx-1"><i class="fas fa-plus"></i> زیادکردنی بەش</a>
-                <a href="department_recycle.php" class="btn btn-success left mx-1"><i class="fas fa-plus"></i> بەشە سڕاوەکان</a>
+                <a href="department_recycle.php" class="btn btn-danger left mx-1"><i class="fas fa-trash"></i> بەشە سڕاوەکان</a>
                     <thead>
                         <tr>
                             <th>ژمارە</th>

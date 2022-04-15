@@ -1,15 +1,28 @@
 <?php include('includes/header.php'); ?>
 <?php include('includes/top_nav.php'); ?>
+<?php
+    if(isset($_GET['id'])){
+        $department=Department::find_by_id($_GET['id']);
+        $department->recycle=0;
+        if($department->save()){
+            $_SESSION['SuccessMessage']="بە سەرکەوتووی گەڕێندرایەوە";
+            RedirectTo("departments.php");
+        }else{
+            $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
+            RedirectTo("department_recycle.php");
+        }
+    }
 
+?>
     <div class="main">
     <?php include('includes/side_nav.php'); ?>
     <div class="container">
-        <h1>کاتەکان</h1>
+        <h1>بەشەکان</h1>
         <div class="content">
         <?php echo $session->SuccessMessage(); ?>
         <?php echo $session->ErrorMessage(); ?>
         <div class="recents">
-                <span>بینینی هەموو بەشەکان</span>
+                <span>بینینی بەشە سڕدراوەکان</span>
                 <table id="table" class="display" style="width:100%">
                     <thead>
                         <tr>
@@ -30,6 +43,7 @@
                             <td><?php echo $a++; ?></td>
                             <td><?php echo $department->department_name; ?></td>
                             <td>
+                                <a style="font-size: 1rem;" href="department_recycle.php?id=<?php echo $department->id; ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
                                 <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                             <div class="back-model">
                             <div class="model">

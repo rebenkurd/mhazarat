@@ -552,12 +552,13 @@
 }
 .side-nav .dd_menu {
   display: none;
-  
 }
 
 .side-nav ul li.parent.active + .dd_menu{
   display: flex;
 }
+
+
 
 
 

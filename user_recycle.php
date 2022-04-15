@@ -5,8 +5,8 @@
         $user=User::find_by_id($_GET['id']);
         $user->recycle=0;
         if($user->save()){
-            $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
-            RedirectTo("user_recycle.php");
+            $_SESSION['SuccessMessage']="بە سەرکەوتووی گەڕێندرایەوە";
+            RedirectTo("users.php");
         }else{
             $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
             RedirectTo("user_recycle.php");
@@ -17,12 +17,12 @@
     <div class="main">
     <?php include('includes/side_nav.php'); ?>
     <div class="container">
-        <h1>بەکارهێنەرە سڕدراوەکان</h1>
+        <h1>بەکارهێنەرەکان</h1>
         <div class="content">
             <?php echo $session->SuccessMessage(); ?>
             <?php echo $session->ErrorMessage(); ?>
         <div class="recents">
-                <span>بینینی هەموو بەکارهێنەرەکان</span>
+                <span>بینینی بەکارهێنەرە سڕدراوەکان</span>
                 <table id="table" class="display" style="width:100%">
                     <thead>
                         <tr>

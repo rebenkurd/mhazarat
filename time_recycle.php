@@ -4,9 +4,9 @@
 <?php
     if(isset($_GET['id'])){
         $time=Time::find_by_id($_GET['id']);
-        $time->recycle=1;
+        $time->recycle=0;
         if($time->save()){
-            $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
+            $_SESSION['SuccessMessage']="بە سەرکەوتووی گەڕێندرایەوە";
             RedirectTo("times.php");
         }else{
             $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
@@ -23,7 +23,7 @@
         <?php echo $session->SuccessMessage(); ?>
         <?php echo $session->ErrorMessage(); ?>
         <div class="recents">
-                <span>بینینی هەموو کاتەکان</span>
+                <span>بینینی کاتە سڕاوەکان</span>
                 <table id="table" class="display" style="width:100%">
                 <thead>
                         <tr>
@@ -46,6 +46,7 @@
                             <td><?php echo $time->times; ?></td>
                             <td><?php echo $time->time_type; ?></td>
                             <td>
+                                <a style="font-size: 1rem;" href="time_recycle.php?id=<?php echo $time->id; ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
                                 <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                             <div class="back-model">
                             <div class="model">

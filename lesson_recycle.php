@@ -4,13 +4,13 @@
 <?php
     if(isset($_GET['id'])){
         $lesson=Lesson::find_by_id($_GET['id']);
-        $lesson->recycle=1;
+        $lesson->recycle=0;
         if($lesson->save()){
-            $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
+            $_SESSION['SuccessMessage']="بە سەرکەوتووی گەڕێندرایەوە";
             RedirectTo("lessons.php");
         }else{
             $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
-            RedirectTo("lessons.php");
+            RedirectTo("lesson_recycle.php");
         }
     }
 
@@ -23,7 +23,7 @@
         <?php echo $session->SuccessMessage(); ?>
         <?php echo $session->ErrorMessage(); ?>
         <div class="recents">
-                <span>بینینی هەموو وانەکان</span>
+                <span>بینینی وانە سڕدراوەکان</span>
                 <table id="table" class="display" style="width:100%">
                     <thead>
                         <tr>
@@ -44,6 +44,7 @@
                             <td><?php echo $a++; ?></td>
                             <td><?php echo $lesson->lesson; ?></td>
                             <td>
+                                <a style="font-size: 1rem;" href="lesson_recycle.php?id=<?php echo $lesson->id; ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
                                 <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                             <div class="back-model">
                             <div class="model">
