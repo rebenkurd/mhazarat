@@ -34,29 +34,29 @@ if(empty($_GET['id'])){
                  <div class="groups">
                  <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>
-                    <input type="text" value="<?php echo $user->first_name; ?>" placeholder="ناوی یەکەم" name="first_name" id="first_name">
+                    <input type="text" class="form-controll" value="<?php echo $user->first_name; ?>" placeholder="ناوی یەکەم" name="first_name" id="first_name">
                 </div>
                 <div class="input-group">
                     <label for="last_name">ناوی دووەم</label>
-                    <input type="text" value="<?php echo $user->last_name; ?>" placeholder="ناوی دووەم" name="last_name" id="last_name">
+                    <input type="text" class="form-controll" value="<?php echo $user->last_name; ?>" placeholder="ناوی دووەم" name="last_name" id="last_name">
                 </div>
             </div>
                 <div class="input-group">
                     <label for="username">بەکارهێنەر</label>
-                    <input type="text" value="<?php echo $user->username; ?>" placeholder="بەکارهێنەر" name="username" id="username">
+                    <input type="text" class="form-controll" value="<?php echo $user->username; ?>" placeholder="بەکارهێنەر" name="username" id="username">
                 </div>
                 <div class="input-group">
                     <label for="email">ئیمەڵ</label>
-                    <input type="text" value="<?php echo $user->email; ?>" placeholder="ئیمەیڵی بەکارهێنەر" name="email" id="email">
+                    <input type="text" class="form-controll" value="<?php echo $user->email; ?>" placeholder="ئیمەیڵی بەکارهێنەر" name="email" id="email">
                 </div>
                 <div class="input-group">
                     <label for="password">وشەی تێپەر</label>
-                    <input type="text" value="<?php echo $user->password; ?>" placeholder="وشەی تێپەر" name="password" id="password">
+                    <input type="text" class="form-controll" value="<?php echo $user->password; ?>" placeholder="وشەی تێپەر" name="password" id="password">
                 </div>
                 <div class="input-group">
                     <img src="<?php echo $user->image_path(); ?>" class="image-flued" alt="">
                     <label for="user_image">وێنە</label>
-                    <input type="file" name="user_image" id="user_image">
+                    <input type="file" class="form-controll" name="user_image" id="user_image">
                 </div>
                 <button type="submit" name="update" class="btn btn-success width-25">پاشەکەوتکردن</button>
             </form>
