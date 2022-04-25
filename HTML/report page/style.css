@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@font-face {
+  font-family: "DroidKufi-Regular";
+  src: url("font/DroidKufi-Regular.eot"); /* IE9 Compat Modes */
+  src: url("font/DroidKufi-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+      url("font/DroidKufi-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+      url("font/DroidKufi-Regular.woff") format("woff"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+  }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "DroidKufi-Regular",'Roboto', sans-serif;
+}
+.report-page{
+    background: #ececec;
+    display: block;
+    margin: 10px auto;
+    position: relative;
+    width: 21cm;
+    height: 29.7cm;
+    border: 1px solid ;
+}
+.r-header-top{
+    position: relativ;;
+    width: 90%;
+    margin: 40px auto 30px;
+    text-align: center;
+    background-color: crimson;
+    padding: 10px;
+    border-radius: 10px;
+}
+.r-header-top span:first-child{
+    color: #fff;
+    font-size:1.2rem;
+    font-weight: bold;
+
+}
+.r-header-top span{
+    
+    color: #fff;
+    font: size 1.1em;
+}
+
+.r-header-bottom{
+    margin: 0px auto;
+    width: 90%;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    padding: 0 25px;
+}
+.r-header-bottom div{
+    font-size: .9rem;
+    color: black;
+}
+.r-header-bottom div span{
+    font-size: .9rem;
+    color: crimson;
+    font-weight: bold;
+}
+
+.r-main{
+    position: relative;
+    width: 90%;
+    margin: 50px auto;
+    padding: 0 25px;
+    text-align: right;
+    overflow: hidden;
+}
+.r-main div{
+    font-size: .9rem;
+}
+.r-main div span{
+    font-weight: bold;
+}
+.r-main table{
+    float: right;
+    text-align: center;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.r-main table thead{
+    background: crimson;
+    color:#fff;
+}
+.r-main table thead th{
+    padding: 5px 20px;
+}
+.r-main table tbody tr td{
+    padding: 5px 20px;
+}
+
+.r-footer{
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40%;
+}
+.r-footer-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.r-footer-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.r-footer div{
+    font-size: .95rem;
+    text-align: center;
+    font-weight: bold;
+}
+.r-footer div span{
+    font-size: .8rem;
+    text-align: center;
+    font-weight: normal;
+}
