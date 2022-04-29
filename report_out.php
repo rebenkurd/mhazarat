@@ -1,3 +1,16 @@
+<?php
+require_once("configs/init.php");
+
+if(!isset($_GET['id'])){
+    RedirectTo("/mhazarat");
+}
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -17,19 +30,24 @@
             <br>
             <span>٢٠٢١ - ٢٠٢٢</span>
         </div>
+        <?php
+            
+            $teacher=Teacher::find_by_id($_GET['id']);
+
+        ?>
         <div class="r-header-bottom">
             <div class="rhb-right">
             <div>
-                کۆدی مامۆستا: <span> 156 </span>
+                کۆدی مامۆستا: <span> <?php echo $teacher->id; ?> </span>
             </div>
             <div>
-                ناوی مامۆستا : <span> فەرمان حسن </span>
+                ناوی مامۆستا : <span> <?php echo $teacher->fullname; ?>  </span>
             </div>
             <div>
-                نازناو :  <span> نییە </span>
+                نازناو :  <span> <?php echo $teacher->nickname; ?> </span>
             </div>
             <div>
-                بڕوانامە  :  <span> دبلۆم </span>
+                بڕوانامە  :  <span> <?php echo $teacher->certificate; ?> </span>
             </div>
         </div>
         <div class="rhb-left">
@@ -38,17 +56,17 @@
                 ژمارەی سەردان :  <span>  3  </span> ڕۆژ
             </div>
             <div>
-                بری کریی یەک سەردان  :  <span>  75,000 </span> دینار
+                بری کریی یەک سەردان  :  <span>  <?php echo $teacher->one_day_money; ?> </span> دینار
             </div>
             <div>
-                کۆی گشتی :  <span>  225,000 </span> ڕۆژ
+                کۆی گشتی :  <span>  <?php echo $teacher->one_day_money*2; ?> </span> ڕۆژ
             </div>
         </div>
         </div>
         </div>
 
         <div class="r-main">
-            <div>بەشی زانستی : <span>تەکنەلۆجیای زانیاری</span> </div>
+            <div>بەشی زانستی : <span></span> </div>
             <table>
             <thead>
                 <th>زنجیرە</th>
@@ -57,28 +75,21 @@
                 <th>ناوی وانە</th>
                 <th>قۆناغ</th>
             </thead>
-            <tbody>
+            <tbody>     
+            <?php
+                $teacher_infos=Daily_Info::find_all();
+                $a=1;
+                foreach($teacher_infos as $teacher_info){
+                    if($teacher_info->teacher_id==$_GET['id']){
+            ?>
                 <tr>
-                    <td>1</td>
-                    <td>دوو شەممە</td>
-                    <td>23/4/2022</td>
-                    <td>Web Design</td>
-                    <td>1</td>
+                    <td><?php echo $a++; ?></td>
+                    <td><?php echo $teacher_info->week; ?></td>
+                    <td><?php echo $teacher_info->date; ?></td>
+                    <td><?php echo $teacher_info->lesson_name; ?></td>
+                    <td><?php echo $teacher_info->stage; ?></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>سێ شەممە</td>
-                    <td>24/4/2022</td>
-                    <td>Web Design</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>پێنج شەممە</td>
-                    <td>26/4/2022</td>
-                    <td>Web Design</td>
-                    <td>1</td>
-                </tr>
+                <?php }} ?>
             </tbody>
             </table>
         </div>

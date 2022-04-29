@@ -88,33 +88,15 @@ require_once("configs/init.php"); ?>
 </div>
 
 <div class="month-report">
-<div class="show-report">
-    <button onclick="btnOpenModel()" class="btn btn-success w-50">پێشاندانی ڕاپۆرت</button>
-    <div class="back-model">
-        <div class="model">
-            <form action="">
-                <div class="model-header">
-                    ڕاپۆرت
-                </div>
-                <div class="model-body">
-                    <div class="input-gropu">
-                        <label for="">ڕۆژی یەکەم داخڵ بکە</label>
-                        <input type="text" class="form-controll" placeholder="ڕۆژی یەکەم داخڵ بکە">
-                    </div>
-                    <div class="input-gropu">
-                        <label for="">ڕۆژی کۆتایی داخڵ بکە</label>
-                        <input type="text" class="form-controll" placeholder="ڕۆژی کۆتای داخڵ بکە">
-                    </div>
-                </div>
-                <div class="model-footer">
-                    <button type="submit" class="btn btn-success">باشە</button>
-                    <button class="btn btn-danger close" onclick="btnCloseModel()">لابردن</button>
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="show-report my-5">
+<?php
+    if(isset($_GET['teacher_id'])){
+    $teacher=Teacher::find_by_id(intval($_GET['teacher_id']));
+?>
+    <a href="report_out.php?id=<?php echo $teacher->id; ?>" target="blank" class="btn btn-success w-50"> ڕاپۆرت دەرەکی</a>
+    <?php }?>
 </div>
-<button onclick="btnOpenModel()" class="btn btn-primary w-50">ڕاپۆرتی مانگ</button>
+<a href="" class="btn btn-primary w-50">ڕاپۆرتی مانگ</a>
 <div class="back-model">
     <div class="model">
         <form action="">
