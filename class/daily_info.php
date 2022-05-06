@@ -40,7 +40,12 @@ class Daily_Info extends Db_Object{
         $sql .=" ORDER BY teacher_id ASC";
         return self::find_by_query($sql);
     }
-
+    public static function find_daily_info_id($teacher_id=0){
+        global $database;
+        $sql="SELECT * FROM ".self::$db_table;
+        $sql .=" WHERE teacher_id=".$database->es($teacher_id);
+        return self::find_by_query($sql);
+    }
     
     public static function find_daily_info_day($teacher_id=0,$day=0){
         global $database;
@@ -64,6 +69,17 @@ class Daily_Info extends Db_Object{
         $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND day=".$database->es($day)." AND year=".$database->es($year);
         $sql .=" ORDER BY teacher_id ASC";
         return self::find_by_query($sql);
+    }
+
+    public static function daily_avalable($teacher_id){
+        global $database;
+        $sql="SELECT * FROM ".self::$db_table." WHERE teacher_id=".$database->es($teacher_id);
+        if ($result=$database->query($sql)) {
+            $rowcount=mysqli_num_rows($result);
+            return $rowcount;
+        }
+        
+        
     }
 
 

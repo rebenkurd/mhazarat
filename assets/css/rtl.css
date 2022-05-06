@@ -20,13 +20,13 @@
     --secondary-color: #6c757d!important;
     --info-color: #17a2b8!important;
   
-    --light-color: #7158e2;
-    --light-second-color: #7d5fff;
+    --light-color: #16a085;
+    --light-second-color:#1abc9c ;
     --light-background: #FBFCFC;
     --light-second-background: #ECF0F1;
-  
-    --dark-color: #f5cd79;
-    --dark-second-color: #f7d794;
+
+    --dark-color: #f7b731;
+    --dark-second-color:#fed330 ;
     --dark-background: #3d3d3d;
     --dark-second-background: #4b4b4b;
   
@@ -565,7 +565,7 @@
 .side-nav ul a,
 .side-nav ul li{
   text-decoration: none;
-  color: #fff;
+  color: var(--theard-color);
   font-size: 1rem;
   text-transform: capitalize;
   line-height: 20px;
@@ -1288,6 +1288,8 @@ font-family: var(--font-en);
   text-align: center;
   border-collapse: collapse;
   margin: 20px 0;
+  font-size: .85rem !important;
+
 }
 
 .report-page .r-main table thead{

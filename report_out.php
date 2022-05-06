@@ -1,10 +1,12 @@
 <?php
 require_once("configs/init.php");
 
-if(!isset($_GET['id'])){
-    RedirectTo("/mhazarat");
-}
 
+
+$teacher=Teacher::find_by_id($_GET['id']);
+if($teacher->contract !=1){
+    RedirectTo("report_in.php?id=".$_GET['id']);
+}
 
 ?>
 
@@ -51,15 +53,19 @@ if(!isset($_GET['id'])){
             </div>
         </div>
         <div class="rhb-left">
-
+        <?php 
+        
+            $daily_avalable= Daily_Info::daily_avalable($_GET['id']); 
+        ?>
             <div>
-                ژمارەی سەردان :  <span>  3  </span> ڕۆژ
+                ژمارەی سەردان :  <span><?php echo $daily_avalable; ?></span> ڕۆژ
             </div>
+
             <div>
                 بری کریی یەک سەردان  :  <span>  <?php echo $teacher->one_day_money; ?> </span> دینار
             </div>
             <div>
-                کۆی گشتی :  <span>  <?php echo $teacher->one_day_money*2; ?> </span> ڕۆژ
+                کۆی گشتی :  <span>  <?php echo $teacher->one_day_money*$daily_avalable; ?> </span> ڕۆژ
             </div>
         </div>
         </div>
