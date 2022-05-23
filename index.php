@@ -35,22 +35,22 @@ if(isset($_POST['submit'])){
         <div class="details">
             <div class="card">
                 <div class="iconbx">
-                    <i class="fas fa-eye"></i>
+                    <i class="fas fa-building"></i>
                 </div>
                 <div>
-                    <span class="card-name">View</span>
+                    <span class="card-name">بەشەکان</span>
                     <br>
-                    <span class="numbers">12,738</span>
+                    <span class="numbers"><?php echo Department::count_all(); ?></span>
                 </div>
             </div>
             <div class="card">
                 <div class="iconbx">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-user-graduate"></i>
                 </div>
                 <div>
-                    <span class="card-name">Teachers</span>
+                    <span class="card-name">وانەبێژەکان</span>
                     <br>
-                    <span class="numbers">128</span>
+                    <span class="numbers"><?php echo Teacher::count_all(); ?></span>
                 </div>
             </div>
             <div class="card">
@@ -58,19 +58,19 @@ if(isset($_POST['submit'])){
                     <i class="fas fa-book"></i>
                 </div>
                 <div>
-                    <span class="card-name">Books</span>
+                    <span class="card-name">وانەکان</span>
                     <br>
-                    <span class="numbers">1238</span>
+                    <span class="numbers"><?php echo Lesson::count_all(); ?></span>
                 </div>
             </div>
             <div class="card">
                 <div class="iconbx">
-                    <i class="fas fa-clock"></i>
+                    <i class="fas fa-users"></i>
                 </div>
                 <div>
-                    <span class="card-name">Date</span>
+                    <span class="card-name">بەکارهێنەرەکان</span>
                     <br>
-                    <span class="numbers">12/12/2021</span>
+                    <span class="numbers"><?php echo User::count_all(); ?></span>
                 </div>
             </div>
         </div>
