@@ -1292,6 +1292,30 @@ font-family: var(--font-en);
 
 }
 
+.weekly_nums{
+  margin: 20px auto 0;
+  width: 90%;
+  text-align: right;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 25px;
+  background:var(--light-second-color);
+  color:#fff;
+  border-radius: 10px;
+}
+.weekly_info{
+  margin: 10px auto 0;
+  width: 90%;
+  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  background:var(--light-second-color);
+  color:#fff;
+  border-radius: 10px;
+}
+
 .report-page .r-main table thead{
   background:var(--light-second-color);
   color:#fff;

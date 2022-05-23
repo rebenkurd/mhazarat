@@ -93,7 +93,15 @@ require_once("configs/init.php"); ?>
     if(isset($_GET['teacher_id'])){
     $teacher=Teacher::find_by_id(intval($_GET['teacher_id']));
 ?>
-    <a href="report_out.php?id=<?php echo $teacher->id; ?>" target="blank" class="btn btn-success w-50"> ڕاپۆرت دەرەکی</a>
+    <a href="report_out.php?id=<?php echo $teacher->id; ?>" target="blank" class="btn btn-success w-50"> ڕاپۆرتی دەرەکی</a>
+    <?php }?>
+    <br>
+    <br>
+<?php
+    if(isset($_GET['teacher_id'])){
+    $teacher=Teacher::find_by_id(intval($_GET['teacher_id']));
+?>
+    <a href="report_in.php?id=<?php echo $teacher->id; ?>" onclick="window.open('report_one_teacher.php?id=<?php echo $teacher->id; ?>');" target="blank" class="btn btn-success w-50"> پێشاندانی ڕاپۆرت</a>
     <?php }?>
 </div>
 <a href="" class="btn btn-primary w-50">ڕاپۆرتی مانگ</a>
