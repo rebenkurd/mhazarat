@@ -10,6 +10,7 @@ class User extends Db_Object{
     public $first_name;
     public $last_name;
     public $user_image;
+    public $bio;
     public $recycle;
     public $upload_directory="img";
     public $image_placeholder="http://placehold.it/400x400&text=image";

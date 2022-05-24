@@ -31,9 +31,15 @@ if(isset($_POST['submit'])){
     <?php include('includes/side_nav.php'); ?>
 
     <div class="container">
-        <h1>Dashboard</h1>
-        <div class="details">
-            <div class="card">
+
+        
+    <h1>Dashboard</h1>
+    <?php echo $session->SuccessMessage(); ?>
+        <?php echo $session->ErrorMessage();
+        ?>
+    <div class="details">
+    
+    <div class="card">
                 <div class="iconbx">
                     <i class="fas fa-building"></i>
                 </div>

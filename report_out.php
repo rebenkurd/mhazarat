@@ -5,7 +5,8 @@ require_once("configs/init.php");
 
 $teacher=Teacher::find_by_id($_GET['id']);
 if($teacher->contract !=1){
-    RedirectTo("report_in.php?id=".$_GET['id']);
+    $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
+    RedirectTo("index.php?teacher_id=".$_GET['id']);
 }
 
 ?>
