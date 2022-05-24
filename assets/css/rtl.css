@@ -20,8 +20,8 @@
     --secondary-color: #6c757d!important;
     --info-color: #17a2b8!important;
   
-    --light-color: #16a085;
-    --light-second-color:#1abc9c ;
+    --light-color: #7158e2;
+    --light-second-color:#7d5fff ;
     --light-background: #FBFCFC;
     --light-second-background: #ECF0F1;
 
@@ -1359,7 +1359,10 @@ font-family: var(--font-en);
   background-color: var(--second-bg-color);
   border-radius: 20px;
   padding: 20px;
-  margin: 10px;
+  margin: 10px auto;
+  width: 90%;
+  box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15);
+
 }
 .pimage{
   width: 150px;

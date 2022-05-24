@@ -1,6 +1,6 @@
 <div class="top-nav">
         <div class="logo">
-           <a href="">LOGO Title</a>
+           <a href="">پ.ت.دووکان</a>
         </div>
         <!-- <div class="search">
             <i class="icon fas fa-search"></i>

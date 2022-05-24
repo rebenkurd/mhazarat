@@ -92,23 +92,22 @@ require_once("configs/init.php"); ?>
 
 
 <?php
+
     if(isset($_GET['teacher_id'])){
     $teacher=Teacher::find_by_id(intval($_GET['teacher_id']));
+    if($teacher->contract !=0){
 ?>
     <a href="report_out.php?id=<?php echo $teacher->id; ?>" target="blank" class="btn btn-success w-50"> ڕاپۆرتی دەرەکی</a>
-    <?php }?>
-
+    <?php }} ?>
     
-    <br>
-    <br>
-
-
 <?php
     if(isset($_GET['teacher_id'])){
     $teacher=Teacher::find_by_id(intval($_GET['teacher_id']));
+    if($teacher->contract !=1){
+
 ?>
     <a href="report_one_teacher.php?id=<?php echo $teacher->id; ?>" onclick="window.open('report_in.php?id=<?php echo $teacher->id; ?>');" target="blank" class="btn btn-success w-50"> پێشاندانی ڕاپۆرت</a>
-    <?php }?>
+    <?php }} ?>
 
 
 </div>

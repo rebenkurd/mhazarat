@@ -7,7 +7,7 @@
     <?php include('includes/side_nav.php'); ?>
 
     <div class="container">
-
+<h1>زانیاری</h1>
 <div class="profile">
 <?php
     $user=User::find_by_id($_SESSION['user_id']);
