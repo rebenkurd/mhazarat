@@ -46,6 +46,9 @@ if($teacher->contract !=0){
             <div>
                 بڕوانامە  :  <span> <?php  echo $teacher->certificate; ?> </span>
             </div>
+            <div>
+                نصاب  :  <span> <?php  echo $teacher->certificate; ?> </span>
+            </div>
         </div>
         <div class="rhb-left">
         <?php 
@@ -53,17 +56,19 @@ if($teacher->contract !=0){
              $daily_avalable= Daily_Info::daily_avalable($_GET['id']); 
         ?>
             <div>
-                ژمارەی سەردان :  <span><?php  echo $daily_avalable; ?></span> ڕۆژ
+                کۆی کاژێر  :  <span><?php  echo $daily_avalable; ?></span> کاژێر
             </div>
 
             <div>
-                بری کریی یەک سەردان  :  <span>  <?php  echo $teacher->one_day_money; ?> </span> دینار
+            کاژێری زیادە  :  <span>  <?php  echo $teacher->one_day_money; ?> </span> کاژێر
             </div>
             <div>
-                کۆی گشتی :  <span>  <?php  echo $teacher->one_day_money*$daily_avalable; ?> </span> ڕۆژ
+            بڕی کرێی یەک کاژێر   :  <span>  <?php  echo $teacher->one_day_money; ?> </span> دینار
+            </div>
+            <div>
+                کۆی گشتی :  <span>  <?php  echo $teacher->one_day_money*$daily_avalable; ?> </span> دینار
             </div>
         </div>
-
         </div>
     <div class="weekly_nums">
         <span>ژمارەی هەفتە: </span>&nbsp;<span>2</span>
