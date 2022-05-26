@@ -76,22 +76,24 @@
                             }
                             ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="edit_teacher.php?id=<?php echo $teacher->id; ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
-                                <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
-                            <div class="back-model">
+                                <a style="font-size: 1rem;" href="edit_teacher.php?id=<?php echo $teacher->id; ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>  
+                                <a href="teachers.php?id=<?php echo $teacher->id; ?>"  class="btn-submit btn-model" id="btnm"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
+  
+                                <!-- <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a> -->
+                            <!-- <div class="back-model">
                             <div class="model">
                                 <div class="model-header">
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                    دڵنیایت لە سرینەوەی <?php echo $teacher->fullname; ?>
+                                    دڵنیایت لە سرینەوەی <?php //echo $teacher->fullname; ?>
                             </div>
                                 <div class="model-footer">
-                                    <button class="btn btn-success"><a href="teachers.php?id=<?php echo $teacher->id; ?>" >بەڵێ</a></button>
+                                    <button class="btn btn-success"><a href="teachers.php?id=<?php //echo $teacher->id; ?>" >بەڵێ</a></button>
                                     <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                             </td>
                         </tr>
                         <?php } } ?>

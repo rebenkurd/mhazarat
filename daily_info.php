@@ -13,9 +13,10 @@ require_once("configs/init.php"); ?>
             <?php                     
                 $teachers=Teacher::find_all();
                 foreach($teachers as $teacher){
+                    if($teacher->recycle==0){
             ?>
             <option id="item" value="<?php echo $teacher->id; ?>"><?php echo $teacher->fullname; ?></option>
-            <?php } ?> 
+            <?php }} ?> 
             </select>
 <a href="" class="btn btn-success" id="teacher_value">گەڕان</a>
         </div>
