@@ -1,25 +1,28 @@
 <?php ob_start(); ?>
 <?php include("configs/init.php"); ?>
 <?php
-
     if($session->is_signed_in()){
         RedirectTo("index.php");
     }
-
+    
     if(isset($_POST['login'])){
         $username=trim($_POST['username']);
         $password=trim($_POST['password']);
-
-    // Create Method to check database 
-    $user_found=User::verify_user($username,$password);
-
-    if($user_found){
-        $session->login($user_found);
-        RedirectTo("index.php");
-    }else{
-        RedirectTo("login.php");
+        
+        // Create Method to check database 
+        
+        if(empty($username) || empty($password)){
+            $_SESSION['ErrorMessage']="نازناو و وشەی تیپەڕ بە تەواوی پڕبکەرەوە";
+        
+        }else{
+            $user_found=User::verify_user($username,$password);
+            $session->login($user_found);
+            RedirectTo("index.php");
+            $_SESSION['SuccessMessage']="بەخیربێیت";
+            
+        }
     }
-    }
+    
 
 
 

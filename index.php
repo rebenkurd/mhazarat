@@ -35,8 +35,7 @@ if(isset($_POST['submit'])){
         
     <h1>Dashboard</h1>
     <?php echo $session->SuccessMessage(); ?>
-        <?php echo $session->ErrorMessage();
-        ?>
+    <?php echo $session->ErrorMessage(); ?>
     <div class="details">
     
     <div class="card">

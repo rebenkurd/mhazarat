@@ -3,6 +3,7 @@
 <?php if(!$session->is_signed_in()){
     RedirectTo("login.php");
  } 
+
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">

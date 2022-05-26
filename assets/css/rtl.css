@@ -803,55 +803,63 @@
 }
 
 .alert-success{
-  background-color: #d1e7dd;
+  background-color: #d1e7ddcb;
   padding: 10px 20px;
   margin: 10px auto;
   text-align: center;
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
   color: #0f5132;
   font-size: .8rem;
   border: 1px solid #badbcc;
   box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15);
-
+  position: absolute;
+  z-index: 11111;
+ 
 }
 .alert-primery{
-  background-color: #cfe2ff;
+  background-color: #cfe2ffcb;
   padding: 10px 20px;
   margin: 10px auto;
   text-align: center;
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
   color: #084298;
   font-size: .8rem;
   border: 1px solid #b6d4fe;
   box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15);
+  position: absolute;
+  z-index: 11111;
 
 }
 .alert-warning{
-  background-color: #fff3cd;
+  background-color: #fff3cdcb;
   padding: 10px 20px;
   margin: 10px auto;
   text-align: center;
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
   color: #664d03;
   font-size: .8rem;
   border: 1px solid #ffecb5;
   box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15);
+  position: absolute;
+  z-index: 11111;
 
 }
 .alert-danger{
-  background-color: #f8d7da;
+  background-color: #f8d7dacb;
   padding: 10px 20px;
   margin: 10px auto;
   text-align: center;
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
   color: #842029;
   font-size: .8rem;
   border: 1px solid #f5c2c7;
   box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15);
+  position: absolute;
+  z-index: 11111;
   
 }
 
