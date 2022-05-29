@@ -58,7 +58,7 @@ $teacher=Teacher::find_by_id($_GET['teacher_id']); ?>
     ?>
             <option value="<?php echo $lesson->lesson; ?>"><?php echo $lesson->lesson; ?>
             </option>
-            <?php endforeach; ?>
+            <?php  endforeach; ?>
         </select>
     </td>
 

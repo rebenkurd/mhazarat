@@ -47,16 +47,17 @@ if($teacher->contract !=0){
                 بڕوانامە  :  <span> <?php  echo $teacher->certificate; ?> </span>
             </div>
             <div>
-                نصاب  :  <span> <?php  echo $teacher->certificate; ?> </span>
+                نصاب  :  <span> <?php  echo $teacher->a_houer_on_week; ?> </span>
             </div>
         </div>
         <div class="rhb-left">
         <?php 
         
              $daily_avalable= Daily_Info::daily_avalable($_GET['id']); 
+             $daily_time= Daily_Info::find_daily_by_id($_GET['id']); 
         ?>
             <div>
-                کۆی کاژێر  :  <span><?php  echo $daily_avalable; ?></span> کاژێر
+                کۆی کاژێر  :  <span><?php echo round(abs(strtotime($daily_time->start_time)-strtotime($daily_time->end_time))/3600,2);?></span> کاژێر
             </div>
 
             <div>
@@ -71,7 +72,16 @@ if($teacher->contract !=0){
         </div>
         </div>
     <div class="weekly_nums">
-        <span>ژمارەی هەفتە: </span>&nbsp;<span>2</span>
+    <?php
+        $teacher_infos=Daily_Info::find_all();
+        foreach($teacher_infos as $teacher_info){
+        $week=0;
+        while($teacher_info->num_week!=$week ){
+        ?>
+        <span>ژمارەی هەفتە: </span>&nbsp;<span><?php echo $teacher_info->num_week; ?></span>
+        <?php 
+            $week=$teacher_info->num_week;
+        }} ?>
     </div>
     <div class="weekly_info">
         <div>بەشی زانستی :&nbsp; <span></span> </div>
@@ -81,6 +91,12 @@ if($teacher->contract !=0){
 
         <div class="r-main" style="margin-top: 10px !important;">
         <div>
+        <?php
+          echo $week=0;
+        while($teacher_info->num_week!=$week){
+            foreach($teacher_infos as $teacher_info){
+            if($teacher_info->teacher_id==$_GET['id']){
+        ?>
         <table style="margin-top: 10px !important;">
             <thead>
                 <th>ناوی وانە</th>
@@ -92,29 +108,36 @@ if($teacher->contract !=0){
                 <th>ژمارەی کاژێر</th>
             </thead>
             <tbody>     
-            <?php
-                        $teacher_infos=Daily_Info::find_all();
 
-                $a=1;
-                foreach($teacher_infos as $teacher_info){
-                    if($teacher_info->teacher_id==$_GET['id']){
-            ?>
                 <tr>
-                    <td><?php echo $a++; ?></td>
-                    <td><?php echo $teacher_info->week; ?></td>
-                    <td><?php echo $teacher_info->date; ?></td>
                     <td><?php echo $teacher_info->lesson_name; ?></td>
                     <td><?php echo $teacher_info->stage; ?></td>
-                </tr>
-                <?php }} ?>
+                    <td><?php echo $teacher_info->day; ?></td>
+                    <td><?php echo $teacher_info->date; ?></td>
+                    <td><?php echo $teacher_info->start_time; ?></td>
+                    <td><?php echo $teacher_info->end_time; ?></td>
+                    <td><?php echo round(abs(strtotime($teacher_info->start_time)-strtotime($teacher_info->end_time))/3600,2);?></td>
+                </tr> 
+                
+  
             </tbody>
             </table>
-            <div class="weekly_info">
-        <div style="text-align: center;">تویژینەوەی زانستی <br> <span>12</span> </div>
-        <div style="text-align: center;">کۆی کاێرەکانی هەفتە <br> <span>22</span> </div>
-        <div style="text-align: center;">نصاب <br> <span>344</span> </div>
+            <?php
+                }
+                }
+                $week=21;
+                } ?>
+        <div class="weekly_info">
+            <?php
+                $teacher=Teacher::find_by_id($_GET['id']);
+            ?>
+        <div style="text-align: center;">تویژینەوەی زانستی <br> <span><?php echo $teacher->research; ?></span> </div>
+        <div style="text-align: center;">کۆی کاێرەکانی هەفتە <br> <span>5</span> </div>
+        <div style="text-align: center;">نصاب <br> <span><?php echo $teacher->a_houer_on_week; ?></span> </div>
         <div style="text-align: center;">کاژێری زیادە <br> <span>21</span> </div>
     </div>
+  
+
             </div>
         </div>
 

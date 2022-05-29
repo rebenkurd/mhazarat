@@ -78,8 +78,6 @@ class Daily_Info extends Db_Object{
             $rowcount=mysqli_num_rows($result);
             return $rowcount;
         }
-        
-        
     }
 
 

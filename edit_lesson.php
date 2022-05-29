@@ -6,6 +6,7 @@ if(empty($_GET['id'])){
     $lesson=Lesson::find_by_id($_GET['id']);
     if(isset($_POST['update'])){
         $lesson->lesson=$_POST['lesson'];
+        $lesson->department_id=$_POST['department_id'];
         $lesson->recycle=0;
         if($lesson->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی زیادکرا";
@@ -30,6 +31,18 @@ if(empty($_GET['id'])){
                  <div class="input-group">
                     <label for="lesson">ناوی وانە</label>
                     <input class="form-controll" value="<?php echo $lesson->lesson; ?>" type="text" placeholder="ناوی وانە" name="lesson" id="lesson">
+                </div>
+                <div class="input-group">
+                    <label for="department_id">ناوی وانە</label>
+                    <select class="form-controll" id="department_id" name="department_id">
+                        <?php 
+                            $departments=Department::find_all();
+                            foreach($departments as $department){
+                                if($department->recycle==0){
+                        ?>
+                        <option value="<?php echo $department->id; ?>"><?php echo $department->department_name; ?></option>
+                        <?php }} ?>
+                    </select>
                 </div>
                 <button type="submit" name="update" class="btn btn-success width-25">پاشەکەوتکردن</button>
             </form>
