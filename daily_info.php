@@ -57,7 +57,7 @@ require_once("configs/init.php"); ?>
 
 <div class="day mx-1">
     <label for="day">ڕۆژ : </label>
-    <select name="" id="day" class="form-controll" onchange="getDayandYear()">
+    <select name="" id="day" class="form-controll" onchange="getDayandMonthandYear()">
     <option value="" selected>ڕۆژ</option>
     <?php                     
         $days=Day::find_all();
@@ -69,11 +69,22 @@ require_once("configs/init.php"); ?>
 
 </div>
 
-
+<div class="month mx-2">
+    <label for="month">مانگ : </label>
+    <select name="" id="month" class="form-controll" onchange="getDayandMonthandYear()">
+        <option value="" selected>مانگ</option>
+    <?php                     
+        $months=Month::find_all();
+        foreach($months as $month){
+    ?>
+    <option value="<?php echo $month->month; ?>"><?php echo $month->name; ?></option>
+    <?php } ?>
+    </select>
+</div>
 
 <div class="year mx-1">
     <label for="year">ساڵ : </label>
-    <select name="" id="year" class="form-controll" onchange="getDayandYear()">
+    <select name="" id="year" class="form-controll" onchange="getDayandMonthandYear()">
         <option value="" selected>ساڵ</option>
     <?php                     
         $years=Year::find_all();
@@ -84,14 +95,14 @@ require_once("configs/init.php"); ?>
     </select>
 </div>
 
-<a href="" id="both_value" class="btn btn-success">باشە</a>
+
+
+<a href="" id="thierd_value" class="btn btn-success mx-4">باشە</a>
 
 </div>
 
-<div class="month-report">
+<div class="month-report mr-5">
 <div class="show-report my-5">
-
-
 <?php
 
     if(isset($_GET['teacher_id'])){
@@ -271,24 +282,27 @@ function getTeacher(){
         document.getElementById("teacher_value").href="index.php?teacher_id="+selectedTeacher;
 }
 getTeacher();
-getDayandYear();
+getDayandMonthandYear();
 
 
 <?php if(isset($_GET['teacher_id'])){ ?>
 
-function getDayandYear(){
+function getDayandMonthandYear(){
     var selectedDay=document.getElementById("day").value; 
     var selectedYear=document.getElementById("year").value; 
+    var selectedMonth=document.getElementById("month").value; 
     var selectedTeach= <?php echo $_GET['teacher_id']; ?>;
     
-    if(selectedDay.value!="" && selectedYear!=""){
-        document.getElementById("both_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay+"&year="+selectedYear;
-    }else if (selectedDay.value!="" && selectedYear==""){
-        document.getElementById("both_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay;
-    }else if(selectedDay.value=="" && selectedYear!=""){
-        document.getElementById("both_value").href="index.php?teacher_id="+selectedTeach+"&year="+selectedYear;
+    if(selectedDay.value!="" && selectedYear!=""&& selectedMonth!=""){
+        document.getElementById("thierd_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay+"&month="+selectedMonth+"&year="+selectedYear;
+    }else if (selectedDay.value!="" && selectedYear=="" && selectedMonth==""){
+        document.getElementById("thierd_value").href="index.php?teacher_id="+selectedTeach+"&day="+selectedDay;
+    }else if(selectedYear!="" || selectedDay.value=="" && selectedMonth==""){
+        document.getElementById("thierd_value").href="index.php?teacher_id="+selectedTeach+"&year="+selectedYear;
+    }else if(selectedMonth !="" || selectedDay.value=="" && selectedYear ==""){
+        document.getElementById("thierd_value").href="index.php?teacher_id="+selectedTeach+"&month="+selectedMonth;
     }else{
-        document.getElementById("both_value").href="index.php?teacher_id="+selectedTeach;
+        document.getElementById("thierd_value").href="index.php?teacher_id="+selectedTeach;
     }
 
 }

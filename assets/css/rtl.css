@@ -12,6 +12,7 @@
     text-decoration: none !important;
     cursor: pointer !important;
   }
+  
   :root {
     --primary-color: #007bff!important;
     --success-color: #28a745!important;
@@ -118,6 +119,36 @@
   }
   .my-5{
     margin:25px 0 !important;
+  }
+  .mr-1{
+    margin-right:5px !important;
+  }
+  .mr-2{
+    margin-right:10px !important;
+  }
+  .mr-3{
+    margin-right:15px !important;
+  }
+  .mr-4{
+    margin-right:20px !important;
+  }
+  .mr-5{
+    margin-right:25px !important;
+  }
+  .ml-1{
+    margin-left:5px !important;
+  }
+  .ml-2{
+    margin-left:10px !important;
+  }
+  .ml-3{
+    margin-left:15px !important;
+  }
+  .ml-4{
+    margin-left:20px !important;
+  }
+  .ml-5{
+    margin-left:25px !important;
   }
 
 /* width */
@@ -745,7 +776,7 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-  width: 300px;
+  width: 600px;
 }
 
 .image-flued{
@@ -964,6 +995,9 @@
 @media (max-width:991px){
 
 
+  .date-board{
+    width: 350px;
+  }
   .side-nav{
     width: 60px;
   }
@@ -1025,7 +1059,9 @@
 
 
 @media (max-width:768px){
-
+  .date-board{
+    width: 350px;
+  }
   .content .recents{
     overflow-x: auto;
   }
