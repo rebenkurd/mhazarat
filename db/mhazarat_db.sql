@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2022 at 09:47 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Jun 06, 2022 at 03:48 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,35 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_mhazarat`
+-- Database: `mhazarat_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` int(11) NOT NULL,
+  `department_name` varchar(255) NOT NULL,
+  `recycle` int(11) DEFAULT NULL COMMENT '0=not delete\r\n1=deleted'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`id`, `department_name`, `recycle`) VALUES
+(1, 'کارگێڕی بانکەکان', 0),
+(2, 'کارگێڕی کار', 0),
+(3, 'ژمێریاری', 0),
+(4, 'سیستەمەکانى کارپێکردن و کۆنترۆڵکردنى نەوت', 0),
+(5, 'پەیوەندییەگشتییەکان و بەبازارکردن', 0),
+(6, 'تەکنۆلۆجیای زانیاری', 0),
+(7, 'تەکنۆلۆجیای زانیاری / ئێواران', 0),
+(8, 'کارگێڕی کار/ئێواران', 0),
+(9, 'abc', 1);
 
 -- --------------------------------------------------------
 
@@ -43,6 +70,15 @@ CREATE TABLE `tb_daily_info` (
   `note` text DEFAULT NULL,
   `year` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_daily_info`
+--
+
+INSERT INTO `tb_daily_info` (`id`, `teacher_id`, `fullname`, `department`, `stage`, `week`, `num_week`, `day`, `date`, `lesson_name`, `start_time`, `end_time`, `note`, `year`) VALUES
+(1774, 5, 'زانا عثمان حمد', 'کارگێڕی کار', 1, 'Fri', 21, '27', '2022-05-27', 'Database Concepts', '01:00:00', '03:00:00', '', 2022),
+(1775, 5, 'زانا عثمان حمد', 'کارگێڕی کار', 1, 'Fri', 21, '27', '2022-05-27', 'Database Concepts', '01:00:00', '02:00:00', '', 2022),
+(1776, 5, 'زانا عثمان حمد', 'کارگێڕی کار', 1, 'Fri', 21, '27', '2022-05-27', 'Database Concepts', '01:00:00', '07:00:00', '', 2022);
 
 -- --------------------------------------------------------
 
@@ -115,8 +151,7 @@ INSERT INTO `tb_departments` (`id`, `department_name`, `recycle`) VALUES
 (5, 'پەیوەندییەگشتییەکان و بەبازارکردن', 0),
 (6, 'تەکنۆلۆجیای زانیاری', 0),
 (7, 'تەکنۆلۆجیای زانیاری / ئێواران', 0),
-(8, 'کارگێڕی کار/ئێواران', 0),
-(9, 'abc', 1);
+(8, 'کارگێڕی کار/ئێواران', 0);
 
 -- --------------------------------------------------------
 
@@ -127,6 +162,7 @@ INSERT INTO `tb_departments` (`id`, `department_name`, `recycle`) VALUES
 CREATE TABLE `tb_lessons` (
   `id` int(11) NOT NULL,
   `lesson` varchar(255) DEFAULT NULL,
+  `department_id` int(11) NOT NULL,
   `recycle` int(10) UNSIGNED DEFAULT NULL COMMENT '0 = not delete\r\n1= deleted'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -134,23 +170,8 @@ CREATE TABLE `tb_lessons` (
 -- Dumping data for table `tb_lessons`
 --
 
-INSERT INTO `tb_lessons` (`id`, `lesson`, `recycle`) VALUES
-(3, 'Mobile App', 0),
-(4, 'Database Concepts', 0),
-(5, 'Computer Network', 0),
-(6, 'Inofrmation Security', 0),
-(7, 'Visual Programing', 0),
-(8, 'Computer', 0),
-(9, 'قانون الخدمة المدنية', 0),
-(10, 'Operating System Concepts', 0),
-(11, 'Academic Debate', 0),
-(12, 'Principle of Programing', 0),
-(13, 'Internet Technology', 0),
-(14, 'Information technology fundamental', 0),
-(15, 'English Language', 0),
-(16, 'Calculus', 0),
-(17, 'Computer Organization & Logic Design', 0),
-(19, 'IT', 0);
+INSERT INTO `tb_lessons` (`id`, `lesson`, `department_id`, `recycle`) VALUES
+(2, 'IT', 6, 0);
 
 -- --------------------------------------------------------
 
@@ -200,9 +221,11 @@ CREATE TABLE `tb_teachers` (
 --
 
 INSERT INTO `tb_teachers` (`id`, `fullname`, `certificate`, `nickname`, `a_houer_on_week`, `research`, `one_houer_money`, `contract`, `one_day_money`, `recycle`) VALUES
-(1, 'فرمان حسین احمد', 'بکالۆریۆس', '', '12', 0, '2500', 0, '0', 0),
-(2, 'زانا عثمان حمد', '0', '', '12', 0, '3500', 0, '0', 0),
-(3, 'rebinrafiqsalih', '0', 'rebin', '11', 12, '3500', 1, '0', 0);
+(1, 'فرمان حسین احمد', 'بکالۆریۆس', '', '12', 0, '2500', 0, '0', 1),
+(2, 'زانا عثمان حمد', '0', '', '12', 0, '3500', 0, '0', 1),
+(3, 'rebinrafiqsalih', '0', 'rebin', '11', 12, '3500', 1, '0', 1),
+(4, 'فرمان حسین احمد', '0', '', '10', 0, '3500', 0, '170000', 0),
+(5, 'زانا عثمان حمد', '0', '', '10', 4, '3000', 0, '100000', 0);
 
 -- --------------------------------------------------------
 
@@ -262,6 +285,7 @@ CREATE TABLE `tb_users` (
   `password` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
+  `bio` text NOT NULL,
   `user_image` varchar(255) NOT NULL,
   `recycle` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -270,10 +294,10 @@ CREATE TABLE `tb_users` (
 -- Dumping data for table `tb_users`
 --
 
-INSERT INTO `tb_users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `user_image`, `recycle`) VALUES
-(30, 'rebinrafiq', 'ali@gmail.com', '123', 'ali', 'mhamad', 'image-1.jpg', 1),
-(31, 'rebinrafiq', 'rebinrafiq@gmail.com', '123', 'Rebin', 'Rafiq', '', 0),
-(32, 'ahmadmhamad', 'ahmadmhamad@gmail.com', '123', 'ahmad', 'mhamad', '', 0);
+INSERT INTO `tb_users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `bio`, `user_image`, `recycle`) VALUES
+(30, 'rebinrafiq', 'ali@gmail.com', '123', 'ڕێبین', 'ڕفیق', 'سڵاو من ناوم ڕێبینە', 'user.png', 1),
+(31, 'rebinrafiq', 'rebinrafiq@gmail.com', '123', 'Rebin', 'Rafiq', '', '', 0),
+(32, 'ahmadmhamad', 'ahmadmhamad@gmail.com', '123', 'ahmad', 'mhamad', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -305,6 +329,12 @@ INSERT INTO `tb_years` (`id`, `year`) VALUES
 --
 
 --
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_daily_info`
 --
 ALTER TABLE `tb_daily_info`
@@ -327,7 +357,8 @@ ALTER TABLE `tb_departments`
 -- Indexes for table `tb_lessons`
 --
 ALTER TABLE `tb_lessons`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `department&lesson` (`department_id`);
 
 --
 -- Indexes for table `tb_sign`
@@ -364,10 +395,16 @@ ALTER TABLE `tb_years`
 --
 
 --
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `tb_daily_info`
 --
 ALTER TABLE `tb_daily_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1774;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1777;
 
 --
 -- AUTO_INCREMENT for table `tb_days`
@@ -385,7 +422,7 @@ ALTER TABLE `tb_departments`
 -- AUTO_INCREMENT for table `tb_lessons`
 --
 ALTER TABLE `tb_lessons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_sign`
@@ -397,7 +434,7 @@ ALTER TABLE `tb_sign`
 -- AUTO_INCREMENT for table `tb_teachers`
 --
 ALTER TABLE `tb_teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_times`
@@ -416,6 +453,16 @@ ALTER TABLE `tb_users`
 --
 ALTER TABLE `tb_years`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tb_lessons`
+--
+ALTER TABLE `tb_lessons`
+  ADD CONSTRAINT `department&lesson` FOREIGN KEY (`department_id`) REFERENCES `tb_departments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
