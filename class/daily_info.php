@@ -2,7 +2,7 @@
 class Daily_Info extends Db_Object{
 
     public static $db_table="tb_daily_info";
-    public static $db_table_fields=array('id','teacher_id','fullname','department','stage','week','num_week','day','date','lesson_name','start_time','end_time','note','year');
+    public static $db_table_fields=array('id','teacher_id','fullname','department','stage','week','num_week','day','date','lesson_name','start_time','end_time','note','year','month');
     public $id;
     public $teacher_id;
     public $fullname;
@@ -13,6 +13,7 @@ class Daily_Info extends Db_Object{
     public $date;
     public $year;
     public $day;
+    public $month;
     public $lesson_name;
     public $start_time;
     public $end_time;
@@ -55,6 +56,14 @@ class Daily_Info extends Db_Object{
         return self::find_by_query($sql);
     }
 
+    public static function find_daily_info_month($teacher_id=0,$month=0){
+        global $database;
+        $sql="SELECT * FROM ".self::$db_table;
+        $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND month=".$database->es($month);
+        $sql .=" ORDER BY teacher_id ASC";
+        return self::find_by_query($sql);
+    }
+
     public static function find_daily_info_year($teacher_id=0,$year=0){
         global $database;
         $sql="SELECT * FROM ".self::$db_table;
@@ -63,10 +72,10 @@ class Daily_Info extends Db_Object{
         return self::find_by_query($sql);
     }
 
-    public static function find_daily_info_day_year($teacher_id=0,$day=0,$year=0){
+    public static function find_daily_info_day_month_year($teacher_id=0,$day=0,$year=0,$month=0){
         global $database;
         $sql="SELECT * FROM ".self::$db_table;
-        $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND day=".$database->es($day)." AND year=".$database->es($year);
+        $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND day=".$database->es($day)." AND year=".$database->es($year)." AND month=".$database->es($month);
         $sql .=" ORDER BY teacher_id ASC";
         return self::find_by_query($sql);
     }

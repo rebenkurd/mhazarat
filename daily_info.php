@@ -118,36 +118,23 @@ require_once("configs/init.php"); ?>
     if($teacher->contract !=1){
 
 ?>
-    <a href="report_one_teacher.php?id=<?php echo $teacher->id; ?>" onclick="window.open('report_in.php?id=<?php echo $teacher->id; ?>');" target="blank" class="btn btn-success w-50"> پێشاندانی ڕاپۆرت</a>
+    <a href="report_in.php?id=<?php echo $teacher->id; ?>" target="blank" class="btn btn-success w-50"> پێشاندانی ڕاپۆرت</a>
+    <?php }} ?>
+
+<?php
+    if(isset($_GET['teacher_id'])&&isset($_GET['month'])){
+    $teacher=Teacher::find_by_id(intval($_GET['teacher_id']));
+    if($teacher->contract !=1){
+
+?>
+<br>
+<br>
+    <a href="report_one_teacher.php?id=<?php echo $teacher->id; ?>&month=<?php echo $_GET['month'];?>" target="blank" class="btn btn-primary w-50"> پێشاندانی ڕاپۆرتی مانگ</a>
     <?php }} ?>
 
 
 </div>
 
-<a href="" class="btn btn-primary w-50">ڕاپۆرتی مانگ</a>
-<div class="back-model">
-    <div class="model">
-        <form action="">
-            <div class="model-header">
-                ڕاپۆرتی مـانگانە
-            </div>
-            <div class="model-body">
-                <div class="input-gropu">
-                    <label for="">ڕۆژی یەکەم داخڵ بکە</label>
-                    <input type="text" class="form-controll" placeholder="ڕۆژی یەکەم داخڵ بکە">
-                </div>
-                <div class="input-gropu">
-                    <label for="">ڕۆژی کۆتایی داخڵ بکە</label>
-                    <input type="text" class="form-controll" placeholder="ڕۆژی کۆتای داخڵ بکە">
-                </div>
-            </div>
-            <div class="model-footer">
-                <button type="submit" class="btn btn-success">باشە</button>
-                <button class="btn btn-danger close" onclick="btnCloseModel()">لابردن</button>
-            </div>
-        </form>
-    </div>
-</div>
 
 </div>
 </div>
@@ -173,7 +160,7 @@ require_once("configs/init.php"); ?>
 
 
             <?php
-if(!empty($_GET['teacher_id']) && empty($_GET['day']) && empty($_GET['year'])){
+if(!empty($_GET['teacher_id']) && empty($_GET['day']) && empty($_GET['year']) && empty($_GET['month'])){
 $teacher=Teacher::find_by_id($_GET['teacher_id']);
 
 $daily_infos=Daily_Info::find_daily_info($teacher->id);
@@ -244,10 +231,34 @@ foreach($daily_infos as $daily_info): ?>
 </tr>
 
 <?php endforeach; 
-}else if(!empty($_GET['teacher_id']) && !empty($_GET['day']) && !empty($_GET['year'])){
-    
+}else if(!empty($_GET['teacher_id']) && !empty($_GET['month'])){
+
 $teacher=Teacher::find_by_id($_GET['teacher_id']);
-$daily_infos=Daily_Info::find_daily_info_day_year($teacher->id,$_GET['day'],$_GET['year']);
+$daily_infos=Daily_Info::find_daily_info_month($teacher->id,$_GET['month']);
+foreach($daily_infos as $daily_info): ?>
+<tr>
+<td><?php echo $daily_info->teacher_id; ?></td>
+<td><?php echo $daily_info->date; ?></td>
+<td><?php echo $daily_info->week; ?></td>
+<td><?php echo $daily_info->num_week; ?></td>
+<td><?php echo $daily_info->fullname; ?></td>
+<td><?php echo $daily_info->department; ?></td>
+<td><?php echo $daily_info->stage; ?></td>
+<td><?php echo $daily_info->lesson_name; ?></td>
+<td><?php echo $daily_info->start_time; ?></td>
+<td><?php echo $daily_info->end_time; ?></td>
+<td><?php echo $daily_info->note; ?></td>
+<td><a
+        href="delete_dayle_info.php?id=<?php echo $daily_info->id; ?>&teacher_id=<?php echo $daily_info->teacher_id; ?>"><i
+            class="fas fa-trash text-danger"></i></a></td>
+
+</tr>
+
+<?php endforeach; 
+}else if(!empty($_GET['teacher_id']) && !empty($_GET['day']) && !empty($_GET['year'])){
+
+$teacher=Teacher::find_by_id($_GET['teacher_id']);
+$daily_infos=Daily_Info::find_daily_info_day_month_year($teacher->id,$_GET['day'],$_GET['year'],$_GET['month']);
 foreach($daily_infos as $daily_info): ?>
 <tr>
 <td><?php echo $daily_info->teacher_id; ?></td>

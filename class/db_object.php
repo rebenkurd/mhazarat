@@ -146,6 +146,13 @@ class Db_Object{
         $row= mysqli_fetch_array($result_set);
         return array_shift($row);
     }
+
+    public static function find_by_deptartment_id($id){
+        global $database;
+        $sql="SELECT * FROM " . static::$db_table." WHERE department_id=".$id." LIMIT 1";
+        $database->query($sql);
+        return mysqli_affected_rows($database->connection)==1 ? true : false;
+    }
     
 }
 

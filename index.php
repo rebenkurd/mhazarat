@@ -10,6 +10,7 @@ if(isset($_POST['submit'])){
     $daily_info->day=trim(date('d',strtotime($_POST['date'])));
     $daily_info->week=trim(date('D',strtotime($_POST['date'])));
     $daily_info->year=trim(date('Y',strtotime($_POST['date'])));
+    $daily_info->month=trim(date('m',strtotime($_POST['date'])));
     $daily_info->num_week=trim($_POST['num_week']);
     $daily_info->fullname=trim($_POST['fullname']);
     $daily_info->department=trim($_POST['department']);

@@ -34,7 +34,7 @@ $teacher=Teacher::find_by_id($_GET['teacher_id']); ?>
         $departments=Department::find_all();
         foreach($departments as $department): 
     ?>
-            <option value="<?php echo $department->department_name; ?>">
+            <option value="<?php echo $department->id; ?>">
                 <?php echo $department->department_name; ?>
             </option>
             <?php endforeach; ?>
@@ -50,18 +50,18 @@ $teacher=Teacher::find_by_id($_GET['teacher_id']); ?>
     </td>
 
     <td >
-        <select name="lesson" class="form-controll" style="width:180px;" id="">
+        <select name="lesson" class="form-controll" style="width:180px;" >
             <option value=""></option>
             <?php
-        $lessons=Lesson::find_all();
-        foreach($lessons as $lesson): 
+            $lessons=Lesson::find_all();
+            foreach($lessons as $lesson){
     ?>
-            <option value="<?php echo $lesson->lesson; ?>"><?php echo $lesson->lesson; ?>
+            <option  value="<?php echo $lesson->lesson; ?>"><?php echo $lesson->lesson; ?>
             </option>
-            <?php  endforeach; ?>
+            
         </select>
+        <?php }?>
     </td>
-
     <td>
         <select name="start_time" class="form-controll" id="">
             <option value=""></option>
