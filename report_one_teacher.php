@@ -1,4 +1,7 @@
 <?php
+
+use JetBrains\PhpStorm\Deprecated;
+
 require_once("configs/init.php");
 
 
@@ -27,6 +30,7 @@ if($teacher->contract !=0){
     <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 <body>
+    
     <div class="report-page">
         <div class="r-header">
             <div class="r-header-top">
@@ -77,31 +81,20 @@ if($teacher->contract !=0){
         </div>
         </div>
     <div class="weekly_nums">
-    <?php
-        $teacher_infos=Daily_Info::find_all();
-        foreach($teacher_infos as $teacher_info){
-        $week=0;
-        while($teacher_info->num_week!=$week ){
-        ?>
-        <span>ژمارەی هەفتە: </span>&nbsp;<span><?php echo $teacher_info->num_week; ?></span>
-        <?php 
-            $week=$teacher_info->num_week;
-        }} ?>
+        <span>ژمارەی هەفتە: </span>&nbsp;<span><?php // echo $teacher_info->num_week; ?></span>
     </div>
+
     <div class="weekly_info">
-        <div>بەشی زانستی :&nbsp; <span></span> </div>
+        <?php
+        // $department_name=Department::find_by_id($teacher_info->department);
+?>
+        <div>بەشی زانستی :&nbsp; <span><?php //echo $department_name->department_name; ?></span> </div>
+       
         <div><span>کۆی کاژێرەکانی وانەوتنەوە:&nbsp;<span>2</span> </span></div>
     </div>
     </div>
 
         <div class="r-main" style="margin-top: 10px !important;">
-        <div>
-        <?php
-          echo $week=0;
-        while($teacher_info->num_week!=$week){
-            foreach($teacher_infos as $teacher_info){
-            if($teacher_info->teacher_id==$_GET['id']){
-        ?>
         <table style="margin-top: 10px !important;">
             <thead>
                 <th>ناوی وانە</th>
@@ -113,7 +106,13 @@ if($teacher->contract !=0){
                 <th>ژمارەی کاژێر</th>
             </thead>
             <tbody>     
-
+            <?php
+        $teacher_infos=Daily_Info::find_all();
+        foreach($teacher_infos as $teacher_info){
+        // $week=1;
+        // while($teacher_info->num_week!=$week){
+            if($teacher_info->teacher_id==$_GET['id'] && $teacher_info->month==$_GET['month']){
+        ?>
                 <tr>
                     <td><?php echo $teacher_info->lesson_name; ?></td>
                     <td><?php echo $teacher_info->stage; ?></td>
@@ -123,15 +122,16 @@ if($teacher->contract !=0){
                     <td><?php echo $teacher_info->end_time; ?></td>
                     <td><?php echo round(abs(strtotime($teacher_info->start_time)-strtotime($teacher_info->end_time))/3600,2);?></td>
                 </tr> 
-                
-  
+             
+                      <?php
+   
+                //    $week=$teacher_info->num_week;
+        }
+    //  }
+    }
+             ?> 
             </tbody>
             </table>
-            <?php
-                }
-                }
-                $week=21;
-                } ?>
         <div class="weekly_info">
             <?php
                 $teacher=Teacher::find_by_id($_GET['id']);
@@ -139,13 +139,10 @@ if($teacher->contract !=0){
         <div style="text-align: center;">تویژینەوەی زانستی <br> <span><?php echo $teacher->research; ?></span> </div>
         <div style="text-align: center;">کۆی کاێرەکانی هەفتە <br> <span>5</span> </div>
         <div style="text-align: center;">نصاب <br> <span><?php echo $teacher->a_houer_on_week; ?></span> </div>
-        <div style="text-align: center;">کاژێری زیادە <br> <span>21</span> </div>
+        <div style="text-align: center;">کاژێری زیادە <br> <span><?php echo $teacher->a_houer_on_week; ?></span> </div>
     </div>
   
-
-            </div>
         </div>
-
         <div class="r-footer">
             <div class="r-footer-top">
                     <div>

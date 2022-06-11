@@ -1266,13 +1266,14 @@ font-family: var(--font-en);
 }
 
 
+
 .report-page{
   display: block;
   margin: 10px auto;
   position: relative;
   width: 21cm;
   height: 29.7cm;
-  border: 1px solid ;
+  border:1px solid #3d3d3d ;
 }
 .report-page .r-header-top{
   position: relativ;;
@@ -1304,10 +1305,10 @@ font-family: var(--font-en);
   padding: 0 25px;
 }
 .report-page .r-header-bottom div{
-  font-size: .9rem;
+  font-size: .8rem;
 }
 .report-page .r-header-bottom div span{
-  font-size: .9rem;
+  font-size: .8rem;
   color: var(--light-color);
   font-weight: bold;
 }
@@ -1322,7 +1323,7 @@ font-family: var(--font-en);
   margin-top: 150px;
 }
 .report-page .r-main div{
-  font-size: .9rem;
+  font-size: .7rem;
 }
 .report-page .r-main div span{
   font-weight: bold;
@@ -1332,8 +1333,8 @@ font-family: var(--font-en);
   text-align: center;
   border-collapse: collapse;
   margin: 20px 0;
-  font-size: .85rem !important;
-
+  font-size: .7rem !important;
+  font-weight: normal;
 }
 
 .weekly_nums{
@@ -1347,11 +1348,13 @@ font-family: var(--font-en);
   background:var(--light-second-color);
   color:#fff;
   border-radius: 10px;
+  font-size: .85rem;
 }
 .weekly_info{
   margin: 10px auto 0;
   width: 90%;
   text-align: right;
+  font-size: .85rem;
   display: flex;
   justify-content: space-between;
   padding: 0 25px;
@@ -1375,7 +1378,7 @@ font-family: var(--font-en);
   position: relative;
   width: 90%;
   margin: 0 auto;
-  margin-top: 250px;
+  margin-top: 10px;
 }
 .report-page .r-footer-top{
   display: flex;
