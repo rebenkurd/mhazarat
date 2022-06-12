@@ -40,12 +40,6 @@ class Db_Object{
         $the_result_array=static::find_by_query("SELECT * FROM ".static::$db_table." WHERE id='$id' LIMIT 1");
         return !empty($the_result_array) ? array_shift($the_result_array):false;
     }
-    // create find tables by using id 
-    public static function find_daily_by_id($id){
-        global $database;
-        $the_result_array=static::find_by_query("SELECT * FROM ".static::$db_table." WHERE teacher_id='$id' LIMIT 1");
-        return !empty($the_result_array) ? array_shift($the_result_array):false;
-    }
 
     // create query method
     public static function find_by_query($sql){
@@ -146,6 +140,7 @@ class Db_Object{
         $row= mysqli_fetch_array($result_set);
         return array_shift($row);
     }
+
 
     public static function find_by_deptartment_id($id){
         global $database;

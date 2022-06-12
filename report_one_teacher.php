@@ -13,6 +13,7 @@ if($teacher->contract !=0){
     $_SESSION['ErrorMessage']="تکایە مانگێک دیاری بکە";
     RedirectTo("index.php?teacher_id=".$_GET['id']);
 }
+$teacher_infos=Daily_Info::find_all();
 
 
 ?>
@@ -32,15 +33,20 @@ if($teacher->contract !=0){
 <body>
     
     <div class="report-page">
+
         <div class="r-header">
-            <div class="r-header-top">
+
+        <div class="r-header-top">
             <span>فۆڕمی وانەبیژی </span>&nbsp;<span>٢٠٢١ - ٢٠٢٢</span>
         </div>
+
+
         <?php
             
              $teacher=Teacher::find_by_id($_GET['id']);
 
         ?>
+
         <div class="r-header-bottom">
             <div class="rhb-right">
             <div>
@@ -59,18 +65,18 @@ if($teacher->contract !=0){
                 نصاب  :  <span> <?php  echo $teacher->a_houer_on_week; ?> </span>
             </div>
         </div>
+
+
         <div class="rhb-left">
         <?php 
         
              $daily_avalable= Daily_Info::daily_avalable($_GET['id']); 
-             $daily_time= Daily_Info::find_daily_by_id($_GET['id']); 
-        ?>
+        ?>    
             <div>
-                کۆی کاژێر  :  <span><?php echo round(abs(strtotime($daily_time->start_time)-strtotime($daily_time->end_time))/3600,2);?></span> کاژێر
+                کۆی کاژێر  :  <span> 0 </span> کاژێر
             </div>
-
             <div>
-            کاژێری زیادە  :  <span>  <?php  echo $teacher->one_day_money; ?> </span> کاژێر
+            کاژێری زیادە  :  <span> 0</span> کاژێر
             </div>
             <div>
             بڕی کرێی یەک کاژێر   :  <span>  <?php  echo $teacher->one_day_money; ?> </span> دینار
@@ -80,21 +86,30 @@ if($teacher->contract !=0){
             </div>
         </div>
         </div>
+
+        </div>
+        <?php
+        $i=1;
+        foreach($teacher_infos as $weeks){
+            while($i<=$weeks->num_week){
+                if($weeks->teacher_id==$_GET['id'] && $weeks->month==$_GET['month']&& $weeks->num_week==$i){
+?>
     <div class="weekly_nums">
-        <span>ژمارەی هەفتە: </span>&nbsp;<span><?php // echo $teacher_info->num_week; ?></span>
+        <span>ژمارەی هەفتە: </span>&nbsp;<span><?php  echo $weeks->num_week; ?></span>
     </div>
 
     <div class="weekly_info">
         <?php
-        // $department_name=Department::find_by_id($teacher_info->department);
+         $department_name=Department::find_by_id($weeks->department);
 ?>
-        <div>بەشی زانستی :&nbsp; <span><?php //echo $department_name->department_name; ?></span> </div>
-       
-        <div><span>کۆی کاژێرەکانی وانەوتنەوە:&nbsp;<span>2</span> </span></div>
-    </div>
+        <div>بەشی زانستی :&nbsp; <span><?php echo $department_name->department_name; ?></span> </div>
+        <div><span>کۆی کاژێرەکانی وانەوتنەوە:&nbsp;<span><?php echo Daily_Info::sum_num_time($weeks->num_time,$i); ?></span> </span></div>
+    
+
     </div>
 
-        <div class="r-main" style="margin-top: 10px !important;">
+    <div class="r-main" style="margin-top: 10px !important;">
+
         <table style="margin-top: 10px !important;">
             <thead>
                 <th>ناوی وانە</th>
@@ -105,14 +120,11 @@ if($teacher->contract !=0){
                 <th>کاتی کۆتا </th>
                 <th>ژمارەی کاژێر</th>
             </thead>
-            <tbody>     
-            <?php
-        $teacher_infos=Daily_Info::find_all();
-        foreach($teacher_infos as $teacher_info){
-        // $week=1;
-        // while($teacher_info->num_week!=$week){
-            if($teacher_info->teacher_id==$_GET['id'] && $teacher_info->month==$_GET['month']){
-        ?>
+            <tbody>   
+                <?php 
+                    foreach($teacher_infos as $teacher_info){
+                        if($teacher_info->num_week==$i){
+                ?>
                 <tr>
                     <td><?php echo $teacher_info->lesson_name; ?></td>
                     <td><?php echo $teacher_info->stage; ?></td>
@@ -120,29 +132,32 @@ if($teacher->contract !=0){
                     <td><?php echo $teacher_info->date; ?></td>
                     <td><?php echo $teacher_info->start_time; ?></td>
                     <td><?php echo $teacher_info->end_time; ?></td>
-                    <td><?php echo round(abs(strtotime($teacher_info->start_time)-strtotime($teacher_info->end_time))/3600,2);?></td>
+                    <td><?php echo $teacher_info->num_time; ?></td>
                 </tr> 
-             
-                      <?php
-   
-                //    $week=$teacher_info->num_week;
-        }
-    //  }
-    }
-             ?> 
+                <?php } } ?>
             </tbody>
             </table>
+
         <div class="weekly_info">
             <?php
                 $teacher=Teacher::find_by_id($_GET['id']);
             ?>
         <div style="text-align: center;">تویژینەوەی زانستی <br> <span><?php echo $teacher->research; ?></span> </div>
-        <div style="text-align: center;">کۆی کاێرەکانی هەفتە <br> <span>5</span> </div>
+        <div style="text-align: center;">کۆی کاژێرەکانی هەفتە <br> <span><?php echo Daily_Info::sum_num_time($weeks->num_time,$i); ?></span> </div>
         <div style="text-align: center;">نصاب <br> <span><?php echo $teacher->a_houer_on_week; ?></span> </div>
-        <div style="text-align: center;">کاژێری زیادە <br> <span><?php echo $teacher->a_houer_on_week; ?></span> </div>
+        <div style="text-align: center;">کاژێری زیادە <br> <span><?php echo Daily_Info::sum_num_time($weeks->num_time,$i); ?></span> </div>
     </div>
   
-        </div>
+        </div>            <br>
+<br>
+        <?php
+             } 
+             $i++;
+            }     
+        }
+        ?> 
+
+
         <div class="r-footer">
             <div class="r-footer-top">
                     <div>

@@ -18,6 +18,7 @@ if(isset($_POST['submit'])){
     $daily_info->stage=trim($_POST['stage']);
     $daily_info->start_time=trim($_POST['start_time']);
     $daily_info->end_time=trim($_POST['end_time']);
+    $daily_info->num_time=trim(round(abs(strtotime($daily_info->start_time)-strtotime($daily_info->end_time))/3600,2));
     if($daily_info->save()){
         RedirectTo("index.php?teacher_id=$daily_info->teacher_id");
     }else{

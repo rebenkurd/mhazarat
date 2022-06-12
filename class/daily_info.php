@@ -2,7 +2,7 @@
 class Daily_Info extends Db_Object{
 
     public static $db_table="tb_daily_info";
-    public static $db_table_fields=array('id','teacher_id','fullname','department','stage','week','num_week','day','date','lesson_name','start_time','end_time','note','year','month');
+    public static $db_table_fields=array('id','teacher_id','fullname','department','stage','week','num_week','day','date','lesson_name','start_time','end_time','num_time','note','year','month');
     public $id;
     public $teacher_id;
     public $fullname;
@@ -17,6 +17,7 @@ class Daily_Info extends Db_Object{
     public $lesson_name;
     public $start_time;
     public $end_time;
+    public $num_time;
     public $note;
 
     public static function create_daily_info($teacher_id,$fullname,$department,$lesson_name){
@@ -89,6 +90,20 @@ class Daily_Info extends Db_Object{
         }
     }
 
+    public static function sum_num_time($num_time,$num_week){
+        global $database;
+        $sql="SELECT SUM($num_time) FROM " . static::$db_table." WHERE num_week=".$num_week;
+        $result_set=$database->query($sql);
+        $row= mysqli_fetch_array($result_set);
+        return array_shift($row);
+    }
+    public static function sum_num_time_all($num_time){
+        global $database;
+        $sql="SELECT SUM($num_time) FROM " . static::$db_table;
+        $result_set=$database->query($sql);
+        $row= mysqli_fetch_array($result_set);
+        return array_shift($row);
+    }
 
 
 }
