@@ -79,10 +79,10 @@ $teacher_infos=Daily_Info::find_all();
             کاژێری زیادە  :  <span> 0</span> کاژێر
             </div>
             <div>
-            بڕی کرێی یەک کاژێر   :  <span>  <?php  echo $teacher->one_day_money; ?> </span> دینار
+            بڕی کرێی یەک کاژێر   :  <span>  <?php  echo number_format($teacher->one_day_money,0); ?> </span> دینار
             </div>
             <div>
-                کۆی گشتی :  <span>  <?php  echo $teacher->one_day_money*$daily_avalable; ?> </span> دینار
+                کۆی گشتی :  <span>  <?php  echo number_format($teacher->one_day_money*$daily_avalable,0); ?> </span> دینار
             </div>
         </div>
         </div>
@@ -158,48 +158,75 @@ $teacher_infos=Daily_Info::find_all();
         ?> 
 
 
+<?php
+
+        $staffs=Staff::find_all();
+?>
         <div class="r-footer">
             <div class="r-footer-top">
                     <div>
                         ناوی مامۆستا
                         <br>
-                        <span>فەرمان حسین احمد</span>
+                        <span> <?php  echo $teacher->fullname; ?></span>
                     </div>
                     <div>
                         بڕیاردەری بەش
                         <br>
-                        <span>فەرمان حسین احمد</span>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==2){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
                     </div>
                     <div>
                         سەرۆکی بەش
                         <br>
-                        <span>هێمن ابراهیم قادر</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==3){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                 </div>
                 <div class="r-footer-bottom">
                     <div>
                          لێپرسراوی دارای
                         <br>
-                        <span>بێشوار عباس عمر</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==4){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                     <div>
                         لێپرسراوی زانستی
                         <br>
-                        <span>محمد محمود عبدالله</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==5){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                     <div>
                         لێپرسراوی وردبینی
                         <br>
-                        <span>حسن حمد حسن</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==6){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                     <div>
                          ڕاگر
                         <br>
-                        <span>پ.ی.کاوە عبدالرضا محمد</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==1){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                 </div>
         </div>
-
     </div>
 </body>
 </html>
