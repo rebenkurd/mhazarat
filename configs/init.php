@@ -24,5 +24,7 @@ require_once('class/department.php');
 require_once('class/day.php');
 require_once('class/year.php');
 require_once('class/month.php');
+require_once('class/staff.php');
+require_once('class/responsibility.php');
 
 ?>

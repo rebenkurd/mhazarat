@@ -33,6 +33,14 @@
                    <a class="items" href="time_recycle.php"><i class="fas fa-recycle"></i>کاتە سڕاوەکان</a> 
             </div>
         
+            <li class="parent"><i class="fas fa-clipboard"></i>ستافەکان
+            </li>
+            <div class="dd_menu">
+                   <a class="items" href="staff.php" ><i class="fas fa-eye"></i> بینینی ستافەکان</a> 
+                   <a class="items" href="add_new_staff.php"><i class="fas fa-edit"></i> زیادکردنی ستاف</a> 
+                   <a class="items" href="staff_recycle.php"><i class="fas fa-recycle"></i>ستافە سڕاوەکان</a> 
+            </div>
+        
             <li class="parent"><i class="fas fa-users"></i> بەکارهێنەرەکان
             </li>
             <div class="dd_menu">
