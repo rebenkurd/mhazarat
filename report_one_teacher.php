@@ -70,12 +70,15 @@ $teacher_infos=Daily_Info::find_all();
         <?php 
         
              $daily_avalable= Daily_Info::daily_avalable($_GET['id']); 
+             foreach($teacher_infos as $times){
+             $sum_all_times=Daily_Info::sum_num_time_a_month($_GET['id'],$times->num_time,$_GET['month']);
         ?>    
             <div>
-                کۆی کاژێر  :  <span> 0 </span> کاژێر
+                کۆی کاژێر  :  <span> <?php echo $sum_all_times;?> </span> کاژێر
             </div>
+            <?php break; }?>
             <div>
-            کاژێری زیادە  :  <span> 0</span> کاژێر
+            کاژێری زیادە  :  <span> </span> کاژێر
             </div>
             <div>
             بڕی کرێی یەک کاژێر   :  <span>  <?php  echo number_format($teacher->one_day_money,0); ?> </span> دینار
@@ -84,6 +87,8 @@ $teacher_infos=Daily_Info::find_all();
                 کۆی گشتی :  <span>  <?php  echo number_format($teacher->one_day_money*$daily_avalable,0); ?> </span> دینار
             </div>
         </div>
+
+
         </div>
 
         </div>
@@ -122,7 +127,8 @@ $teacher_infos=Daily_Info::find_all();
             <tbody>   
                 <?php 
                     foreach($teacher_infos as $teacher_info){
-                        if($teacher_info->num_week==$i){
+                        if($teacher_info->teacher_id==$_GET['id']){
+                            if($teacher_info->num_week==$i && $teacher_info->month==$_GET['month']){
                 ?>
                 <tr>
                     <td><?php echo $teacher_info->lesson_name; ?></td>
@@ -133,7 +139,7 @@ $teacher_infos=Daily_Info::find_all();
                     <td><?php echo $teacher_info->end_time; ?></td>
                     <td><?php echo $teacher_info->num_time; ?></td>
                 </tr> 
-                <?php } } ?>
+                <?php } } } ?>
             </tbody>
             </table>
 
@@ -150,7 +156,9 @@ $teacher_infos=Daily_Info::find_all();
         </div>            <br>
 <br>
         <?php
-             } 
+            }else{
+            break;
+        }
              $i++;
             }     
         }

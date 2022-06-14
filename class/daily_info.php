@@ -105,7 +105,13 @@ class Daily_Info extends Db_Object{
         return array_shift($row);
     }
 
-
+    public static function sum_num_time_a_month($id,$num_time,$month){
+        global $database;
+        $sql="SELECT SUM($num_time) FROM " . static::$db_table." WHERE month=".$month." AND teacher_id=".$id;
+        $result_set=$database->query($sql);
+        $row= mysqli_fetch_array($result_set);
+        return array_shift($row);
+    }
 }
 
 
