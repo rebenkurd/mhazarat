@@ -1,13 +1,16 @@
 <?php
 require_once("configs/init.php");
 
+
+
 $teacher=Teacher::find_by_id($_GET['id']);
-if($teacher->contract !=0){
+if($teacher->contract !=1){
     $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
-    RedirectTo("index.php?teacher_id=".$_GET['id']);
+    RedirectTo("index.php");
 }
 
 ?>
+
 
 
 
@@ -26,36 +29,34 @@ if($teacher->contract !=0){
             <div class="r-header-top">
             <span>پەیمانگای تەکنیکی دوکان</span>
             <br>
-            <span>فۆڕمی واژووی وانەبیژ</span>
+            <span>فۆڕمی وانەبیژی دەرەکی</span>
             <br>
-            <span><?php echo date("Y")." - ".date("Y")-1; ?></span>
+            <span><?php echo date("Y")-1 ." - ".date("Y") ?></span>
+
         </div>
-        <div class="r-header-bottom">
         <?php
             
             $teacher=Teacher::find_by_id($_GET['id']);
 
         ?>
+        <div class="r-header-bottom">
             <div class="rhb-right">
             <div>
-            کۆدی مامۆستا: <span> <?php echo $teacher->id; ?> </span>
+                کۆدی مامۆستا: <span> <?php echo $teacher->id; ?> </span>
             </div>
             <div>
-            ناوی مامۆستا : <span> <?php echo $teacher->fullname; ?>  </span>
-            </div>
-
-        </div>
-        <div class="rhb-left">
-
-        <div>
-        نازناو :  <span> <?php echo $teacher->nickname; ?> </span>
+                ناوی مامۆستا : <span> <?php echo $teacher->fullname; ?>  </span>
             </div>
             <div>
-            بڕوانامە  :  <span> <?php echo $teacher->certificate; ?> </span>
+                نازناو :  <span> <?php echo $teacher->nickname; ?> </span>
+            </div>
+            <div>
+                بڕوانامە  :  <span> <?php echo $teacher->certificate; ?> </span>
             </div>
         </div>
         </div>
         </div>
+
         <br>
         <br>
         <?php
@@ -81,7 +82,7 @@ if($teacher->contract !=0){
     <div class="r-main" style="margin-top: 10px !important;">
 
         <table style="margin-top: 10px !important;">
-            <thead>
+        <thead>
                 <th>زنجیرە</th>
                 <th>ڕۆژ</th>
                 <th>بەروار</th>
@@ -100,13 +101,13 @@ if($teacher->contract !=0){
                     <td><?php echo $teacher_info->day; ?></td>
                     <td><?php echo $teacher_info->date; ?></td>
                     <td><?php echo $teacher_info->lesson_name; ?></td>
-                    <td>___________</td>
+                    <td>__________</td>
                 </tr> 
                 <?php 
             
         } }
             } ?>
-            </tbody>
+            </tbody> 
             </table>
 
   
@@ -126,7 +127,7 @@ if($teacher->contract !=0){
 }
 
         ?> 
-        
+
     </div>
 </body>
 </html>

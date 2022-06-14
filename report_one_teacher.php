@@ -1,6 +1,5 @@
 <?php
 
-use JetBrains\PhpStorm\Deprecated;
 
 require_once("configs/init.php");
 
@@ -37,7 +36,7 @@ $teacher_infos=Daily_Info::find_all();
         <div class="r-header">
 
         <div class="r-header-top">
-            <span>فۆڕمی وانەبیژی </span>&nbsp;<span>٢٠٢١ - ٢٠٢٢</span>
+            <span>فۆڕمی وانەبیژی </span>&nbsp;<span><?php echo date("Y")." - ".date("Y")-1; ?></span>
         </div>
 
 
@@ -156,7 +155,6 @@ $teacher_infos=Daily_Info::find_all();
             }     
         }
         ?> 
-
 
 <?php
 

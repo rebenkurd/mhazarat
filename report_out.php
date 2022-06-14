@@ -6,7 +6,7 @@ require_once("configs/init.php");
 $teacher=Teacher::find_by_id($_GET['id']);
 if($teacher->contract !=1){
     $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
-    RedirectTo("index.php?teacher_id=".$_GET['id']);
+    RedirectTo("index.php");
 }
 
 ?>
@@ -31,7 +31,8 @@ if($teacher->contract !=1){
             <br>
             <span>فۆڕمی وانەبیژی دەرەکی</span>
             <br>
-            <span>٢٠٢١ - ٢٠٢٢</span>
+            <span><?php echo date("Y")-1 ." - ".date("Y") ?></span>
+
         </div>
         <?php
             
@@ -72,74 +73,144 @@ if($teacher->contract !=1){
         </div>
         </div>
 
-        <div class="r-main">
-            <div>بەشی زانستی : <span></span> </div>
-            <table>
-            <thead>
+        <br>
+        <br>
+        <?php
+        $teacher_infos=Daily_Info::find_all();
+        $i=1;
+        foreach($teacher_infos as $weeks){
+            while($i<=$weeks->num_week){
+                if($weeks->num_week==$i && $weeks->teacher_id==$_GET['id'] && $weeks->month==$_GET['month']) {
+?>
+
+    <div class="weekly_info">
+        <?php
+        if($weeks->month==$_GET['month']){
+         $department_name=Department::find_by_id($weeks->department);
+?>
+        <div>بەشی زانستی :&nbsp; <span><?php echo $department_name->department_name; ?></span> </div>    
+<?php }else{?>
+    <div>بەشی زانستی :&nbsp; <span></span> </div>    
+
+<?php }?>
+    </div>
+
+    <div class="r-main" style="margin-top: 10px !important;">
+
+        <table style="margin-top: 10px !important;">
+        <thead>
                 <th>زنجیرە</th>
                 <th>ڕۆژ</th>
                 <th>بەروار</th>
                 <th>ناوی وانە</th>
                 <th>قۆناغ</th>
             </thead>
-            <tbody>     
-            <?php
-                $teacher_infos=Daily_Info::find_all();
+            <tbody>   
+                <?php 
                 $a=1;
-                foreach($teacher_infos as $teacher_info){
-                    if($teacher_info->teacher_id==$_GET['id']){
-            ?>
+                    foreach($teacher_infos as $teacher_info){
+                        if($teacher_info->teacher_id==$_GET['id']){
+                            if($teacher_info->num_week==$i && $teacher_info->month==$_GET['month']){
+                ?>
                 <tr>
                     <td><?php echo $a++; ?></td>
-                    <td><?php echo $teacher_info->week; ?></td>
+                    <td><?php echo $teacher_info->day; ?></td>
                     <td><?php echo $teacher_info->date; ?></td>
                     <td><?php echo $teacher_info->lesson_name; ?></td>
                     <td><?php echo $teacher_info->stage; ?></td>
-                </tr>
-                <?php }} ?>
-            </tbody>
+                </tr> 
+                <?php 
+            
+        } }
+            } ?>
+            </tbody> 
             </table>
-        </div>
 
+  
+        </div>           
+        
+        <br>
+        <br>
+        <?php
+                }else{
+                    break;
+                }
+                $i++;
+     }
+ 
+
+     
+}
+
+        ?> 
+   
+        <?php
+
+        $staffs=Staff::find_all();
+?>
         <div class="r-footer">
             <div class="r-footer-top">
                     <div>
                         ناوی مامۆستا
                         <br>
-                        <span>فەرمان حسین احمد</span>
+                        <span> <?php  echo $teacher->fullname; ?></span>
                     </div>
                     <div>
                         بڕیاردەری بەش
                         <br>
-                        <span>فەرمان حسین احمد</span>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==2){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
                     </div>
                     <div>
                         سەرۆکی بەش
                         <br>
-                        <span>هێمن ابراهیم قادر</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==3){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                 </div>
                 <div class="r-footer-bottom">
                     <div>
                          لێپرسراوی دارای
                         <br>
-                        <span>بێشوار عباس عمر</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==4){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                     <div>
                         لێپرسراوی زانستی
                         <br>
-                        <span>محمد محمود عبدالله</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==5){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                     <div>
                         لێپرسراوی وردبینی
                         <br>
-                        <span>حسن حمد حسن</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==6){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                     <div>
                          ڕاگر
                         <br>
-                        <span>پ.ی.کاوە عبدالرضا محمد</span>
-                    </div>
+                        <?php foreach($staffs as $staff){ ?>
+                        <span>
+                             <?php if($staff->responsibility_id==1){echo $staff->name;}else{null;} ?>
+                        </span>
+                        <?php } ?>
+                </div>
                 </div>
         </div>
 

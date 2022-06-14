@@ -39,7 +39,8 @@ if(isset($_POST['submit'])){
     <?php echo $session->SuccessMessage(); ?>
     <?php echo $session->ErrorMessage(); ?>
     <div class="details">
-    
+
+    <a href="departments.php">
     <div class="card">
                 <div class="iconbx">
                     <i class="fas fa-building"></i>
@@ -50,6 +51,8 @@ if(isset($_POST['submit'])){
                     <span class="numbers"><?php echo Department::count_all(); ?></span>
                 </div>
             </div>
+        </a>
+        <a href="teachers.php">
             <div class="card">
                 <div class="iconbx">
                     <i class="fas fa-user-graduate"></i>
@@ -60,6 +63,8 @@ if(isset($_POST['submit'])){
                     <span class="numbers"><?php echo Teacher::count_all(); ?></span>
                 </div>
             </div>
+        </a>
+        <a href="lessons.php">
             <div class="card">
                 <div class="iconbx">
                     <i class="fas fa-book"></i>
@@ -70,6 +75,8 @@ if(isset($_POST['submit'])){
                     <span class="numbers"><?php echo Lesson::count_all(); ?></span>
                 </div>
             </div>
+        </a>
+        <a href="users.php">
             <div class="card">
                 <div class="iconbx">
                     <i class="fas fa-users"></i>
@@ -80,6 +87,7 @@ if(isset($_POST['submit'])){
                     <span class="numbers"><?php echo User::count_all(); ?></span>
                 </div>
             </div>
+        </a>
         </div>
 
         <div class="content">

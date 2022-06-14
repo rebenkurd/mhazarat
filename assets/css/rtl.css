@@ -21,15 +21,14 @@
     --secondary-color: #6c757d!important;
     --info-color: #17a2b8!important;
   
-    --light-color: #F05454;
-    --light-second-color:#f17878 ;
-    --light-background: #FBFCFC;
-    --light-second-background: #ECF0F1;
-
-    --dark-color: #f7b731;
-    --dark-second-color:#fed330 ;
-    --dark-background: #3d3d3d;
-    --dark-second-background: #4b4b4b;
+    --light-color: #1e90ff;
+    --light-second-color:#70a1ff ;
+    --light-background: #ffffff;
+    --light-second-background: #f1f2f6;
+    --dark-color: #1e90ff;
+    --dark-second-color:#70a1ff ;
+    --dark-background: #121212;
+    --dark-second-background: #252525;
   
     --light-theard-color: #ddd;
     --light-theard-background: #ddd;
@@ -300,7 +299,7 @@
     display: none;
   }
 
-  
+
   .notification {
     position: absolute;
     left: 7%;
@@ -1377,7 +1376,7 @@ font-family: var(--font-en);
   position: relative;
   width: 100%;
   margin: 0 auto;
-margin-top: 20px;
+  margin-top: 150px;
 }
 .report-page .r-footer-top{
   display: flex;

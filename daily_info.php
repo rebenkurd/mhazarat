@@ -105,20 +105,20 @@ require_once("configs/init.php"); ?>
 <div class="show-report my-5">
 <?php
 
-    if(isset($_GET['teacher_id'])){
+    if(isset($_GET['teacher_id'])&&isset($_GET['month'])){
     $teacher=Teacher::find_by_id(intval($_GET['teacher_id']));
     if($teacher->contract !=0){
 ?>
-    <a href="report_out.php?id=<?php echo $teacher->id; ?>" target="blank" class="btn btn-success w-50"> ڕاپۆرتی دەرەکی</a>
+    <a href="report_out.php?id=<?php echo $teacher->id; ?>&month=<?php echo $_GET['month'];?>" onclick="window.open('report_sign_out.php?id=<?php echo $teacher->id; ?>&month=<?php echo $_GET['month'];?>')" target="blank" class="btn btn-success w-50"> ڕاپۆرتی دەرەکی</a>
     <?php }} ?>
     
 <?php
-    if(isset($_GET['teacher_id'])){
+    if(isset($_GET['teacher_id'])&&isset($_GET['month'])){
     $teacher=Teacher::find_by_id(intval($_GET['teacher_id']));
     if($teacher->contract !=1){
 
 ?>
-    <a href="report_in.php?id=<?php echo $teacher->id; ?>" target="blank" class="btn btn-success w-50"> پێشاندانی ڕاپۆرت</a>
+    <a href="report_in.php?id=<?php echo $teacher->id ?>&month=<?php echo $_GET['month'];?>" target="blank" class="btn btn-success w-50"> پێشاندانی ڕاپۆرت</a>
     <?php }} ?>
 
 <?php
@@ -172,7 +172,12 @@ foreach($daily_infos as $daily_info):
 <td><?php echo $daily_info->week; ?></td>
 <td><?php echo $daily_info->num_week; ?></td>
 <td><?php echo $daily_info->fullname; ?></td>
-<td><?php echo $daily_info->department; ?></td>
+<td>
+    <?php 
+    $department=Department::find_by_id($daily_info->department);
+    echo $department->department_name; 
+    ?>
+</td>
 <td><?php echo $daily_info->stage; ?></td>
 <td><?php echo $daily_info->lesson_name; ?></td>
 <td><?php echo $daily_info->start_time; ?></td>
