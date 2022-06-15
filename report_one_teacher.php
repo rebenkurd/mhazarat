@@ -95,8 +95,9 @@ $teacher_infos=Daily_Info::find_all();
         $i=1;
         foreach($teacher_infos as $weeks){
             while($i<=$weeks->num_week){
-                if($weeks->teacher_id==$_GET['id'] && $weeks->month==$_GET['month']&& $weeks->num_week==$i){
-?>
+                if($weeks->teacher_id==$_GET['id'] && $weeks->month==$_GET['month']){
+                    if($weeks->num_week==$i) {
+                        ?>
     <div class="weekly_nums">
         <span>ژمارەی هەفتە: </span>&nbsp;<span><?php  echo htmlspecialchars($weeks->num_week, ENT_QUOTES, 'UTF-8'); ?></span>
     </div>
@@ -156,6 +157,7 @@ $teacher_infos=Daily_Info::find_all();
          <br>
         <br>
         <?php
+                }
             }else{
             break;
         }

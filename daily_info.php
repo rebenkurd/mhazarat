@@ -199,7 +199,12 @@ foreach($daily_infos as $daily_info): ?>
 <td><?php echo htmlspecialchars($daily_info->week, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->num_week, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->fullname, ENT_QUOTES, 'UTF-8'); ?></td>
-<td><?php echo htmlspecialchars($daily_info->department, ENT_QUOTES, 'UTF-8'); ?></td>
+<td>
+    <?php 
+    $department=Department::find_by_id(htmlspecialchars($daily_info->department, ENT_QUOTES, 'UTF-8'));
+    echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); 
+    ?>
+</td>
 <td><?php echo htmlspecialchars($daily_info->stage, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->lesson_name, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->start_time, ENT_QUOTES, 'UTF-8'); ?></td>
@@ -222,7 +227,12 @@ foreach($daily_infos as $daily_info): ?>
 <td><?php echo htmlspecialchars($daily_info->week, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->num_week, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->fullname, ENT_QUOTES, 'UTF-8'); ?></td>
-<td><?php echo htmlspecialchars($daily_info->department, ENT_QUOTES, 'UTF-8'); ?></td>
+<td>
+    <?php 
+    $department=Department::find_by_id(htmlspecialchars($daily_info->department, ENT_QUOTES, 'UTF-8'));
+    echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); 
+    ?>
+</td>
 <td><?php echo htmlspecialchars($daily_info->stage, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->lesson_name, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->start_time, ENT_QUOTES, 'UTF-8'); ?></td>
@@ -246,7 +256,12 @@ foreach($daily_infos as $daily_info): ?>
 <td><?php echo htmlspecialchars($daily_info->week, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->num_week, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->fullname, ENT_QUOTES, 'UTF-8'); ?></td>
-<td><?php echo htmlspecialchars($daily_info->department, ENT_QUOTES, 'UTF-8'); ?></td>
+<td>
+    <?php 
+    $department=Department::find_by_id(htmlspecialchars($daily_info->department, ENT_QUOTES, 'UTF-8'));
+    echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); 
+    ?>
+</td>
 <td><?php echo htmlspecialchars($daily_info->stage, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->lesson_name, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->start_time, ENT_QUOTES, 'UTF-8'); ?></td>
@@ -270,7 +285,12 @@ foreach($daily_infos as $daily_info): ?>
 <td><?php echo htmlspecialchars($daily_info->week, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->num_week, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->fullname, ENT_QUOTES, 'UTF-8'); ?></td>
-<td><?php echo htmlspecialchars($daily_info->department, ENT_QUOTES, 'UTF-8'); ?></td>
+<td>
+    <?php 
+    $department=Department::find_by_id(htmlspecialchars($daily_info->department, ENT_QUOTES, 'UTF-8'));
+    echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); 
+    ?>
+</td>
 <td><?php echo htmlspecialchars($daily_info->stage, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->lesson_name, ENT_QUOTES, 'UTF-8'); ?></td>
 <td><?php echo htmlspecialchars($daily_info->start_time, ENT_QUOTES, 'UTF-8'); ?></td>

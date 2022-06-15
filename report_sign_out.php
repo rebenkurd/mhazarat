@@ -64,7 +64,8 @@ if($teacher->contract !=1){
         $i=1;
         foreach($teacher_infos as $weeks){
             while($i<=$weeks->num_week){
-                if($weeks->num_week==$i && $weeks->teacher_id==$_GET['id'] && $weeks->month==$_GET['month']) {
+                if($weeks->teacher_id==$_GET['id'] && $weeks->month==$_GET['month']){
+                if($weeks->num_week==$i) {
 ?>
 
     <div class="weekly_info">
@@ -116,7 +117,7 @@ if($teacher->contract !=1){
         <br>
         <br>
         <?php
-
+                }
         
                 }else{
                     break;
