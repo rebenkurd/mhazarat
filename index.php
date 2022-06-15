@@ -12,9 +12,9 @@ if(isset($_POST['submit'])){
     htmlspecialchars($daily_info->year=trim(filter_var(date('Y',strtotime($_POST['date'])),FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
     htmlspecialchars($daily_info->month=trim(filter_var(date('m',strtotime($_POST['date'])),FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
     htmlspecialchars($daily_info->num_week=trim(filter_var($_POST['num_week'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
-    htmlspecialchars($daily_info->fullname=trim(filter_var($_POST['fullname'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->fullname=trim(filter_var($_POST['fullname'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
     htmlspecialchars($daily_info->department=trim(filter_var($_POST['department'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
-    htmlspecialchars($daily_info->lesson_name=trim(filter_var($_POST['lesson'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->lesson_name=trim(filter_var($_POST['lesson'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
     htmlspecialchars($daily_info->stage=trim(filter_var($_POST['stage'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
     htmlspecialchars($daily_info->start_time=trim(filter_var($_POST['start_time'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
     htmlspecialchars($daily_info->end_time=trim(filter_var($_POST['end_time'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
