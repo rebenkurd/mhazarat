@@ -5,22 +5,22 @@
 
 $daily_info=new Daily_Info();
 if(isset($_POST['submit'])){
-    $daily_info->teacher_id=trim($_POST['teacher_id']);
-    $daily_info->date=trim($_POST['date']);
-    $daily_info->day=trim(date('d',strtotime($_POST['date'])));
-    $daily_info->week=trim(date('D',strtotime($_POST['date'])));
-    $daily_info->year=trim(date('Y',strtotime($_POST['date'])));
-    $daily_info->month=trim(date('m',strtotime($_POST['date'])));
-    $daily_info->num_week=trim($_POST['num_week']);
-    $daily_info->fullname=trim($_POST['fullname']);
-    $daily_info->department=trim($_POST['department']);
-    $daily_info->lesson_name=trim($_POST['lesson']);
-    $daily_info->stage=trim($_POST['stage']);
-    $daily_info->start_time=trim($_POST['start_time']);
-    $daily_info->end_time=trim($_POST['end_time']);
-    $daily_info->num_time=trim(round(abs(strtotime($daily_info->start_time)-strtotime($daily_info->end_time))/3600,2));
+    htmlspecialchars($daily_info->teacher_id=trim(filter_var($_POST['teacher_id'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->date=trim(filter_var($_POST['date'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->day=trim(filter_var(date('d',strtotime($_POST['date'])),FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->week=trim(filter_var(date('D',strtotime($_POST['date'])),FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->year=trim(filter_var(date('Y',strtotime($_POST['date'])),FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->month=trim(filter_var(date('m',strtotime($_POST['date'])),FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->num_week=trim(filter_var($_POST['num_week'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->fullname=trim(filter_var($_POST['fullname'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->department=trim(filter_var($_POST['department'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->lesson_name=trim(filter_var($_POST['lesson'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->stage=trim(filter_var($_POST['stage'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->start_time=trim(filter_var($_POST['start_time'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->end_time=trim(filter_var($_POST['end_time'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+    htmlspecialchars($daily_info->num_time=trim(filter_var(round(abs(strtotime($daily_info->start_time)-strtotime($daily_info->end_time))/3600,2),FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
     if($daily_info->save()){
-        RedirectTo("index.php?teacher_id=$daily_info->teacher_id");
+        RedirectTo("index.php?teacher_id=".htmlspecialchars($daily_info->teacher_id, ENT_QUOTES, 'UTF-8'));
     }else{
         RedirectTo("index.php");
     }
@@ -35,9 +35,9 @@ if(isset($_POST['submit'])){
     <div class="container">
 
         
-    <h1>Dashboard</h1>
-    <?php echo $session->SuccessMessage(); ?>
-    <?php echo $session->ErrorMessage(); ?>
+    <h1>زانیارییەکان</h1>
+    <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+    <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
     <div class="details">
 
     <a href="departments.php">
@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
                 <div>
                     <span class="card-name">بەشەکان</span>
                     <br>
-                    <span class="numbers"><?php echo Department::count_all(); ?></span>
+                    <span class="numbers"><?php echo htmlspecialchars(Department::count_all(), ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
             </div>
         </a>
@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
                 <div>
                     <span class="card-name">وانەبێژەکان</span>
                     <br>
-                    <span class="numbers"><?php echo Teacher::count_all(); ?></span>
+                    <span class="numbers"><?php echo htmlspecialchars(Teacher::count_all(), ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
             </div>
         </a>
@@ -72,7 +72,7 @@ if(isset($_POST['submit'])){
                 <div>
                     <span class="card-name">وانەکان</span>
                     <br>
-                    <span class="numbers"><?php echo Lesson::count_all(); ?></span>
+                    <span class="numbers"><?php echo htmlspecialchars(Lesson::count_all(), ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
             </div>
         </a>
@@ -84,7 +84,7 @@ if(isset($_POST['submit'])){
                 <div>
                     <span class="card-name">بەکارهێنەرەکان</span>
                     <br>
-                    <span class="numbers"><?php echo User::count_all(); ?></span>
+                    <span class="numbers"><?php echo htmlspecialchars(User::count_all(), ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
             </div>
         </a>

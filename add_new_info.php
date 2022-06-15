@@ -1,10 +1,10 @@
 <tr>
-<form action="index.php?teacher_id=<?php echo $daily_info->teacher_id; ?>" method="POST">
+<form action="index.php?teacher_id=<?php     echo htmlspecialchars($daily_info->teacher_id, ENT_QUOTES, 'UTF-8') ; ?>" method="POST">
     <td>
         <?php 
     if(isset($_GET['teacher_id'])){
-        $teacher=Teacher::find_by_id($_GET['teacher_id']); ?>
-        <input class="form-controll" style="width: 90px;" type="text" name="teacher_id" value="<?php echo $teacher->id; ?>" placeholder="کۆدی وانەبێژ">
+        $teacher=Teacher::find_by_id(htmlspecialchars($_GET['teacher_id'], ENT_QUOTES, 'UTF-8')); ?>
+        <input class="form-controll" style="width: 90px;" type="text" name="teacher_id" value="<?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8') ; ?>" placeholder="کۆدی وانەبێژ">
         <?php }else{ ?>
         <input class="form-controll" style="width: 90px;" type="text" name="teacher_id" placeholder="کۆدی وانەبێژ">
         <?php }?>
@@ -17,10 +17,10 @@
             placeholder="ژ.هەفتە"></td>
     <td>
         <?php 
-if(isset($_GET['teacher_id'])){
-$teacher=Teacher::find_by_id($_GET['teacher_id']); ?>
+    if(isset($_GET['teacher_id'])){
+        $teacher=Teacher::find_by_id(htmlspecialchars($_GET['teacher_id'], ENT_QUOTES, 'UTF-8')); ?>
         <input class="form-controll" style="width: 150px;" type="text" name="fullname"
-            value="<?php echo $teacher->fullname; ?>" placeholder="ناوی سیانی وانەبێژ">
+            value="<?php echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?>" placeholder="ناوی سیانی وانەبێژ">
         <?php }else{ ?>
         <input class="form-controll" style="width: 150px;" type="text" name="fullname"
             placeholder="ناوی سیانی وانەبێژ">
@@ -34,8 +34,8 @@ $teacher=Teacher::find_by_id($_GET['teacher_id']); ?>
         $departments=Department::find_all();
         foreach($departments as $department): 
     ?>
-            <option value="<?php echo $department->id; ?>">
-                <?php echo $department->department_name; ?>
+            <option value="<?php echo htmlspecialchars($department->id, ENT_QUOTES, 'UTF-8'); ?>">
+                <?php echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); ?>
             </option>
             <?php endforeach; ?>
         </select>
@@ -56,7 +56,7 @@ $teacher=Teacher::find_by_id($_GET['teacher_id']); ?>
             $lessons=Lesson::find_all();
             foreach($lessons as $lesson){
     ?>
-            <option  value="<?php echo $lesson->lesson; ?>"><?php echo $lesson->lesson; ?>
+            <option  value="<?php echo htmlspecialchars($lesson->lesson, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($lesson->lesson, ENT_QUOTES, 'UTF-8'); ?>
             </option>
             
         </select>
@@ -69,7 +69,7 @@ $teacher=Teacher::find_by_id($_GET['teacher_id']); ?>
         $times=Time::find_all();
         foreach($times as $time): 
     ?>
-            <option value="<?php echo $time->times; ?>"><?php echo $time->times; ?></option>
+            <option value="<?php echo htmlspecialchars($time->times, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($time->times, ENT_QUOTES, 'UTF-8'); ?></option>
             <?php endforeach; ?>
         </select>
     </td>
@@ -81,7 +81,7 @@ $teacher=Teacher::find_by_id($_GET['teacher_id']); ?>
         $times=Time::find_all();
         foreach($times as $time): 
     ?>
-            <option value="<?php echo $time->times; ?>"><?php echo $time->times; ?></option>
+            <option value="<?php echo htmlspecialchars($time->times, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($time->times, ENT_QUOTES, 'UTF-8'); ?></option>
             <?php endforeach; ?>
         </select>
     </td>

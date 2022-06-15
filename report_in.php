@@ -1,10 +1,10 @@
 <?php
 require_once("configs/init.php");
 
-$teacher=Teacher::find_by_id($_GET['id']);
+$teacher=Teacher::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
 if($teacher->contract !=0){
     $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
-    RedirectTo("index.php?teacher_id=".$_GET['id']);
+    RedirectTo("index.php?teacher_id=".htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
 }
 
 ?>
@@ -33,25 +33,25 @@ if($teacher->contract !=0){
         <div class="r-header-bottom">
         <?php
             
-            $teacher=Teacher::find_by_id($_GET['id']);
+            $teacher=Teacher::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
 
         ?>
             <div class="rhb-right">
             <div>
-            کۆدی مامۆستا: <span> <?php echo $teacher->id; ?> </span>
+            کۆدی مامۆستا: <span> <?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?> </span>
             </div>
             <div>
-            ناوی مامۆستا : <span> <?php echo $teacher->fullname; ?>  </span>
+            ناوی مامۆستا : <span> <?php echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?>  </span>
             </div>
 
         </div>
         <div class="rhb-left">
 
         <div>
-        نازناو :  <span> <?php echo $teacher->nickname; ?> </span>
+        نازناو :  <span> <?php echo htmlspecialchars($teacher->nickname, ENT_QUOTES, 'UTF-8'); ?> </span>
             </div>
             <div>
-            بڕوانامە  :  <span> <?php echo $teacher->certificate; ?> </span>
+            بڕوانامە  :  <span> <?php echo htmlspecialchars($teacher->certificate, ENT_QUOTES, 'UTF-8'); ?> </span>
             </div>
         </div>
         </div>
@@ -69,9 +69,9 @@ if($teacher->contract !=0){
     <div class="weekly_info">
         <?php
         if($weeks->month==$_GET['month']){
-         $department_name=Department::find_by_id($weeks->department);
+         $department_name=Department::find_by_id(htmlspecialchars($weeks->department, ENT_QUOTES, 'UTF-8'));
 ?>
-        <div>بەشی زانستی :&nbsp; <span><?php echo $department_name->department_name; ?></span> </div>    
+        <div>بەشی زانستی :&nbsp; <span><?php echo htmlspecialchars($department_name->department_name, ENT_QUOTES, 'UTF-8'); ?></span> </div>    
 <?php }else{?>
     <div>بەشی زانستی :&nbsp; <span></span> </div>    
 
@@ -96,10 +96,10 @@ if($teacher->contract !=0){
                             if($teacher_info->num_week==$i && $teacher_info->month==$_GET['month']){
                 ?>
                 <tr>
-                    <td><?php echo $a++; ?></td>
-                    <td><?php echo $teacher_info->day; ?></td>
-                    <td><?php echo $teacher_info->date; ?></td>
-                    <td><?php echo $teacher_info->lesson_name; ?></td>
+                    <td><?php echo htmlspecialchars($a++, ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->day, ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->date, ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->lesson_name, ENT_QUOTES, 'UTF-8'); ?></td>
                     <td>___________</td>
                 </tr> 
                 <?php 

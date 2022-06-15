@@ -6,28 +6,25 @@
     }
     
     if(isset($_POST['login'])){
-        $username=trim($_POST['username']);
-        $password=trim($_POST['password']);
-        
+        $username=trim(filter_var($_POST['username'],FILTER_DEFAULT));
+        $password=trim(filter_var(md5($_POST['password']),FILTER_DEFAULT));
+      
         // Create Method to check database 
         
         if(empty($username) || empty($password)){
             $_SESSION['ErrorMessage']="نازناو و وشەی تیپەڕ بە تەواوی پڕبکەرەوە";
         
         }else{
-            $user_found=User::verify_user($username,$password);
+           $user_found=User::verify_user($username,$password);
             $session->login($user_found);
             RedirectTo("index.php");
             $_SESSION['SuccessMessage']="بەخیربێیت";
             
         }
     }
-    
 
 
-
-
-
+ 
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -43,8 +40,8 @@
 <body class="light" id="btnBody">
 <div class="login_content">
     <form action="login.php" method="POST">
-            <?php echo $session->SuccessMessage(); ?>
-            <?php echo $session->ErrorMessage(); ?>
+            <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+            <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
         <div class="img-login">
         <img src="img/login.svg">
         </div>

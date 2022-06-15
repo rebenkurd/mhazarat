@@ -3,11 +3,11 @@
 if(empty($_GET['id'])){
     RedirectTo("lessons.php");
 }else{
-    $lesson=Lesson::find_by_id($_GET['id']);
+    $lesson=Lesson::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
     if(isset($_POST['update'])){
-        $lesson->lesson=$_POST['lesson'];
-        $lesson->department_id=$_POST['department_id'];
-        $lesson->recycle=0;
+        htmlspecialchars($lesson->lesson=trim(filter_var($_POST['lesson'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($lesson->department_id=trim(filter_var($_POST['department_id'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($lesson->recycle=0, ENT_QUOTES, 'UTF-8');
         if($lesson->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی زیادکرا";
             RedirectTo("lessons.php");
@@ -26,11 +26,11 @@ if(empty($_GET['id'])){
         <div class="content">
 
         <form action="" class="form" method="POST">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                  <div class="input-group">
                     <label for="lesson">ناوی وانە</label>
-                    <input class="form-controll" value="<?php echo $lesson->lesson; ?>" type="text" placeholder="ناوی وانە" name="lesson" id="lesson">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($lesson->lesson, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="ناوی وانە" name="lesson" id="lesson">
                 </div>
                 <div class="input-group">
                     <label for="department_id">ناوی وانە</label>
@@ -40,7 +40,7 @@ if(empty($_GET['id'])){
                             foreach($departments as $department){
                                 if($department->recycle==0){
                         ?>
-                        <option value="<?php echo $department->id; ?>"><?php echo $department->department_name; ?></option>
+                        <option value="<?php echo htmlspecialchars($department->id, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); ?></option>
                         <?php }} ?>
                     </select>
                 </div>

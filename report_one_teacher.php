@@ -4,13 +4,13 @@
 require_once("configs/init.php");
 
 
-$teacher=Teacher::find_by_id($_GET['id']);
+$teacher=Teacher::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
 if($teacher->contract !=0){
     $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
-    RedirectTo("index.php?teacher_id=".$_GET['id']);
+    RedirectTo("index.php?teacher_id=".htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
 }else if(!isset($_GET['month'])){
     $_SESSION['ErrorMessage']="تکایە مانگێک دیاری بکە";
-    RedirectTo("index.php?teacher_id=".$_GET['id']);
+    RedirectTo("index.php?teacher_id=".htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
 }
 $teacher_infos=Daily_Info::find_all();
 
@@ -36,32 +36,32 @@ $teacher_infos=Daily_Info::find_all();
         <div class="r-header">
 
         <div class="r-header-top">
-            <span>فۆڕمی وانەبیژی </span>&nbsp;<span><?php echo date("Y")." - ".date("Y")-1; ?></span>
+            <span>فۆڕمی وانەبیژی </span>&nbsp;<span><?php echo htmlspecialchars(date("Y")." - ".date("Y")-1, ENT_QUOTES, 'UTF-8'); ?></span>
         </div>
 
 
         <?php
             
-             $teacher=Teacher::find_by_id($_GET['id']);
+             $teacher=Teacher::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
 
         ?>
 
         <div class="r-header-bottom">
             <div class="rhb-right">
             <div>
-                کۆدی مامۆستا: <span> <?php  echo $teacher->id; ?> </span>
+                کۆدی مامۆستا: <span> <?php  echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?> </span>
             </div>
             <div>
-                ناوی مامۆستا : <span> <?php  echo $teacher->fullname; ?>  </span>
+                ناوی مامۆستا : <span> <?php  echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?>  </span>
             </div>
             <div>
-                نازناو :  <span> <?php  echo $teacher->nickname; ?> </span>
+                نازناو :  <span> <?php  echo htmlspecialchars($teacher->nickname, ENT_QUOTES, 'UTF-8'); ?> </span>
             </div>
             <div>
-                بڕوانامە  :  <span> <?php  echo $teacher->certificate; ?> </span>
+                بڕوانامە  :  <span> <?php  echo htmlspecialchars($teacher->certificate, ENT_QUOTES, 'UTF-8'); ?> </span>
             </div>
             <div>
-                نصاب  :  <span> <?php  echo $teacher->a_houer_on_week; ?> </span>
+                نصاب  :  <span> <?php  echo htmlspecialchars($teacher->a_houer_on_week, ENT_QUOTES, 'UTF-8'); ?> </span>
             </div>
         </div>
 
@@ -69,25 +69,24 @@ $teacher_infos=Daily_Info::find_all();
         <div class="rhb-left">
         <?php 
         
-             $daily_avalable= Daily_Info::daily_avalable($_GET['id']); 
+             $daily_avalable= Daily_Info::daily_avalable(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8')); 
              foreach($teacher_infos as $times){
-             $sum_all_times=Daily_Info::sum_num_time_a_month($_GET['id'],$times->num_time,$_GET['month']);
+             $sum_all_times=Daily_Info::sum_num_time_a_month(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'),htmlspecialchars($times->num_time, ENT_QUOTES, 'UTF-8'),htmlspecialchars($_GET['month'], ENT_QUOTES, 'UTF-8'));
         ?>    
             <div>
-                کۆی کاژێر  :  <span> <?php echo $sum_all_times;?> </span> کاژێر
+                کۆی کاژێر  :  <span> <?php echo htmlspecialchars($sum_all_times, ENT_QUOTES, 'UTF-8');?> </span> کاژێر
             </div>
             <?php break; }?>
             <div>
             کاژێری زیادە  :  <span> </span> کاژێر
             </div>
             <div>
-            بڕی کرێی یەک کاژێر   :  <span>  <?php  echo number_format($teacher->one_day_money,0); ?> </span> دینار
+            بڕی کرێی یەک کاژێر   :  <span>  <?php  echo htmlspecialchars(number_format($teacher->one_day_money,0), ENT_QUOTES, 'UTF-8'); ?> </span> دینار
             </div>
             <div>
-                کۆی گشتی :  <span>  <?php  echo number_format($teacher->one_day_money*$daily_avalable,0); ?> </span> دینار
+                کۆی گشتی :  <span>  <?php  echo htmlspecialchars(number_format($teacher->one_day_money*$daily_avalable,0), ENT_QUOTES, 'UTF-8'); ?> </span> دینار
             </div>
         </div>
-
 
         </div>
 
@@ -99,15 +98,15 @@ $teacher_infos=Daily_Info::find_all();
                 if($weeks->teacher_id==$_GET['id'] && $weeks->month==$_GET['month']&& $weeks->num_week==$i){
 ?>
     <div class="weekly_nums">
-        <span>ژمارەی هەفتە: </span>&nbsp;<span><?php  echo $weeks->num_week; ?></span>
+        <span>ژمارەی هەفتە: </span>&nbsp;<span><?php  echo htmlspecialchars($weeks->num_week, ENT_QUOTES, 'UTF-8'); ?></span>
     </div>
 
     <div class="weekly_info">
         <?php
-         $department_name=Department::find_by_id($weeks->department);
+         $department_name=Department::find_by_id(htmlspecialchars($weeks->department, ENT_QUOTES, 'UTF-8'));
 ?>
-        <div>بەشی زانستی :&nbsp; <span><?php echo $department_name->department_name; ?></span> </div>
-        <div><span>کۆی کاژێرەکانی وانەوتنەوە:&nbsp;<span><?php echo Daily_Info::sum_num_time($weeks->num_time,$i); ?></span> </span></div>
+        <div>بەشی زانستی :&nbsp; <span><?php echo htmlspecialchars($department_name->department_name, ENT_QUOTES, 'UTF-8'); ?></span> </div>
+        <div><span>کۆی کاژێرەکانی وانەوتنەوە:&nbsp;<span><?php echo htmlspecialchars(Daily_Info::sum_num_time($weeks->num_time,$i), ENT_QUOTES, 'UTF-8'); ?></span> </span></div>
     
 
     </div>
@@ -131,13 +130,13 @@ $teacher_infos=Daily_Info::find_all();
                             if($teacher_info->num_week==$i && $teacher_info->month==$_GET['month']){
                 ?>
                 <tr>
-                    <td><?php echo $teacher_info->lesson_name; ?></td>
-                    <td><?php echo $teacher_info->stage; ?></td>
-                    <td><?php echo $teacher_info->day; ?></td>
-                    <td><?php echo $teacher_info->date; ?></td>
-                    <td><?php echo $teacher_info->start_time; ?></td>
-                    <td><?php echo $teacher_info->end_time; ?></td>
-                    <td><?php echo $teacher_info->num_time; ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->lesson_name, ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->stage, ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->day, ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->date, ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->start_time, ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->end_time ,ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($teacher_info->num_time, ENT_QUOTES, 'UTF-8'); ?></td>
                 </tr> 
                 <?php } } } ?>
             </tbody>
@@ -145,16 +144,17 @@ $teacher_infos=Daily_Info::find_all();
 
         <div class="weekly_info">
             <?php
-                $teacher=Teacher::find_by_id($_GET['id']);
+                $teacher=Teacher::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
             ?>
-        <div style="text-align: center;">تویژینەوەی زانستی <br> <span><?php echo $teacher->research; ?></span> </div>
-        <div style="text-align: center;">کۆی کاژێرەکانی هەفتە <br> <span><?php echo Daily_Info::sum_num_time($weeks->num_time,$i); ?></span> </div>
-        <div style="text-align: center;">نصاب <br> <span><?php echo $teacher->a_houer_on_week; ?></span> </div>
-        <div style="text-align: center;">کاژێری زیادە <br> <span><?php echo Daily_Info::sum_num_time($weeks->num_time,$i); ?></span> </div>
+        <div style="text-align: center;">تویژینەوەی زانستی <br> <span><?php echo htmlspecialchars($teacher->research, ENT_QUOTES, 'UTF-8'); ?></span> </div>
+        <div style="text-align: center;">کۆی کاژێرەکانی هەفتە <br> <span><?php echo htmlspecialchars(Daily_Info::sum_num_time($weeks->num_time,$i), ENT_QUOTES, 'UTF-8'); ?></span> </div>
+        <div style="text-align: center;">نصاب <br> <span><?php echo htmlspecialchars($teacher->a_houer_on_week, ENT_QUOTES, 'UTF-8'); ?></span> </div>
+        <div style="text-align: center;">کاژێری زیادە <br> <span><?php echo htmlspecialchars(Daily_Info::sum_num_time($weeks->num_time,$i), ENT_QUOTES, 'UTF-8'); ?></span> </div>
     </div>
   
-        </div>            <br>
-<br>
+        </div>           
+         <br>
+        <br>
         <?php
             }else{
             break;
@@ -173,14 +173,14 @@ $teacher_infos=Daily_Info::find_all();
                     <div>
                         ناوی مامۆستا
                         <br>
-                        <span> <?php  echo $teacher->fullname; ?></span>
+                        <span> <?php  echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?></span>
                     </div>
                     <div>
                         بڕیاردەری بەش
                         <br>
                         <?php foreach($staffs as $staff){ ?>
                         <span>
-                             <?php if($staff->responsibility_id==2){echo $staff->name;}else{null;} ?>
+                             <?php if($staff->responsibility_id==2){echo htmlspecialchars($staff->name, ENT_QUOTES, 'UTF-8');}else{null;} ?>
                         </span>
                         <?php } ?>
                     </div>
@@ -189,7 +189,7 @@ $teacher_infos=Daily_Info::find_all();
                         <br>
                         <?php foreach($staffs as $staff){ ?>
                         <span>
-                             <?php if($staff->responsibility_id==3){echo $staff->name;}else{null;} ?>
+                             <?php if($staff->responsibility_id==3){echo htmlspecialchars($staff->name, ENT_QUOTES, 'UTF-8');}else{null;} ?>
                         </span>
                         <?php } ?>
                 </div>
@@ -200,7 +200,7 @@ $teacher_infos=Daily_Info::find_all();
                         <br>
                         <?php foreach($staffs as $staff){ ?>
                         <span>
-                             <?php if($staff->responsibility_id==4){echo $staff->name;}else{null;} ?>
+                             <?php if($staff->responsibility_id==4){echo htmlspecialchars($staff->name, ENT_QUOTES, 'UTF-8');}else{null;} ?>
                         </span>
                         <?php } ?>
                 </div>
@@ -209,7 +209,7 @@ $teacher_infos=Daily_Info::find_all();
                         <br>
                         <?php foreach($staffs as $staff){ ?>
                         <span>
-                             <?php if($staff->responsibility_id==5){echo $staff->name;}else{null;} ?>
+                             <?php if($staff->responsibility_id==5){echo htmlspecialchars($staff->name, ENT_QUOTES, 'UTF-8');}else{null;} ?>
                         </span>
                         <?php } ?>
                 </div>
@@ -218,7 +218,7 @@ $teacher_infos=Daily_Info::find_all();
                         <br>
                         <?php foreach($staffs as $staff){ ?>
                         <span>
-                             <?php if($staff->responsibility_id==6){echo $staff->name;}else{null;} ?>
+                             <?php if($staff->responsibility_id==6){echo htmlspecialchars($staff->name, ENT_QUOTES, 'UTF-8');}else{null;} ?>
                         </span>
                         <?php } ?>
                 </div>
@@ -227,7 +227,7 @@ $teacher_infos=Daily_Info::find_all();
                         <br>
                         <?php foreach($staffs as $staff){ ?>
                         <span>
-                             <?php if($staff->responsibility_id==1){echo $staff->name;}else{null;} ?>
+                             <?php if($staff->responsibility_id==1){echo htmlspecialchars($staff->name, ENT_QUOTES, 'UTF-8');}else{null;} ?>
                         </span>
                         <?php } ?>
                 </div>

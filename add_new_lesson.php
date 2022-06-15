@@ -22,8 +22,8 @@
         <div class="content">
 
         <form action="" class="form" method="POST">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                  <div class="input-group">
                     <label for="lesson">ناوی وانە</label>
                     <input class="form-controll" type="text" placeholder="ناوی وانە" name="lesson" id="lesson">
@@ -36,7 +36,7 @@
                             foreach($departments as $department){
                                 if($department->recycle==0){
                         ?>
-                        <option value="<?php echo $department->id; ?>"><?php echo $department->department_name; ?></option>
+                        <option value="<?php echo htmlspecialchars($department->id, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); ?></option>
                         <?php }} ?>
                     </select>
                 </div>

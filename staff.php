@@ -3,8 +3,8 @@
 
 <?php
     if(isset($_GET['id'])){
-        $staff=Staff::find_by_id($_GET['id']);
-        $staff->recycle=1;
+        $staff=Staff::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
+        htmlspecialchars($staff->recycle=1, ENT_QUOTES, 'UTF-8');
         if($staff->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
             RedirectTo("staff.php");
@@ -20,8 +20,8 @@
     <div class="container">
         <h1>ستاف</h1>
         <div class="content">
-        <?php echo $session->SuccessMessage(); ?>
-        <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
         <div class="recents">
                 <span>بینینی هەموو ستافەکان</span>
                 <table id="table" class="display" style="width:100%">
@@ -46,21 +46,21 @@
                                 if($staff->recycle==0){
                         ?>
                         <tr>
-                            <td><?php echo $a++; ?></td>
-                            <td><?php echo $staff->name; ?></td>
-                            <td><?php echo $staff->email; ?></td>
-                            <td><?php echo $staff->phone; ?></td>
+                            <td><?php echo htmlspecialchars($a++, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($staff->name, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($staff->email, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($staff->phone, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td>
                                 <?php 
                                 
-                                $responsibility=Responsibility::find_by_id($staff->responsibility_id);
-                                echo $responsibility->name;
+                                $responsibility=Responsibility::find_by_id(htmlspecialchars($staff->responsibility_id, ENT_QUOTES, 'UTF-8'));
+                                echo htmlspecialchars($responsibility->name, ENT_QUOTES, 'UTF-8');
                                 ?>
                             </td>
                             <td>
-                                <a style="font-size: 1rem;" href="edit_staff.php?id=<?php echo $staff->id; ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
+                                <a style="font-size: 1rem;" href="edit_staff.php?id=<?php echo htmlspecialchars($staff->id, ENT_QUOTES, 'UTF-8'); ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
                                 <!-- <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a> -->
-                                <a href="staff.php?id=<?php echo $staff->id; ?>" class="btn-submit"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
+                                <a href="staff.php?id=<?php echo htmlspecialchars($staff->id, ENT_QUOTES, 'UTF-8'); ?>" class="btn-submit"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                                 
                             </td>
                         </tr>

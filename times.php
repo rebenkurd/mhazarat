@@ -3,8 +3,8 @@
 
 <?php
     if(isset($_GET['id'])){
-        $time=Time::find_by_id($_GET['id']);
-        $time->recycle=1;
+        $time=Time::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
+        htmlspecialchars($time->recycle=1, ENT_QUOTES, 'UTF-8');
         if($time->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
             RedirectTo("times.php");
@@ -20,8 +20,8 @@
     <div class="container">
         <h1>کاتەکان</h1>
         <div class="content">
-        <?php echo $session->SuccessMessage(); ?>
-        <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
         <div class="recents">
                 <span>بینینی هەموو کاتەکان</span>
                 <table id="table" class="display" style="width:100%">
@@ -44,13 +44,13 @@
                                 if($time->recycle==0){
                         ?>
                         <tr>
-                            <td><?php echo $a++; ?></td>
-                            <td><?php echo $time->times; ?></td>
-                            <td><?php echo $time->time_type; ?></td>
+                            <td><?php echo htmlspecialchars($a++, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($time->times, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($time->time_type, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="edit_time.php?id=<?php echo $time->id; ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
+                                <a style="font-size: 1rem;" href="edit_time.php?id=<?php echo htmlspecialchars($time->id, ENT_QUOTES, 'UTF-8'); ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
                                 <!-- <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a> -->
-                                <a href="times.php?id=<?php echo $time->id; ?>" class="btn-submit"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
+                                <a href="times.php?id=<?php echo htmlspecialchars($time->id, ENT_QUOTES, 'UTF-8'); ?>" class="btn-submit"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                                 
                             </td>
                         </tr>

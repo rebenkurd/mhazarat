@@ -5,12 +5,12 @@ if(empty($_GET['id'])){
 }else{
     $user=User::find_by_id($_GET['id']);
     if(isset($_POST['update'])){
-        $user->username=$_POST['username'];
-        $user->email=$_POST['email'];
-        $user->first_name=$_POST['first_name'];
-        $user->last_name=$_POST['last_name'];
-        $user->password=$_POST['password'];
-        $user->set_file($_FILES['user_image']);
+        htmlspecialchars($user->username=trim(filter_var($_POST['username'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($user->email=trim(filter_var($_POST['email'],FILTER_SANITIZE_EMAIL)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($user->first_name=trim(filter_var($_POST['first_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($user->last_name=trim(filter_var($_POST['last_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($user->password=trim(filter_var($_POST['password'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($user->set_file(trim($_FILES['user_image']), ENT_QUOTES, 'UTF-8'));
         if($user->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی پاشەکەوتکرا";
             RedirectTo("users.php");
@@ -29,32 +29,32 @@ if(empty($_GET['id'])){
         <div class="content">
 
         <form action="" class="form" method="POST" enctype="multipart/form-data">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                  <div class="groups">
                  <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>
-                    <input type="text" class="form-controll" value="<?php echo $user->first_name; ?>" placeholder="ناوی یەکەم" name="first_name" id="first_name">
+                    <input type="text" class="form-controll" value="<?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?>" placeholder="ناوی یەکەم" name="first_name" id="first_name">
                 </div>
                 <div class="input-group">
                     <label for="last_name">ناوی دووەم</label>
-                    <input type="text" class="form-controll" value="<?php echo $user->last_name; ?>" placeholder="ناوی دووەم" name="last_name" id="last_name">
+                    <input type="text" class="form-controll" value="<?php echo htmlspecialchars($user->last_name, ENT_QUOTES, 'UTF-8'); ?>" placeholder="ناوی دووەم" name="last_name" id="last_name">
                 </div>
             </div>
                 <div class="input-group">
                     <label for="username">بەکارهێنەر</label>
-                    <input type="text" class="form-controll" value="<?php echo $user->username; ?>" placeholder="بەکارهێنەر" name="username" id="username">
+                    <input type="text" class="form-controll" value="<?php echo htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8'); ?>" placeholder="بەکارهێنەر" name="username" id="username">
                 </div>
                 <div class="input-group">
                     <label for="email">ئیمەڵ</label>
-                    <input type="text" class="form-controll" value="<?php echo $user->email; ?>" placeholder="ئیمەیڵی بەکارهێنەر" name="email" id="email">
+                    <input type="text" class="form-controll" value="<?php echo htmlspecialchars($user->email, ENT_QUOTES, 'UTF-8'); ?>" placeholder="ئیمەیڵی بەکارهێنەر" name="email" id="email">
                 </div>
                 <div class="input-group">
                     <label for="password">وشەی تێپەر</label>
-                    <input type="text" class="form-controll" value="<?php echo $user->password; ?>" placeholder="وشەی تێپەر" name="password" id="password">
+                    <input type="text" class="form-controll" value="<?php echo htmlspecialchars($user->password, ENT_QUOTES, 'UTF-8'); ?>" placeholder="وشەی تێپەر" name="password" id="password">
                 </div>
                 <div class="input-group">
-                    <img src="<?php echo $user->image_path(); ?>" class="image-flued" alt="">
+                    <img src="<?php echo htmlspecialchars($user->image_path(), ENT_QUOTES, 'UTF-8'); ?>" class="image-flued" alt="">
                     <label for="user_image">وێنە</label>
                     <input type="file" class="form-controll" name="user_image" id="user_image">
                 </div>

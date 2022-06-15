@@ -3,8 +3,8 @@
 
 <?php
     if(isset($_GET['id'])){
-        $user=User::find_by_id($_GET['id']);
-        $user->recycle=1;
+        $user=User::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
+        htmlspecialchars($user->recycle=1, ENT_QUOTES, 'UTF-8') ;
         if($user->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
             RedirectTo("users.php");
@@ -20,8 +20,8 @@
     <div class="container">
         <h1>بەکارهێنەرەکان</h1>
         <div class="content">
-        <?php echo $session->SuccessMessage(); ?>
-        <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
         <div class="recents">
                 <span>بینینی هەموو بەکارهێنەرەکان</span>
                 <table id="table" class="display" style="width:100%">
@@ -47,14 +47,14 @@
                                 if($user->recycle==0){
                         ?>
                         <tr>
-                            <td><?php echo $a++; ?></td>
-                            <td><img src="<?php echo $user->image_path_and_placeholder(); ?>" class="image-flued"></td>
-                            <td><?php echo $user->username; ?></td>
-                            <td><?php echo $user->email; ?></td>
-                            <td><?php echo $user->first_name; ?></td>
-                            <td><?php echo $user->last_name; ?></td>
+                            <td><?php echo htmlspecialchars($a++, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><img src="<?php echo htmlspecialchars($user->image_path_and_placeholder(), ENT_QUOTES, 'UTF-8'); ?>" class="image-flued"></td>
+                            <td><?php echo htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($user->email, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($user->last_name, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="edit_user.php?id=<?php echo $user->id; ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
+                                <a style="font-size: 1rem;" href="edit_user.php?id=<?php echo htmlspecialchars($user->id, ENT_QUOTES, 'UTF-8'); ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
                                 <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                             <div class="back-model">
                             <div class="model">
@@ -62,10 +62,10 @@
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                    دڵنیایت لە سرینەوەی <?php echo $user->username; ?>
+                                    دڵنیایت لە سرینەوەی <?php echo htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8'); ?>
                             </div>
                                 <div class="model-footer">
-                                    <button class="btn btn-success"><a href="users.php?id=<?php echo $user->id; ?>" >بەڵێ</a></button>
+                                    <button class="btn btn-success"><a href="users.php?id=<?php echo htmlspecialchars($user->id, ENT_QUOTES, 'UTF-8'); ?>" >بەڵێ</a></button>
                                     <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
                                 </div>
                             </div>

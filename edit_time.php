@@ -3,11 +3,11 @@
 if(empty($_GET['id'])){
     RedirectTo("times.php");
 }else{
-    $time=Time::find_by_id($_GET['id']);
+    $time=Time::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
     if(isset($_POST['submit'])){
-        $time->the_time=$_POST['times'];
-        $time->times=date('h:i A',strtotime($time->the_time));
-        $time->time_type=$_POST['time_type'];
+        htmlspecialchars($time->the_time=trim(filter_var($_POST['times'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($time->times=trim(filter_var(date('h:i A',strtotime($time->the_time)),FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($time->time_type=trim(filter_var($_POST['time_type'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
         if($time->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی زیادکرا";
             RedirectTo("times.php");
@@ -26,12 +26,12 @@ if(empty($_GET['id'])){
         <div class="content">
 
         <form action="" class="form" method="POST">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                 <div class="groups">
                 <div class="input-group">
                     <label for="times">کات</label>
-                    <input class="form-controll" value="<?php echo $time->times; ?>" type="time" placeholder="کات" name="times" id="times">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($time->times, ENT_QUOTES, 'UTF-8'); ?>" type="time" placeholder="کات" name="times" id="times">
                 </div>
                 <div class="input-group">
                     <label for="time_type">جۆری کات</label>

@@ -10,23 +10,23 @@
 <h1>زانیاری</h1>
 <div class="profile">
 <?php
-    $user=User::find_by_id($_SESSION['user_id']);
+    $user=User::find_by_id(htmlspecialchars($_SESSION['user_id'], ENT_QUOTES, 'UTF-8'));
 ?>
 <div class="phead">
     <div class="pimage">
-        <img src="img/<?php echo $user->user_image; ?>" alt="">
+        <img src="img/<?php echo htmlspecialchars($user->user_image, ENT_QUOTES, 'UTF-8'); ?>" alt="">
     </div>
     <div class="pinfo">
-        <span><?php echo $user->first_name." ".$user->last_name; ?></span>
+        <span><?php echo htmlspecialchars($user->first_name." ".$user->last_name, ENT_QUOTES, 'UTF-8'); ?></span>
         <br>
-        <span><?php echo $user->username; ?>&#64;</span>
+        <span><?php echo htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8'); ?>&#64;</span>
     </div>
 </div>
 <div class="pbody">
         <p>
         <?php 
         if($user->bio==""){
-            echo '<span class="text-danger">هیچ زانیارییەک نییە</span>';
+            echo htmlspecialchars('<span class="text-danger">هیچ زانیارییەک نییە</span>', ENT_QUOTES, 'UTF-8');
         }else{
             echo $user->bio; 
         }

@@ -3,7 +3,7 @@ include("configs/init.php");
 if(empty($_GET['id'])){
     RedirectTo("users.php");
 }else{
-    $user=User::find_by_id($_GET['id']);
+    $user=User::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
     if($user->delete_user()){
         $_SESSION['SuccessMessage']="بەسەرکەوتووی سڕایەوە";
         RedirectTo("users.php");

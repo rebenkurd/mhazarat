@@ -3,8 +3,8 @@
 
 <?php
     if(isset($_GET['id'])){
-        $teacher=Teacher::find_by_id($_GET['id']);
-        $teacher->recycle=0;
+        $teacher=Teacher::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
+        htmlspecialchars($teacher->recycle=0, ENT_QUOTES, 'UTF-8');
         if($teacher->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتووی گەڕێندرایەوە";
             RedirectTo("teachers.php");
@@ -20,8 +20,8 @@
     <div class="container">
         <h1>وانەبێژەکان</h1>
         <div class="content">
-        <?php echo $session->SuccessMessage(); ?>
-        <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
         <div class="recents">
                 <span>بینینی وانەبێژە سڕاوەکان</span>
                 <table id="table" class="display" style="width:100%">
@@ -47,33 +47,33 @@
                                 if($teacher->recycle==1){
                         ?>
                         <tr>
-                            <td><?php echo $a++; ?></td>
-                            <td><?php echo $teacher->fullname; ?></td>
+                            <td><?php echo htmlspecialchars($a++, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td><?php
                                 if($teacher->certificate==0){
-                                    echo "دبلۆم";
+                                    echo htmlspecialchars("دبلۆم", ENT_QUOTES, 'UTF-8');
                                 }elseif($teacher->certificate==1){
-                                    echo "بکالۆریۆس";
+                                    echo htmlspecialchars("بکالۆریۆس", ENT_QUOTES, 'UTF-8');
                                 }elseif($teacher->certificate==2){
-                                    echo "ماجستێر";
+                                    echo htmlspecialchars("ماجستێر", ENT_QUOTES, 'UTF-8');
                                 }else{
-                                    echo "دکتۆرا";
+                                    echo htmlspecialchars("دکتۆرا", ENT_QUOTES, 'UTF-8');
                                 }
                             ?></td>
-                            <td><?php echo $teacher->nickname; ?></td>
-                            <td><?php echo $teacher->one_day_money; ?></td>
-                            <td><?php echo $teacher->a_houer_on_week; ?></td>
-                            <td><?php echo $teacher->research; ?></td>
-                            <td><?php echo $teacher->one_houer_money; ?></td>
+                            <td><?php echo htmlspecialchars($teacher->nickname, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($teacher->one_day_money, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($teacher->a_houer_on_week, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($teacher->research, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php echo htmlspecialchars($teacher->one_houer_money, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td><?php 
                             if($teacher->contract==0){
-                                echo "بەڵێ";
+                                echo htmlspecialchars("بەڵێ", ENT_QUOTES, 'UTF-8');
                             }else{
-                                echo "نەخێر";
+                                echo htmlspecialchars("نەخێر", ENT_QUOTES, 'UTF-8');
                             }
                             ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="teacher_recycle.php?id=<?php echo $teacher->id; ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
+                                <a style="font-size: 1rem;" href="teacher_recycle.php?id=<?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
                                 <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                             <div class="back-model">
                             <div class="model">
@@ -81,10 +81,10 @@
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                    دڵنیایت لە سرینەوەی <?php echo $teacher->fullname; ?>
+                                    دڵنیایت لە سرینەوەی <?php echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?>
                             </div>
                                 <div class="model-footer">
-                                    <button class="btn btn-success"><a href="teachers.php?id=<?php echo $teacher->id; ?>" >بەڵێ</a></button>
+                                    <button class="btn btn-success"><a href="teachers.php?id=<?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>" >بەڵێ</a></button>
                                     <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
                                 </div>
                             </div>

@@ -1,11 +1,11 @@
 <?php include('includes/header.php'); ?>
 <?php 
 
-    $user=User::find_by_id($_SESSION['user_id']);
+    $user=User::find_by_id(htmlspecialchars($_SESSION['user_id'], ENT_QUOTES, 'UTF-8'));
     if(isset($_POST['update'])){
-        $user->first_name=$_POST['first_name'];
-        $user->last_name=$_POST['last_name'];
-        $user->bio=$_POST['bio'];
+        htmlspecialchars($user->first_name=trim(filter_var($_POST['first_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($user->last_name=trim(filter_var($_POST['last_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($user->bio=trim(filter_var($_POST['bio'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
         if($user->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی دەستکاریکرا";
             RedirectTo("profile_setting.php");
@@ -23,21 +23,21 @@
         <div class="content">
 
         <form action="" class="form" method="POST" enctype="multipart/form-data">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                  <div class="groups">
                  <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>
-                    <input class="form-controll" value="<?php echo $user->first_name; ?>" type="text" placeholder="ناوی یەکەم" name="first_name" id="first_name">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="ناوی یەکەم" name="first_name" id="first_name">
                 </div>
                 <div class="input-group">
                     <label for="last_name">ناوی دووەم</label>
-                    <input class="form-controll" value="<?php echo $user->last_name; ?>" type="text" placeholder="ناوی دووەم" name="last_name" id="last_name">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($user->last_name, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="ناوی دووەم" name="last_name" id="last_name">
                 </div>
             </div>
 
             <textarea name="bio" class="form-controll" id="bio">
-            <?php echo $user->bio; ?>
+            <?php echo htmlspecialchars($user->bio, ENT_QUOTES, 'UTF-8'); ?>
             </textarea>
                 <button type="submit"  name="update" class="btn btn-success width-25">پاشەکەوتکردن</button>
             </form>

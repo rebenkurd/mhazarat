@@ -3,17 +3,17 @@
 if(empty($_GET['id'])){
   RedirectTo('teachers.php');  
 }else{
-        $teacher=Teacher::find_by_id($_GET['id']);
+        $teacher=Teacher::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
     if(isset($_POST['update'])){
-        $teacher->fullname=$_POST['fullname'];
-        $teacher->certificate=$_POST['certificate'];
-        $teacher->nickname=$_POST['nickname'];
-        $teacher->a_houer_on_week=$_POST['a_houer_on_week'];
-        $teacher->research=$_POST['research'];
-        $teacher->one_houer_money=$_POST['one_houer_money'];
-        $teacher->contract=$_POST['contract'];
-        $teacher->one_day_money=$_POST['one_day_money'];
-        $teacher->recycle=0;
+        htmlspecialchars($teacher->fullname=trim(filter_var($_POST['fullname'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($teacher->certificate=trim(filter_var($_POST['certificate'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($teacher->nickname=trim(filter_var($_POST['nickname'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($teacher->a_houer_on_week=trim(filter_var($_POST['a_houer_on_week'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($teacher->research=trim(filter_var($_POST['research'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($teacher->one_houer_money=trim(filter_var($_POST['one_houer_money'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($teacher->contract=trim(filter_var($_POST['contract'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($teacher->one_day_money=trim(filter_var($_POST['one_day_money'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($teacher->recycle=0, ENT_QUOTES, 'UTF-8');
         if($teacher->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی زیادکرا";
             RedirectTo("teachers.php");
@@ -22,7 +22,8 @@ if(empty($_GET['id'])){
             RedirectTo("edit_teacher.php");
         }
     }
-}
+}        
+
 ?>
 <?php include('includes/top_nav.php'); ?>
     <div class="main">
@@ -32,37 +33,37 @@ if(empty($_GET['id'])){
         <div class="content">
 
         <form action="" class="form" method="POST" enctype="multipart/form-data">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                  <div class="groups">
                  <div class="input-group">
                     <label for="fullname">ناوی سیانی</label>
-                    <input class="form-controll" value="<?php echo $teacher->fullname; ?>" type="text" placeholder="ناوی سیانی" name="fullname" id="fullname">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="ناوی سیانی" name="fullname" id="fullname">
                 </div>
                 <div class="input-group">
                     <label for="nickname">نازناو</label>
-                    <input class="form-controll" value="<?php echo $teacher->nickname; ?>" type="text" placeholder="نازناو" name="nickname" id="nickname">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($teacher->nickname, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="نازناو" name="nickname" id="nickname">
                 </div>
             </div>
                 <div class="groups">
 
                 <div class="input-group">
                     <label for="a_houer_on_week">ماوەی کارکردن</label>
-                    <input class="form-controll" value="<?php echo $teacher->a_houer_on_week; ?>" type="text" placeholder="ماوەی کارکردن" name="a_houer_on_week" id="a_houer_on_week">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($teacher->a_houer_on_week, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="ماوەی کارکردن" name="a_houer_on_week" id="a_houer_on_week">
                 </div>
                 <div class="input-group">
                     <label for="research">ژمارەی توێژینەوە</label>
-                    <input class="form-controll" value="<?php echo $teacher->research; ?>"  type="text" placeholder="ژمارەی توێژینەوە" name="research" id="research">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($teacher->research, ENT_QUOTES, 'UTF-8'); ?>"  type="text" placeholder="ژمارەی توێژینەوە" name="research" id="research">
                 </div>
             </div>
                  <div class="groups">
                 <div class="input-group">
                     <label for="one_houer_money">پارەی یەک کاتژمێر</label>
-                    <input class="form-controll" value="<?php echo $teacher->one_houer_money; ?>" type="text" placeholder="پارەی یەک کاتژمێر" name="one_houer_money" id="one_houer_money">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($teacher->one_houer_money, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="پارەی یەک کاتژمێر" name="one_houer_money" id="one_houer_money">
                 </div>
                 <div class="input-group">
                     <label for="one_day_money">پارەی یەک ڕۆژ</label>
-                    <input class="form-controll" value="<?php echo $teacher->one_day_money; ?>" type="text" placeholder="پارەی یەک ڕۆژ" name="one_day_money" id="one_day_money">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($teacher->one_day_money, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="پارەی یەک ڕۆژ" name="one_day_money" id="one_day_money">
                 </div>
             </div>
             <div class="groups">

@@ -2,14 +2,14 @@
 <?php 
     if(isset($_POST['submit'])){
         $teacher=new Teacher();
-        $teacher->fullname=$_POST['fullname'];
-        $teacher->certificate=$_POST['certificate'];
-        $teacher->nickname=$_POST['nickname'];
-        $teacher->a_houer_on_week=$_POST['a_houer_on_week'];
-        $teacher->research=$_POST['research'];
-        $teacher->one_houer_money=$_POST['one_houer_money'];
-        $teacher->contract=$_POST['contract'];
-        $teacher->one_day_money=$_POST['one_day_money'];
+        $teacher->fullname=trim(filter_var($_POST['fullname'],FILTER_DEFAULT));
+        $teacher->certificate=trim(filter_var($_POST['certificate'],FILTER_SANITIZE_NUMBER_INT));
+        $teacher->nickname=trim(filter_var($_POST['nickname'],FILTER_DEFAULT));
+        $teacher->a_houer_on_week=trim(filter_var($_POST['a_houer_on_week'],FILTER_SANITIZE_NUMBER_INT));
+        $teacher->research=trim(filter_var($_POST['research'],FILTER_SANITIZE_NUMBER_INT));
+        $teacher->one_houer_money=trim(filter_var($_POST['one_houer_money'],FILTER_SANITIZE_NUMBER_INT));
+        $teacher->contract=trim(filter_var($_POST['contract'],FILTER_DEFAULT));
+        $teacher->one_day_money=trim(filter_var($_POST['one_day_money'],FILTER_SANITIZE_NUMBER_INT));
         $teacher->recycle=0;
         if($teacher->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی زیادکرا";
@@ -27,8 +27,8 @@
         <h1>زیادکردنی بەکارهێنەر</h1>
         <div class="content">
         <form action="" class="form" method="POST" enctype="multipart/form-data">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                  <div class="groups">
                  <div class="input-group">
                     <label for="fullname">ناوی سیانی</label>

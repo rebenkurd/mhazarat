@@ -6,8 +6,8 @@
     <div class="container">
         <h1>ستاف</h1>
         <div class="content">
-        <?php echo $session->SuccessMessage(); ?>
-        <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
         <div class="recents">
                 <span>بینینی هەموو ستافەکان</span>
                 <table id="table" class="display" style="width:100%">
@@ -38,13 +38,13 @@
                             <td>
                                 <?php 
                                 
-                                $responsibility=Responsibility::find_by_id($staff->responsibility_id);
-                                echo $responsibility->name;
+                                $responsibility=Responsibility::find_by_id(htmlspecialchars($staff->responsibility_id, ENT_QUOTES, 'UTF-8'));
+                                echo htmlspecialchars($responsibility->name, ENT_QUOTES, 'UTF-8');
                                 ?>
                             </td>
                             <td>
                                 <!-- <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a> -->
-                                <a href="delete_staff.php?id=<?php echo $staff->id; ?>" class="btn-submit"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
+                                <a href="delete_staff.php?id=<?php echo htmlspecialchars($staff->id, ENT_QUOTES, 'UTF-8'); ?>" class="btn-submit"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
                                 
                             </td>
                         </tr>

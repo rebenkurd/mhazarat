@@ -3,9 +3,9 @@
 if(empty($_GET['id'])){
     RedirectTo("departments.php");
 }else{
-    $department=Department::find_by_id($_GET['id']);
+    $department=Department::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
     if(isset($_POST['update'])){
-        $department->department_name=$_POST['department_name'];
+        htmlspecialchars($department->department_name=$_POST['department_name'], ENT_QUOTES, 'UTF-8');
         $department->recycle=0;
         if($department->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی زیادکرا";
@@ -25,11 +25,11 @@ if(empty($_GET['id'])){
         <div class="content">
 
         <form action="" class="form" method="POST">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                  <div class="input-group">
                     <label for="department">ناوی بەش</label>
-                    <input class="form-controll" value="<?php echo $department->department_name; ?>" type="text" placeholder="ناوی بەش" name="department_name" id="department">
+                    <input class="form-controll" value="<?php echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="ناوی بەش" name="department_name" id="department">
                 </div>
                 <button type="submit" name="update" class="btn btn-success width-25">پاشەکەوتکردن</button>
             </form>

@@ -2,7 +2,7 @@
 <?php 
     if(isset($_POST['submit'])){
         $staff=new Staff();
-        $staff->name=trim(filter_var($_POST['name']));
+        $staff->name=trim(filter_var($_POST['name'],FILTER_DEFAULT));
         $staff->email=trim(filter_var($_POST['email'],FILTER_SANITIZE_EMAIL));
         $staff->phone=trim(filter_var($_POST['phone'],FILTER_VALIDATE_INT));
         $staff->responsibility_id=trim(filter_var($_POST['responsibility'],FILTER_VALIDATE_INT));
@@ -24,8 +24,8 @@
         <div class="content">
 
         <form action="" class="form" method="POST">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                  <div class="input-group">
                     <label for="name">ناوی ستاف</label>
                     <input class="form-controll" type="text" placeholder="ناوی وانە" name="name" id="name">
@@ -37,7 +37,7 @@
                         $responsibilitys=Responsibility::find_all();
                         foreach($responsibilitys as $res){
                    ?>
-                   <option value="<?php echo $res->id;?>"><?php echo $res->name;?></option>
+                   <option value="<?php echo htmlspecialchars($res->id, ENT_QUOTES, 'UTF-8');?>"><?php echo htmlspecialchars($res->name, ENT_QUOTES, 'UTF-8');?></option>
 <?php }?>
                    </select>
                 </div>

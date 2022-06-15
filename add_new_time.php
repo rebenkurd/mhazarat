@@ -2,9 +2,9 @@
 <?php 
     if(isset($_POST['submit'])){
         $time=new Time();
-        $time->the_time=$_POST['times'];
+        $time->the_time=trim(filter_var($_POST['times'],FILTER_SANITIZE_NUMBER_INT));
         $time->times=date('h:i A',strtotime($time->the_time));
-        $time->time_type=$_POST['time_type'];
+        $time->time_type=trim(filter_var($_POST['time_type'],FILTER_SANITIZE_NUMBER_INT));
         if($time->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی زیادکرا";
             RedirectTo("times.php");
@@ -22,8 +22,8 @@
         <div class="content">
 
         <form action="" class="form" method="POST">
-                <?php echo $session->SuccessMessage(); ?>
-                <?php echo $session->ErrorMessage(); ?>
+        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
                 <div class="groups">
                 <div class="input-group">
                     <label for="times">کات</label>
