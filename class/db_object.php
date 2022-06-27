@@ -148,13 +148,30 @@ class Db_Object{
     }
 
 
+
+
     public static function find_by_deptartment_id($id){
         global $database;
-        $sql="SELECT * FROM " . static::$db_table." WHERE department_id=".$id." LIMIT 1";
-        $database->query($sql);
-        return mysqli_affected_rows($database->connection)==1 ? true : false;
+        $the_result_array=static::find_by_query("SELECT * FROM ".static::$db_table." WHERE department_id='$id' LIMIT 1");
+        return !empty($the_result_array) ? array_shift($the_result_array):false;
     }
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

@@ -28,7 +28,7 @@
     </td>
 
     <td>
-        <select name="department" style="width:180px;" class="form-controll" id="">
+        <select name="department" id="department" style="width:180px;" class="form-controll" id="">
             <option value=""></option>
             <?php
         $departments=Department::find_all();
@@ -50,17 +50,10 @@
     </td>
 
     <td >
-        <select name="lesson" class="form-controll" style="width:180px;" >
+        <select name="lesson" id="lesson" class="form-controll" style="width:180px;" >
             <option value=""></option>
-            <?php
-            $lessons=Lesson::find_all();
-            foreach($lessons as $lesson){
-    ?>
-            <option  value="<?php echo htmlspecialchars($lesson->lesson, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($lesson->lesson, ENT_QUOTES, 'UTF-8'); ?>
-            </option>
-            
         </select>
-        <?php }?>
+
     </td>
     <td>
         <select name="start_time" class="form-controll" id="">

@@ -8,6 +8,13 @@ class Lesson extends Db_Object{
     public $lesson;
     public $department_id;
     public $recycle;
+
+
+
+
+
+
+    
 }
 
 
