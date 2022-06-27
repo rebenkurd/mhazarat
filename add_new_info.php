@@ -29,7 +29,7 @@
 
     <td>
         <select name="department" id="department" style="width:180px;" class="form-controll" id="">
-            <option value=""></option>
+        <option value="" disabled selected>بەشێک هەڵبژێرە</option>
             <?php
         $departments=Department::find_all();
         foreach($departments as $department): 
@@ -51,7 +51,7 @@
 
     <td >
         <select name="lesson" id="lesson" class="form-controll" style="width:180px;" >
-            <option value=""></option>
+            <option value="" disabled selected>وانەیەک هەڵبژێرە</option>
         </select>
 
     </td>

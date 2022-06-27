@@ -3,15 +3,19 @@ $('#department').on('change',function(){
  // console.log(did);
  $.ajax({
   url:'lesson.php',
-  type:"GET",
+  type:"POST",
   data:{
    ds:did
   },
   success:function(result){
    $('#lesson').html(result);
    // console.log(result);
+      location.reload();
+window.location.href = "index.php";
   }
- })
+ 
+})
+ 
 
 })
 
@@ -27,18 +31,19 @@ $('.props').on('change',function(){
   },
   success:function(result){
    $('#teacher_info').html(result);
+      location.reload();
+window.location.href = "index.php";
   }
- })
+ 
+})
+ 
 })
 
 $('.props').on('change',function(){
- var list=[];
  var teacher=$("#fullname_teacher").val();
  var day=$("#day").val();
  var year=$("#year").val();
  var month=$("#month").val();
- list.push(teacher,day,year,month);
- console.log(list);
  $.ajax({
   url:'table_day.php',
   type:"GET",
@@ -46,10 +51,39 @@ $('.props').on('change',function(){
    teacher_id:teacher,
    day:day,
    month:month,
-   year:year,
+   year:year
   },
   success:function(result){
-   $('#table_info').html(result);
+    $('#table_info').html(result);
+      location.reload();
+      window.location.href = "index.php";
+    }
+ 
+})
+ 
+})
+
+$('.props').on('change',function(){
+ var teacher=$("#fullname_teacher").val();
+ var month=$("#month").val();
+ $.ajax({
+  url:'show_report.php',
+  type:"GET",
+  data:{
+   teacher_id:teacher,
+   month:month,
+  },
+  success:function(result){
+
+   console.log($('#show-report').html(result));
+
+      location.reload();
+window.location.href = "index.php";
   }
- })
+ 
+})
+ 
+
+
+ 
 })
