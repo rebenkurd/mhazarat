@@ -1,5 +1,6 @@
 <?php
 include("configs/init.php");
+
 $lesson=Lesson::find_by_deptartment_id($_POST['ds']);
 if($lesson->department_id==$_POST['ds']){
 ?>
@@ -7,4 +8,4 @@ if($lesson->department_id==$_POST['ds']){
 </option>
 <?php }else{?>
  <option value="" disabled>هیچ وانەیەک نییە</option>
-<?php }?>`
+<?php }?>

@@ -10,13 +10,14 @@
                    <a class="items" href="add_new_teacher.php"><i class="fas fa-edit"></i> زیادکردنی وانەبێژ</a> 
                    <a class="items" href="teacher_recycle.php"><i class="fas fa-recycle"></i>وانەبێژە سڕاوەکان</a> 
             </div>
-            <li class="parent"><i class="fas fa-book"></i>وانەکان
-            </li>
-            <div class="dd_menu">
-                   <a class="items" href="lessons.php" ><i class="fas fa-eye"></i> بینینی وانەکان</a> 
-                   <a class="items" href="add_new_lesson.php"><i class="fas fa-edit"></i> زیادکردنی وانە</a> 
-                   <a class="items" href="lesson_recycle.php"><i class="fas fa-recycle"></i>وانە سڕاوەکان</a> 
-            </div>
+            <li class="parent">
+              <i class="fas fa-book"></i>وانەکان
+       </li>
+       <div class="dd_menu">
+              <a class="items" href="lessons.php" ><i class="fas fa-eye"></i> بینینی وانەکان</a> 
+              <a class="items" href="add_new_lesson.php"><i class="fas fa-edit"></i> زیادکردنی وانە</a> 
+              <a class="items" href="lesson_recycle.php"><i class="fas fa-recycle"></i>وانە سڕاوەکان</a> 
+       </div>
             <li class="parent"><i class="fas fa-building"></i>بەشەکان
             </li>
             <div class="dd_menu">

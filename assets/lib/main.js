@@ -1,3 +1,4 @@
+'use state'
 // Toggle button
 var toggle=document.querySelector('.toggle-btn');
 var sidenav=document.querySelector('.side-nav');
@@ -16,25 +17,15 @@ userbtn.addEventListener('click',function(){
 
 
 
+var parent=document.querySelectorAll('.parent');
 
-// Item 1
-// var btndropdown=document.querySelector('.btn-dropdown-nav');
-// var dropdownitems=document.querySelector('.dropdown-items');
-// btndropdown.addEventListener('click',function(){
-//   dropdownitems.classList.toggle('active');
-// });
-
-var parent=document.querySelectorAll(".parent");
-
-parent.forEach(function(item){
-  item.addEventListener("click",function(){
-    parent.forEach(function(item){
-    item.classList.remove("active");
-    })
-    item.classList.add("active");
+for(var i=0;i<parent.length;i++){
+  parent[i].addEventListener("click",(e)=>{
+    var dropdownContent=e.target.nextElementSibling;
+    dropdownContent.classList.toggle("active");
+    console.log(dropdownContent);
   })
-})
-
+}
 
 
 

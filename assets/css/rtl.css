@@ -569,13 +569,17 @@
   position: fixed;
   width: 60px;
   height: 100vh;
-  margin-top: 60px;
+  padding: 60px 0;
   background-color:var(--second-bg-color);
   transition: .3s;
   overflow: hidden;
+  overflow-y: auto !important;
   z-index: 9999;
 }
-
+.side-nav::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
 .side-nav ul{
   list-style: none;
  width: 300px;
@@ -584,7 +588,7 @@
   display: none;
 }
 
-.side-nav ul li.parent.active + .dd_menu{
+.dd_menu.active{
   display: flex;
 }
 
