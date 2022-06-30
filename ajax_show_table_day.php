@@ -1,7 +1,7 @@
 
 <?php
 include("configs/init.php");
-// if(isset($_GET['teacher_id'])){
+if(!empty($_GET['teacher_id'])){
 $teacher=Teacher::find_by_id(htmlspecialchars($_GET['teacher_id'], ENT_QUOTES, 'UTF-8'));
 $daily_infos=Daily_Info::find_daily_by_teacher_id(htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'));
 if(!empty($_GET['teacher_id']) &&  empty($_GET['day']) && empty($_GET['year']) && empty($_GET['month'])){
@@ -146,4 +146,4 @@ class="fas fa-trash text-danger"></i></a></td>
 
 </tr>
 <?php endforeach;}
-// } ?>
+} ?>

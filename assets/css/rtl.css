@@ -49,13 +49,10 @@
 .light {
   --main-bg-color: var(--light-background);
   --second-bg-color: var(--light-second-background);
-
   --theard-bg-color: var(--light-theard-background);
   --main-color: var(--light-color);
   --second-color: var(--light-second-color);
-
   --theard-color: var(--light-theard-color);
-
   --deep-white:var(--deep-white);
 }
 
