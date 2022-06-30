@@ -571,7 +571,7 @@
   height: 100vh;
   padding: 60px 0;
   background-color:var(--second-bg-color);
-  transition: .3s;
+  transition: .7s;
   overflow: hidden;
   overflow-y: auto !important;
   z-index: 9999;
@@ -621,7 +621,7 @@
   padding: 12px 20px;
   margin: 20px 0;
   margin-right: 10px;
-  transition: .3s; 
+  transition: .5s; 
 }
 .side-nav ul li{
   width:100%;
@@ -680,7 +680,7 @@
   width: 100%;
   margin-top: 60px;
   margin-right: 60px;
-  transition: .3s;
+  transition: .7s;
   overflow: hidden;
 }
 .container.active{

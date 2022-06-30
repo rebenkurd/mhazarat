@@ -1,6 +1,9 @@
 <?php
 
-require_once("configs/init.php"); ?>
+require_once("configs/init.php");
+
+?>
+
 <div class="table-board">
 
 <div class="table-info">
@@ -9,7 +12,7 @@ require_once("configs/init.php"); ?>
         <label for="teachers">گەڕان : </label>
         <div class="teachers">
             <select name="" id="fullname_teacher" class="form-controll props">
-            <option value="" disabled selected>ناوی وانەبێژ</option>
+            <option value="">ناوی وانەبێژ</option>
             <?php                     
                 $teachers=Teacher::find_all();
                 foreach($teachers as $teacher){
@@ -23,6 +26,7 @@ require_once("configs/init.php"); ?>
 </form>
 
 <div class="" id="teacher_info">
+
 <div class="teacher-code my-1">
     <label for="">کۆدی وانەبێژ : </label>
     <input type="text" class="form-controll" id="teacher-id" disabled value="" placeholder="کۆدی وانەبێژ">
@@ -67,7 +71,7 @@ require_once("configs/init.php"); ?>
 
 <div class="year mx-1">
     <label for="year">ساڵ : </label>
-    <select name="" id="year" class="form-controll props">
+    <select name="" onchange="" id="year" class="form-controll props">
         <option value="" selected>ساڵ</option>
     <?php                     
         $years=Year::find_all();
@@ -77,10 +81,6 @@ require_once("configs/init.php"); ?>
     <?php } ?>
     </select>
 </div>
-
-
-
-<a href="" id="thierd_value" class="btn btn-success mx-4">باشە</a>
 
 </div>
 
@@ -114,8 +114,6 @@ require_once("configs/init.php"); ?>
         </tr>
 
         <tbody id="table_info">
-
-  
         </tbody>
 </table>
 

@@ -1,4 +1,39 @@
 'use state'
+
+
+// var teacher=document.querySelector("#fullname_teacher");
+//   teacher.addEventListener('change',()=>{
+//       var a=document.createElement('a');
+//       a.href="index.php?teacher_id="+teacher.value;
+//       a.click(); 
+//       var month=document.querySelector("#month");
+//       month.addEventListener('change',()=>{
+//           var a=document.createElement('a');
+//           a.href="index.php?teacher_id="+teacher.value+"&month="+month.value;
+//           a.click(); 
+//       }
+//       );
+//   }
+//   );
+//   var day=document.querySelector("#day");
+//   day.addEventListener('change',()=>{
+//       var a=document.createElement('a');
+//       a.href="index.php?day="+day.value;
+//       a.click(); 
+//   }
+//   );
+
+//   var year=document.querySelector("#year");
+//   year.addEventListener('change',()=>{
+//       var a=document.createElement('a');
+//       a.href="index.php?year="+year.value;
+//       a.click(); 
+//   }
+//   );
+
+
+
+
 // Toggle button
 var toggle=document.querySelector('.toggle-btn');
 var sidenav=document.querySelector('.side-nav');
