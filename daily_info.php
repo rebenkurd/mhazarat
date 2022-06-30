@@ -42,10 +42,10 @@ require_once("configs/init.php");
 </div>
 
 <div class="date-board">
-    <!-- <div class="date_time">
+    <div class="date_time">
         <label for="">ڕێکخستنی تاریخ : </label>
         <input type="date" class="form-controll" id="date" value="<?php // echo date("Y-m-d"); ?>">
-    </div> -->
+    </div>
 <div class="day mx-1">
     <label for="day">ڕۆژ : </label>
     <select name="" id="day" class="form-controll props">

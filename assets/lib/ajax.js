@@ -14,6 +14,7 @@ $('#department').on('change', function () {
 })
 
 
+
 // show teacher name
 function setItem() {
   $('#fullname_teacher').on('change', function () {
