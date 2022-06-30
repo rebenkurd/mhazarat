@@ -42,15 +42,19 @@ require_once("configs/init.php");
 </div>
 
 <div class="date-board">
+    <!-- <div class="date_time">
+        <label for="">ڕێکخستنی تاریخ : </label>
+        <input type="date" class="form-controll" id="date" value="<?php // echo date("Y-m-d"); ?>">
+    </div> -->
 <div class="day mx-1">
     <label for="day">ڕۆژ : </label>
     <select name="" id="day" class="form-controll props">
     <option value="" selected>ڕۆژ</option>
     <?php                     
-        $days=Day::find_all();
-        foreach($days as $day){
+         $days=Day::find_all();
+         foreach($days as $day){
     ?>
-    <option value="<?php echo htmlspecialchars($day->day, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($day->day, ENT_QUOTES, 'UTF-8'); ?></option>
+    <option value="<?php echo htmlspecialchars($day->day, ENT_QUOTES, 'UTF-8'); ?>"><?php  echo htmlspecialchars($day->day, ENT_QUOTES, 'UTF-8'); ?></option>
     <?php } ?>
     </select>
 
@@ -74,8 +78,8 @@ require_once("configs/init.php");
     <select name="" onchange="" id="year" class="form-controll props">
         <option value="" selected>ساڵ</option>
     <?php                     
-        $years=Year::find_all();
-        foreach($years as $year){
+         $years=Year::find_all();
+         foreach($years as $year){
     ?>
     <option value="<?php echo htmlspecialchars($year->year, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($year->year, ENT_QUOTES, 'UTF-8'); ?></option>
     <?php } ?>

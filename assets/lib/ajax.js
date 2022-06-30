@@ -88,121 +88,149 @@ $('.props').on('change', function () {
   items.push(localStorage.getItem('teacher_id',0),day,month,year);
   var allItems=localStorage.setItem( 'allItems',items);
   var item=localStorage.getItem('allItems',allItems);
-  if (item[0] !='' && item[1] !='' && item[2] !='' && item[3] !='') {
-    $.get({
-      url: 'ajax_show_table_day.php',
-      type: "GET",
-      data: {
-        teacher_id:item[0],
-        day: item[1],
-        month: item[2],
-        year: item[3]
-      },
-      success: function (result) {
-        $('#table_info').html(result);
-      }
-    })
-  } else
-  if (item[0] !='' && item[1] !='' && item[2] !='' && item[3] =='') {
-    $.get({
-      url: 'ajax_show_table_day.php',
-      type: "GET",
-      data: {
-        teacher_id:item[0],
-        day: item[1],
-        month: item[2],
-        // year: item[3]
-      },
-      success: function (result) {
-        $('#table_info').html(result);
-      }
-    })}else
-    if (item[0] !='' && item[1] !='' && item[2] =='' && item[3] !='') {
-      $.get({
-      url: 'ajax_show_table_day.php',
-      type: "GET",
-      data: {
-        teacher_id:item[0],
-        day: item[1],
-        // month: month,
-        year: item[3]
-      },
-      success: function (result) {
-        $('#table_info').html(result);
-      }
-    })}else
-    if (item[0] !='' && item[1] =='' && item[2] !='' && item[3] !='') {
-      $.get({
-      url: 'ajax_show_table_day.php',
-      type: "GET",
-      data: {
-        teacher_id:item[0],
-        // day: day,
-        month: item[2],
-        year:  item[3]
-      },
-      success: function (result) {
-        $('#table_info').html(result);
-      }
-    })
-  }else
-  if (item[0] !='' && item[1] =='' && item[2] !='' && item[3] =='') {
-    $.get({
-      url: 'ajax_show_table_day.php',
-      type: "GET",
-      data: {
-        teacher_id:item[0],
-        // day: day,
-        month: item[2],
-        // year: year
-      },
-      success: function (result) {
-        $('#table_info').html(result);
-      }
-    })}else
-    if (item[0] !='' && item[1] !='' && item[2] =='' && item[3] =='') {
-      $.get({
-      url: 'ajax_show_table_day.php',
-      type: "GET",
-      data: {
-        teacher_id:item[0],
-        day: item[1],
-        // month: month,
-        // year: year
-      },
-      success: function (result) {
-        $('#table_info').html(result);
-      }
-    })}else
-    if (item[0] !='' && item[1] =='' && item[2] =='' && item[3] !='') {
-      $.get({
-      url: 'ajax_show_table_day.php',
-      type: "GET",
-      data: {
-        teacher_id:item[0],
-        // day: day,
-        // month: month,
-        year: item[3]
-      },
-      success: function (result) {
-        $('#table_info').html(result);
-      }
-    })
-  }
-  else {
-    $.get({
-      url: 'ajax_show_table_day.php',
-      type: "GET",
-      data: {
-        teacher_id:item[0],
-        // day: day,
-        // month: month,
-        // year: year
-      },
-      success: function (result) {
-        $('#table_info').html(result);
-      }
-    })
-  }
-    
 })
+
+// if(item[0]!=''){
+//   $.get({
+//     url: 'ajax_show_table_day.php',
+//     type: "GET",
+//     data: {
+//       teacher_id:window.localStorage.getItem('allItems',item[0]),
+//       // day: day,
+//       // month: month,
+//       // year: year
+//     },
+//     success: function (result) {
+//       $('#table_info').html(result);
+//     }
+//   })
+// }
+
+// if (item[0] !='' && item[1] !='' && item[2] !='' && item[3] !='') {
+if(item[0]!=''){
+$.get({
+    url: 'ajax_show_table_day.php',
+    type: "GET",
+    data: {
+      teacher_id:window.localStorage.getItem('allItems',item[0]),
+      // day: day,
+      // month: month,
+      // year: year
+    },
+    success: function (result) {
+      $('#table_info').html(result);
+      $("#day").val(localStorage.getItem('allItems',item[1]));
+    }
+  })
+
+}else if (item[0] !='' && item[1] !='' && item[2] =='' && item[3] =='') {
+  $.get({
+  url: 'ajax_show_table_day.php',
+  type: "GET",
+  data: {
+    teacher_id:window.localStorage.getItem('allItems',item[0]),
+    day: window.localStorage.getItem('allItems',item[1]),
+    // month: month,
+    // year: year
+  },
+  success: function (result) {
+    $('#table_info').html(result);
+  }
+}) }else if (item[0] !='' && item[1] !='' && item[2] !='' && item[3] =='') {
+  $.get({
+    url: 'ajax_show_table_day.php',
+    type: "GET",
+    data: {
+      teacher_id:window.localStorage.getItem('allItems',item[0]),
+      day:window.localStorage.getItem('allItems',item[1]),
+      month: window.localStorage.getItem('allItems',item[2]),
+      // year: item[3]
+    },
+    success: function (result) {
+      $('#table_info').html(result);
+    }
+  })}else if (item[0] !='' && item[1] !='' && item[2] =='' && item[3] !='') {
+    $.get({
+    url: 'ajax_show_table_day.php',
+    type: "GET",
+    data: {
+      teacher_id:window.localStorage.getItem('allItems',item[0]),
+      day: window.localStorage.getItem('allItems',item[1]),
+      // month: month,
+      year:window.localStorage.getItem('allItems',item[3])
+    },
+    success: function (result) {
+      $('#table_info').html(result);
+    }
+  })}else if (item[0] !='' && item[1] =='' && item[2] !='' && item[3] !='') {
+    $.get({
+    url: 'ajax_show_table_day.php',
+    type: "GET",
+    data: {
+      teacher_id:window.localStorage.getItem('allItems',item[0]),
+      // day: day,
+      month: window.localStorage.getItem('allItems',item[2]),
+      year:  window.localStorage.getItem('allItems',item[3])
+    },
+    success: function (result) {
+      $('#table_info').html(result);
+    }
+  })
+}else if (item[0] !='' && item[1] =='' && item[2] !='' && item[3] =='') {
+  $.get({
+    url: 'ajax_show_table_day.php',
+    type: "GET",
+    data: {
+      teacher_id:item[0],
+      // day: day,
+      month: item[2],
+      // year: year
+    },
+    success: function (result) {
+      $('#table_info').html(result);
+    }
+  })
+}else if (item[0] !='' && item[1] !='' && item[2] =='' && item[3] =='') {
+    $.get({
+    url: 'ajax_show_table_day.php',
+    type: "GET",
+    data: {
+      teacher_id:window.localStorage.getItem('allItems',item[0]),
+      day: window.localStorage.getItem('allItems',item[1]),
+      // month: month,
+      // year: year
+    },
+    success: function (result) {
+      $('#table_info').html(result);
+    }
+  })
+
+}else if (item[0] !='' && item[1] =='' && item[2] =='' && item[3] !='') {
+    $.get({
+    url: 'ajax_show_table_day.php',
+    type: "GET",
+    data: {
+      teacher_id:window.localStorage.getItem('allItems',item[0]),
+      // day: day,
+      // month: month,
+      year: window.localStorage.getItem('allItems',item[3])
+    },
+    success: function (result) {
+      $('#table_info').html(result);
+    }
+  })
+}else {
+  $.get({
+    url: 'ajax_show_table_day.php',
+    type: "GET",
+    data: {
+      teacher_id:window.localStorage.getItem('allItems',item[0]),
+      day: window.localStorage.getItem('allItems',item[1]),
+      month: window.localStorage.getItem('allItems',item[2]),
+      year: window.localStorage.getItem('allItems',item[3])
+    },
+    success: function (result) {
+      $('#table_info').html(result);
+    }
+  })
+}
