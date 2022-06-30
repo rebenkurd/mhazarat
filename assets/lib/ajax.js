@@ -116,7 +116,7 @@ $('.props').on('change', function () {
       success: function (result) {
         $('#table_info').html(result);
       }
-    })
+    })}else
     if (item[0] !='' && item[1] !='' && item[2] =='' && item[3] !='') {
       $.get({
       url: 'ajax_show_table_day.php',
@@ -130,7 +130,7 @@ $('.props').on('change', function () {
       success: function (result) {
         $('#table_info').html(result);
       }
-    })
+    })}else
     if (item[0] !='' && item[1] =='' && item[2] !='' && item[3] !='') {
       $.get({
       url: 'ajax_show_table_day.php',
@@ -145,7 +145,7 @@ $('.props').on('change', function () {
         $('#table_info').html(result);
       }
     })
-  }
+  }else
   if (item[0] !='' && item[1] =='' && item[2] !='' && item[3] =='') {
     $.get({
       url: 'ajax_show_table_day.php',
@@ -159,7 +159,7 @@ $('.props').on('change', function () {
       success: function (result) {
         $('#table_info').html(result);
       }
-    })
+    })}else
     if (item[0] !='' && item[1] !='' && item[2] =='' && item[3] =='') {
       $.get({
       url: 'ajax_show_table_day.php',
@@ -173,7 +173,7 @@ $('.props').on('change', function () {
       success: function (result) {
         $('#table_info').html(result);
       }
-    })
+    })}else
     if (item[0] !='' && item[1] =='' && item[2] =='' && item[3] !='') {
       $.get({
       url: 'ajax_show_table_day.php',
@@ -204,5 +204,5 @@ $('.props').on('change', function () {
       }
     })
   }
-
+    
 })
