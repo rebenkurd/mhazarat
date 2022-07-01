@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
     htmlspecialchars($daily_info->end_time=trim(filter_var($_POST['end_time'],FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
     htmlspecialchars($daily_info->num_time=trim(filter_var(round(abs(strtotime($daily_info->start_time)-strtotime($daily_info->end_time))/3600,2),FILTER_SANITIZE_NUMBER_INT)), ENT_QUOTES, 'UTF-8');
     if($daily_info->save()){
-        RedirectTo("index.php?teacher_id=".htmlspecialchars($daily_info->teacher_id, ENT_QUOTES, 'UTF-8'));
+        RedirectTo("index.php");
     }else{
         RedirectTo("index.php");
     }

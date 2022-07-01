@@ -5,7 +5,11 @@
 <script src="assets/lib/ajax.js"></script>
 <script>
     $(document).ready( function () {
-    $('#table').DataTable();
+    $('#table').DataTable({
+        "sort":false,
+        "lengthChange":false,
+        "pageLength":5,
+    });
 } );
 </script>
 </body>

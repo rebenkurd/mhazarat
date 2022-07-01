@@ -98,27 +98,26 @@ require_once("configs/init.php");
 
 
 <table id="table" class="display" style="width:100%">
-        <thead>
+<thead>
             <tr>
-                <th>کۆدی وانەبێژ</th>
-                <th>بەرواری هاتن</th>
-                <th>ڕۆژی هاتن</th>
-                <th>ژ.هەفتە</th>
-                <th>ناوی سیانی وانەبێژ</th>
-                <th>بەشی زانستی</th>
-                <th>قۆناغ</th>
-                <th>ناوی وانە</th>
-                <th>کاتی دەستپێک</th>
-                <th>کاتی تەواوبوون</th>
-                <th>تێبینی</th>
-                <th>کردارەکان</th>
-            </tr>
-        </thead>      <tr>
-            <?php include("add_new_info.php"); ?>
+            <th>کۆدی وانەبێژ</th>
+            <th>بەرواری هاتن</th>
+            <th>ڕۆژی هاتن</th>
+            <th>ژ.هەفتە</th>
+            <th>ناوی سیانی وانەبێژ</th>
+            <th>بەشی زانستی</th>
+            <th>قۆناغ</th>
+            <th>ناوی وانە</th>
+            <th>کاتی دەستپێک</th>
+            <th>کاتی تەواوبوون</th>
+            <th>تێبینی</th>
+            <th>کردارەکان</th>
         </tr>
+    </thead>
+    <tbody id="addInfo"></tbody>
+<tbody id="showTable">
+</tbody>
 
-        <tbody id="table_info">
-        </tbody>
 </table>
 
 

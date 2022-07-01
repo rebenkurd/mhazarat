@@ -1,3 +1,43 @@
+
+// add new info
+
+function submit() {
+
+  var teacher_id = $('#teacher_id').val();
+  var fullName = $('#fullname').val();
+  var stage= $('#stage').val();
+  var department= $('#department').val();
+  var start_time= $('#start_time').val();
+  var end_time= $('#end_time').val();
+  var day= $('#day').val();
+  var num_week= $('#num_week').val();
+  var date= $('#date').val();
+  console.log("a");
+
+  $.ajax({
+    url:"save.php",
+    type:'POST',
+    data:{
+      teacher_id:teacher_id,
+      fullName:fullName,
+      stage:stage,
+      department:department,
+      start_time:start_time,
+      end_time:end_time,
+      day:day,
+      num_week:num_week,
+      date:date
+    },
+    success:function(data){
+      console.log(data);
+    }
+  });
+
+}
+
+
+
+
 //show list of lessons by department id
 $('#department').on('change', function () {
   var did = this.value;
@@ -31,7 +71,18 @@ function setItem() {
         $('#teacher_info').html(result);
         // location.reload()
       }
-    })
+    }),
+    $.ajax({
+      url: 'add_new_info.php',
+      type: "GET",
+      data: {
+        teacher_id: window.localStorage.getItem('teacher_id')
+      },
+      success: function (result) {
+        $('#addInfo').html(result);
+        $("#fullname_teacher").val(window.localStorage.getItem('teacher_id', 0));
+      }
+    });
     return true;
   });
 }
@@ -57,10 +108,21 @@ if (!setItem()) {
         $("#fullname_teacher").val(window.localStorage.getItem('teacher_id', 0));
       }
     })
+   ,
+  $.ajax({
+      url: 'add_new_info.php',
+      type: "GET",
+      data: {
+        teacher_id: window.localStorage.getItem('teacher_id')
+      },
+      success: function (result) {
+        $('#addInfo').html(result);
+        $("#fullname_teacher").val(window.localStorage.getItem('teacher_id', 0));
+      }
+    });
   }
 }
   
-
 
 
 //show table info
@@ -86,7 +148,7 @@ $('.props').on('change', function () {
         //year: year
       },
       success: function (result) {
-        $('#table_info').html(result);
+        $('#showTable').html(result);
         // $("#day").val(day);
         // $("#month").val(month);
         // $("#year").val(year);
@@ -104,7 +166,7 @@ $('.props').on('change', function () {
       year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       $("#day").val(day);
       $("#month").val(month);
       $("#year").val(year);
@@ -121,7 +183,7 @@ $('.props').on('change', function () {
       // year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       $("#day").val(day);
       // $("#month").val(month);
       // $("#year").val(year);
@@ -138,7 +200,7 @@ $('.props').on('change', function () {
       // year: item[3]
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       $("#day").val(day);
       $("#month").val(month);
       // $("#year").val(year);
@@ -155,7 +217,7 @@ $('.props').on('change', function () {
       year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       $("#day").val(day);
       // $("#month").val(month);
       $("#year").val(year);
@@ -172,7 +234,7 @@ $('.props').on('change', function () {
       year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       // $("#day").val(day);
       $("#month").val(month);
       $("#year").val(year);
@@ -189,7 +251,7 @@ $('.props').on('change', function () {
       // year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       // $("#day").val(day);
       $("#month").val(month);
       // $("#year").val(year);
@@ -206,7 +268,7 @@ $('.props').on('change', function () {
       year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       // $("#day").val(day);
       // $("#month").val(month);
       $("#year").val(year);
@@ -223,7 +285,7 @@ $('.props').on('change', function () {
       // year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       // $("#day").val(day);
       // $("#month").val(month);
       // $("#year").val(year);
@@ -247,7 +309,7 @@ if (teacher != '' && day != '' && month != '' && year != '') {
       year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       $("#day").val(day);
       $("#month").val(month);
       $("#year").val(year);
@@ -264,7 +326,7 @@ if (teacher != '' && day != '' && month != '' && year != '') {
       // year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       $("#day").val(day);
       // $("#month").val(month);
       // $("#year").val(year);
@@ -281,7 +343,7 @@ if (teacher != '' && day != '' && month != '' && year != '') {
       // year: item[3]
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       $("#day").val(day);
       $("#month").val(month);
       // $("#year").val(year);
@@ -298,7 +360,7 @@ if (teacher != '' && day != '' && month != '' && year != '') {
       year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       $("#day").val(day);
       // $("#month").val(month);
       $("#year").val(year);
@@ -315,7 +377,7 @@ if (teacher != '' && day != '' && month != '' && year != '') {
       year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       // $("#day").val(day);
       $("#month").val(month);
       $("#year").val(year);
@@ -332,7 +394,7 @@ if (teacher != '' && day != '' && month != '' && year != '') {
       // year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       // $("#day").val(day);
       $("#month").val(month);
       // $("#year").val(year);
@@ -349,7 +411,7 @@ if (teacher != '' && day != '' && month != '' && year != '') {
       year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       // $("#day").val(day);
       // $("#month").val(month);
       $("#year").val(year);
@@ -366,7 +428,7 @@ if (teacher != '' && day != '' && month != '' && year != '') {
       //year: year
     },
     success: function (result) {
-      $('#table_info').html(result);
+      $('#showTable').html(result);
       // $("#day").val(day);
       // $("#month").val(month);
       // $("#year").val(year);
