@@ -46,7 +46,7 @@
                             foreach($teachers as $teacher){
                                 if($teacher->recycle==1){
                         ?>
-                        <tr>
+                        <tr id="tr_teacher_<?php echo $teacher->id; ?>">
                             <td><?php echo htmlspecialchars($a++, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td><?php echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td><?php
@@ -74,21 +74,21 @@
                             ?></td>
                             <td>
                                 <a style="font-size: 1rem;" href="teacher_recycle.php?id=<?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
-                                <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
-                            <div class="back-model">
+                                <button type="button" onclick="teacherDelete(<?php echo $teacher->id; ?>)" class="btn btn-danger"><i class="fas fa-trash" title="سڕینەوە"></i></button>
+                            <!-- <div class="back-model">
                             <div class="model">
                                 <div class="model-header">
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                    دڵنیایت لە سرینەوەی <?php echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?>
+                                    دڵنیایت لە سرینەوەی <?php // echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?>
                             </div>
                                 <div class="model-footer">
-                                    <button class="btn btn-success"><a href="teachers.php?id=<?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>" >بەڵێ</a></button>
+                                    <button class="btn btn-success"><a href="teachers.php?id=<?php //echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>" >بەڵێ</a></button>
                                     <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                             </td>
                         </tr>
                         <?php } } ?>

@@ -74,7 +74,7 @@ require_once("configs/init.php");
 
 </div>
 
-
+<div class="recent"></div>
 <table id="table" class="display" style="width:100%">
 <thead>
             <tr>
@@ -95,5 +95,5 @@ require_once("configs/init.php");
     <tbody id="addInfo"></tbody>
     <tbody id="showTable">
 </tbody>
-
 </table>
+</div>

@@ -50,19 +50,19 @@ include('includes/header.php'); ?>
                             <td><?php echo htmlspecialchars($a++, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td><?php echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="edit_department.php?id=<?php echo htmlspecialchars($department->id, ENT_QUOTES, 'UTF-8'); ?>"><i class="fas fa-edit text-primary" title="دەستکاریکردن"></i></a>    
-                                <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
+                                <a  href="edit_department.php?id=<?php echo htmlspecialchars($department->id, ENT_QUOTES, 'UTF-8'); ?>"><button class="btn btn-primary"><i class="fas fa-edit" title="دەستکاریکردن"></i></button></a>  
+                                <button class='btn btn-danger ' id="btn-model"><i disabled class="fas fa-trash"></i></button>
                             <div class="back-model">
                             <div class="model">
                                 <div class="model-header">
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                    دڵنیایت لە سرینەوەی <?php echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8'); ?>
+                                    دڵنیایت لە سرینەوەی <?php echo $department->department_name; ?>
                             </div>
                                 <div class="model-footer">
-                                    <button class="btn btn-success"><a href="departments.php?id=<?php echo htmlspecialchars($department->id, ENT_QUOTES, 'UTF-8'); ?>" >بەڵێ</a></button>
-                                    <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
+                                    <a href="departments.php?id=<?php echo htmlspecialchars($department->id, ENT_QUOTES, 'UTF-8'); ?>"><button class="btn btn-success">بەڵێ</button></a>
+                                    <button type="button" class="btn btn-danger" id="close-model">نەخێر</button>
                                 </div>
                             </div>
                         </div>

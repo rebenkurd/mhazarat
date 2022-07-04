@@ -96,28 +96,27 @@ btnBody.addEventListener('dblclick',function(){
 });
 
 
-function btnOpenModel(){
   // Models open Button
-  var btnModel=document.querySelector('.btn-model');
-  var models=document.querySelector('.model');
-  var backmodels=document.querySelector('.back-model');
-
-  btnModel.addEventListener('click',function(){
+  var btnModel=document.querySelectorAll('#btn-model');
+  for(var i=0;i<btnModel.length;i++){
+  btnModel[i].addEventListener('click',function(e){
+    var models=e.target.nextElementSibling.firstElementChild;
+    var backmodels=e.target.nextElementSibling;
     models.classList.add('active');
     backmodels.classList.add('active');
   });
 }
-function btnCloseModel(){
   // Models close Button
-  var models=document.querySelector('.model');
-  var backmodels=document.querySelector('.back-model');
-  var close=document.querySelector('.close');
-  close.addEventListener('click',function(){
+  var closeModel=document.querySelectorAll('#close-model');
+for(var i=0;i<closeModel.length;i++){
+  closeModel[i].addEventListener('click',function(e){
+    var models=e.target.offsetParent;
+    var backmodels=e.target.offsetParent.offsetParent;
+    console.log(e); 
     models.classList.remove('active');
     backmodels.classList.remove('active');
   });
 }
-
 
 // Theme Coockies
 const themeCookieName = "theme";

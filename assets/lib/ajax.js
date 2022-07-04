@@ -21,6 +21,22 @@ function deleteInfo(id){
     }
   });
 }
+
+function teacherDelete(id){
+  $.ajax({
+    url: 'delete_teacher.php',
+    type: 'GET',
+    data: {
+      id: id
+    },success: function () {
+      // location.reload();
+      $('#tr_teacher_'+id).hide()
+    
+    }
+  });
+}
+
+
 function submit() {
   var teacher_id = $('#teacher_id').val();
   var fullname = $('#fullname').val();
@@ -28,17 +44,36 @@ function submit() {
   var department = $('#department').val();
   var start_time = $('#start_time').val();
   var end_time = $('#end_time').val();
-  var lesson = $('#lesson').val();
+  var lesson_name = $('#lesson').val();
   var week = $('#day_name').val();
   var num_week = $('#num_week').val();
   var date = new Date($('#dates').val());
   var d = date.getDate('dd');
   var m = date.getMonth()+1;
   var y = date.getFullYear();
-  console.log([y,m,d].join('/'));
   var note = $('#note').val();
+
+if(teacher_id==''){
+  alert("خانەی کۆدی وانەبێژ بەتاڵە");
+}else if(date=='Invalid Date'){
+  alert("خانەی بەروار بەتاڵە");
+}else if(num_week==''){
+  alert("خانەی ژمارەی هەفتە بەتاڵە");
+}else if(fullname==''){
+  alert("خانەی ناوی سیانی وانەبێژ بەتاڵە");
+}else if(department==''){
+  alert("خانەی بەشی زانستی بەتاڵە");
+}else if(stage==''){
+  alert("خانەی قۆناغ بەتاڵە");
+}else if(lesson_name==''){
+  console.log("خانەی ناوی وانە بەتاڵە");
+}else if(start_time==''){
+  alert("خانەی کاتی دەستپێک بەتاڵە");
+}else if(end_time==''){
+  alert("خانەی کاتی تەواوبوون بەتاڵە");
+}else{
   $.post({
-    url: "save.php",
+    url: "save_info.php",
     type: 'POST',
     data: {
       teacher_id: teacher_id,
@@ -47,7 +82,7 @@ function submit() {
       department: department,
       start_time: start_time,
       end_time: end_time,
-      lesson: lesson,
+      lesson: lesson_name,
       week: week,
       num_week: num_week,
       date: [y,m,d].join('-'),
@@ -57,7 +92,7 @@ function submit() {
       location.reload();
     }
   });
-
+}
 };
 
 
