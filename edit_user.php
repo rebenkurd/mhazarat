@@ -10,8 +10,9 @@ if(empty($_GET['id'])){
         htmlspecialchars($user->first_name=trim(filter_var($_POST['first_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
         htmlspecialchars($user->last_name=trim(filter_var($_POST['last_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
         htmlspecialchars($user->password=trim(filter_var($_POST['password'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
-        htmlspecialchars($user->set_file(trim($_FILES['user_image']), ENT_QUOTES, 'UTF-8'));
+        $user->set_file($_FILES['user_image']);
         if($user->save()){
+            $user->image_upload();
             $_SESSION['SuccessMessage']="بە سەرکەوتوی پاشەکەوتکرا";
             RedirectTo("users.php");
         }else{

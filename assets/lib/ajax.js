@@ -35,6 +35,58 @@ function teacherDelete(id){
     }
   });
 }
+function lessonDelete(id){
+  $.ajax({
+    url: 'delete_lesson.php',
+    type: 'GET',
+    data: {
+      id: id
+    },success: function () {
+      // location.reload();
+      $('#tr_lesson_'+id).hide()
+    
+    }
+  });
+}
+function departmentDelete(id){
+  $.ajax({
+    url: 'delete_department.php',
+    type: 'GET',
+    data: {
+      id: id
+    },success: function () {
+      // location.reload();
+      $('#tr_department_'+id).hide()
+    
+    }
+  });
+}
+function staffDelete(id){
+  $.ajax({
+    url: 'delete_staff.php',
+    type: 'GET',
+    data: {
+      id: id
+    },success: function () {
+      // location.reload();
+      $('#tr_staff_'+id).hide()
+    
+    }
+  });
+}
+function timeDelete(id){
+  $.ajax({
+    url: 'delete_time.php',
+    type: 'GET',
+    data: {
+      id: id
+    },success: function () {
+      // location.reload();
+      $('#tr_time_'+id).hide()
+    
+    }
+  });
+}
 
 
 function submit() {

@@ -1,33 +1,5 @@
 <?php
 class Db_Object{
-    public $errors=array();
-    public $upload_errors_array=array(
-        UPLOAD_ERR_OK => "There is No Error",
-        UPLOAD_ERR_INI_SIZE => "the uploaded file exceeds the upload_mix_filesize directive",
-        UPLOAD_ERR_FORM_SIZE =>  "the uploaded file exceeds the MIX_FILE_SIZE directive that",
-        UPLOAD_ERR_PARTIAL => "the uploaded file was only partially uploaded.",
-        UPLOAD_ERR_NO_FILE  => "no file was uploaded" ,
-        UPLOAD_ERR_NO_TMP_DIR => "missing a temporary folder.",
-        UPLOAD_ERR_CANT_WRITE =>  "faield to write file to disk.",
-        UPLOAD_ERR_EXTENSION  =>  "A PHP extention stopped the file upload.",
-    );
-
-    // create set file method 
-    public function set_file($file){
-        if(empty($file) || !$file || !is_array($file)){
-            $this->errors[]="هیچ فایلێک بەرزنەکرایەوە";
-            return false;
-        }elseif($file['error'] != 0){
-            $this->errors[]=$this->upload_errors_array[$file['error']];
-            return false;
-        }else{
-            $this->user_image=basename($file['name']);
-            $this->tmp_path=$file['tmp_path'];
-            $this->type=$file['type'];
-            $this->size=$file['size'];
-        }
-    }
-
 
     // create find all tables method
     public static function find_all(){

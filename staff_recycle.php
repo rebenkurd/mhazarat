@@ -1,6 +1,19 @@
 <?php include('includes/header.php'); ?>
 <?php include('includes/top_nav.php'); ?>
+<?php
+    if(isset($_GET['id'])){
+        $staff=Staff::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
+        htmlspecialchars($staff->recycle=0, ENT_QUOTES, 'UTF-8');
+        if($staff->save()){
+            $_SESSION['SuccessMessage']="بە سەرکەوتوی گەڕێندرایەوە";
+            RedirectTo("staff.php");
+        }else{
+            $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
+            RedirectTo("staff.php");
+        }
+    }
 
+?>
     <div class="main">
     <?php include('includes/side_nav.php'); ?>
     <div class="container">
@@ -30,7 +43,7 @@
                             foreach($staffs as $staff){
                                 if($staff->recycle==1){
                         ?>
-                        <tr>
+                        <tr id="tr_staff_<?php echo $staff->id;?>">
                             <td><?php echo $a++; ?></td>
                             <td><?php echo $staff->name; ?></td>
                             <td><?php echo $staff->email; ?></td>
@@ -43,25 +56,24 @@
                                 ?>
                             </td>
                             <td>
-                                <!-- <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a> -->
-                                <a href="delete_staff.php?id=<?php echo htmlspecialchars($staff->id, ENT_QUOTES, 'UTF-8'); ?>" class="btn-submit"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
-                                
-                            </td>
-                        </tr>
-                        <!-- <div class="back-model">
+                                <a  href="staff_recycle.php?id=<?php echo htmlspecialchars($staff->id, ENT_QUOTES, 'UTF-8'); ?>"><button class="btn btn-success"><i class="fas fa-recycle" title="گەراندنەو"></i></button></a>  
+                                <button class='btn btn-danger ' id="btn-model"><i disabled class="fas fa-trash"></i></button>
+                            <div class="back-model">
                             <div class="model">
                                 <div class="model-header">
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                    دڵنیایت لە سرینەوەی <?php //echo $time->times.$time->time_type; ?>
+                                    دڵنیایت لە سرینەوەی <?php echo htmlspecialchars($staff->name, ENT_QUOTES, 'UTF-8'); ?>
                             </div>
                                 <div class="model-footer">
-                                    <button class="btn btn-success"><a href="times.php?id=<?php // echo $time->id; ?>" >بەڵێ</a></button>
-                                    <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
+                                <button type="button" class="btn btn-success" onclick="staffDelete(<?php echo htmlspecialchars($staff->id, ENT_QUOTES, 'UTF-8'); ?>)">بەڵێ</button>
+                                    <button type="button" class="btn btn-danger" id="close-model">نەخێر</button>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
+                            </td>
+                        </tr>
                         <?php } } ?>
                     </tbody>
                 </table>

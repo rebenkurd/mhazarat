@@ -73,22 +73,24 @@
                             }
                             ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="teacher_recycle.php?id=<?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
-                                <button type="button" onclick="teacherDelete(<?php echo $teacher->id; ?>)" class="btn btn-danger"><i class="fas fa-trash" title="سڕینەوە"></i></button>
-                            <!-- <div class="back-model">
+                                <a  href="teacher_recycle.php?id=<?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>"><button class="btn btn-success"><i class="fas fa-recycle" title="گەراندنەو"></i></button></a>  
+                                <button class='btn btn-danger ' id="btn-model"><i disabled class="fas fa-trash"></i></button>
+                            <div class="back-model">
                             <div class="model">
                                 <div class="model-header">
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                    دڵنیایت لە سرینەوەی <?php // echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?>
+                                    دڵنیایت لە سرینەوەی <?php echo htmlspecialchars($teacher->fullname, ENT_QUOTES, 'UTF-8'); ?>
                             </div>
                                 <div class="model-footer">
-                                    <button class="btn btn-success"><a href="teachers.php?id=<?php //echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>" >بەڵێ</a></button>
-                                    <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
+                                    <!-- <a href="delete_teacher.php?id=<?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>"> -->
+                                    <button type="button" class="btn btn-success" onclick="teacherDelete(<?php echo htmlspecialchars($teacher->id, ENT_QUOTES, 'UTF-8'); ?>)">بەڵێ</button>
+                                <!-- </a> -->
+                                    <button type="button" class="btn btn-danger" id="close-model">نەخێر</button>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                             </td>
                         </tr>
                         <?php } } ?>

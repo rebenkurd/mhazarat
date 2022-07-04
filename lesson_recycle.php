@@ -33,30 +33,31 @@
                         </tr>
                     </thead>
                     
-                  <tbody>
+                    <tbody>
                         <?php 
                             $lessons = Lesson::find_all();
                             $a=1;
                             foreach($lessons as $lesson){
                                 if($lesson->recycle==1){
                         ?>
-                        <tr>
+                        <tr id="tr_lesson_<?php echo $lesson->id; ?>">
                             <td><?php echo htmlspecialchars($a++, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td><?php echo htmlspecialchars($lesson->lesson, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="lesson_recycle.php?id=<?php echo htmlspecialchars($lesson->id, ENT_QUOTES, 'UTF-8'); ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
-                                <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
+                                <a  href="lesson_recycle.php?id=<?php echo htmlspecialchars($lesson->id, ENT_QUOTES, 'UTF-8'); ?>"><button class="btn btn-success"><i class="fas fa-recycle" title="گەراندنەو"></i></button></a>  
+                                <button class='btn btn-danger ' id="btn-model"><i disabled class="fas fa-trash"></i></button>
                             <div class="back-model">
                             <div class="model">
                                 <div class="model-header">
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                    دڵنیایت لە سرینەوەی بە تەواوی<?php echo htmlspecialchars($lesson->lesson, ENT_QUOTES, 'UTF-8'); ?>
+                                    دڵنیایت لە سرینەوەی <?php echo htmlspecialchars($lesson->lesson, ENT_QUOTES, 'UTF-8'); ?>
                             </div>
                                 <div class="model-footer">
-                                    <button class="btn btn-success"><a href="delete_lesson.php?id=<?php echo htmlspecialchars($lesson->id, ENT_QUOTES, 'UTF-8'); ?>" >بەڵێ</a></button>
-                                    <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
+                                <button type="button" class="btn btn-success" onclick="lessonDelete(<?php echo htmlspecialchars($lesson->id, ENT_QUOTES, 'UTF-8'); ?>)">بەڵێ</button>
+
+                                    <button type="button" class="btn btn-danger" id="close-model">نەخێر</button>
                                 </div>
                             </div>
                         </div>

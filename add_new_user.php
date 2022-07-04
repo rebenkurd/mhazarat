@@ -8,14 +8,12 @@
         $user->last_name=trim(filter_var($_POST['last_name'],FILTER_DEFAULT));
         $user->password=trim(filter_var($_POST['password'],FILTER_DEFAULT));
         $user->set_file($_FILES['user_image']);
-        if($user){
-            $user->save();
-            $user->image_upload();
+        if($user->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی زیادکرا";
             RedirectTo("users.php");
         }else{
-            $_SESSION['ErrorMessage']=join("<br>",$user->errors);
             RedirectTo("add_new_user.php");
+            $_SESSION['ErrorMessage']=join("<br>",$user->errors);
         }
     }
 ?>
@@ -29,8 +27,8 @@
         <form action="" class="form" method="POST" enctype="multipart/form-data">
         <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
         <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
-                 <div class="groups">
-                 <div class="input-group">
+                <div class="groups">
+                <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>
                     <input class="form-controll" type="text" placeholder="ناوی یەکەم" name="first_name" id="first_name">
                 </div>
@@ -49,7 +47,7 @@
                 </div>
                 <div class="input-group">
                     <label for="password">وشەی تێپەر</label>
-                    <input class="form-controll" type="text" placeholder="وشەی تێپەر" name="password" id="password">
+                    <input class="form-controll" type="password" placeholder="وشەی تێپەر" name="password" id="password">
                 </div>
                 <div class="input-group">
                     <label for="user_image">وێنە</label>

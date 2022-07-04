@@ -13,12 +13,12 @@
         
         if(empty($username) || empty($password)){
             $_SESSION['ErrorMessage']="نازناو و وشەی تیپەڕ بە تەواوی پڕبکەرەوە";
-        
+        RedirectTo('login.php');
         }else{
            $user_found=User::verify_user($username,$password);
             $session->login($user_found);
-            RedirectTo("index.php");
             $_SESSION['SuccessMessage']="بەخیربێیت";
+            RedirectTo('index.php'); 
             
         }
     }
@@ -40,8 +40,8 @@
 <body class="light" id="btnBody">
 <div class="login_content">
     <form action="login.php" method="POST">
-            <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
-            <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
+            <?php echo $session->SuccessMessage(); ?>
+            <?php echo $session->ErrorMessage(); ?>
         <div class="img-login">
         <img src="img/login.svg">
         </div>

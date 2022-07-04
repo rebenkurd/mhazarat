@@ -2,7 +2,7 @@
 
 class User extends Db_Object{
     public static $db_table="tb_users";
-    public static $db_table_fields=array('id','username','email','password','first_name','last_name','user_image','recycle');
+    public static $db_table_fields=array('id','username','email','password','first_name','last_name','user_image','recycle','tmp_path','size','type');
     public $id;
     public $username;
     public $email;
@@ -12,8 +12,11 @@ class User extends Db_Object{
     public $user_image;
     public $bio;
     public $recycle;
+    public $tmp_path;
+    public $size;
+    public $type;
     public $upload_directory="img";
-    public $image_placeholder="http://placehold.it/400x400&text=image";
+    public $image_placeholder="https://via.placeholder.com/400x400";
     public $errors=array();
     public $upload_errors_array=array(
         UPLOAD_ERR_OK => "There is No Error",
@@ -26,12 +29,24 @@ class User extends Db_Object{
         UPLOAD_ERR_EXTENSION  =>  "A PHP extention stopped the file upload.",
 
     );
+    // create set file method 
+    public function set_file($file){
+        if(empty($file) || !$file || !is_array($file)){
+            $this->errors[]="هیچ فایلێک بەرزنەکرایەوە";
+            return false;
+        }elseif($file['error'] != 0){
+            $this->errors[]=$this->upload_errors_array[$file['error']];
+            return false;
+        }else{
+            $this->user_image=basename($file['name']);
+            $this->tmp_path=$file['tmp_name'];
+            $this->type=$file['type'];
+            $this->size=$file['size'];
+        }
+    }
 
-    public function image_upload(){
+    public function save(){
 
-        // if(!empty($this->errors)){
-        //     return false;
-        // }
         if(!empty($this->errors)){
             return false;
         }
@@ -49,9 +64,12 @@ class User extends Db_Object{
         }
 
         if(move_uploaded_file($this->tmp_path,$target_path)){
-            unset($this->tmp_path);
-            return true;
-        }else{
+            if($this->create()){
+                unset($this->tmp_path);
+                return true;
+            }
+        }
+        else{
             $this->errors[]="لەوانەیە فایلەکەت ئاماژە پێنەکرابێ";
             return false;
         }
@@ -71,7 +89,7 @@ class User extends Db_Object{
     }
 
     public function image_path_and_placeholder(){
-        return empty($this->user_image) ? $this->image_placeholder : $this->upload_directory.DS.$this->user_image;
+        return empty($this->user_image) ? $this->image_placeholder : $this->upload_directory.'/'.$this->user_image;
     }
 
 

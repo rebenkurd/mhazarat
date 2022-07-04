@@ -7,9 +7,9 @@ include('includes/header.php'); ?>
 
 <?php
     if(isset($_GET['id'])){
-        $departments==Department::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
-        htmlspecialchars($departments->recycle=1, ENT_QUOTES, 'UTF-8');
-        if($departments->save()){
+        $department=Department::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
+        htmlspecialchars($department->recycle=1, ENT_QUOTES, 'UTF-8');
+        if($department->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
             RedirectTo("departments.php");
         }else{

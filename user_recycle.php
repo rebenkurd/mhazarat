@@ -50,19 +50,19 @@
                             <td><?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td><?php echo htmlspecialchars($user->last_name, ENT_QUOTES, 'UTF-8'); ?></td>
                             <td>
-                                <a style="font-size: 1rem;" href="user_recycle.php?id=<?php echo htmlspecialchars($user->id, ENT_QUOTES, 'UTF-8'); ?>"><i class="fas fa-recycle text-success" title="گەراندنەو"></i></a>    
-                                <a onclick="btnOpenModel()" class="btn-submit btn-model"><i class="fas fa-trash text-danger" title="سڕینەوە"></i></a>
+                                <a  href="user_recycle.php?id=<?php echo htmlspecialchars($user->id, ENT_QUOTES, 'UTF-8'); ?>"><button class="btn btn-success"><i class="fas fa-recycle" title="گەراندنەو"></i></button></a>  
+                                <button class='btn btn-danger ' id="btn-model"><i disabled class="fas fa-trash"></i></button>
                             <div class="back-model">
                             <div class="model">
                                 <div class="model-header">
                                     ئاگاداری
                                 </div>
                                 <div class="model-body">
-                                 دڵنیایت لە سرینەوەی بەتەواوی <?php echo htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8'); ?>
+                                    دڵنیایت لە سرینەوەی <?php echo htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8'); ?>
                             </div>
                                 <div class="model-footer">
-                                    <a href="delete_user.php?id=<?php echo htmlspecialchars($user->id, ENT_QUOTES, 'UTF-8'); ?>" class="btn btn-success">بەڵێ</a>
-                                    <button class="btn btn-danger close" onclick="btnCloseModel()">نەخێر</button>
+                                    <a href="delete_user.php?id=<?php echo htmlspecialchars($user->id, ENT_QUOTES, 'UTF-8'); ?>"><button class="btn btn-success">بەڵێ</button></a>
+                                    <button type="button" class="btn btn-danger" id="close-model">نەخێر</button>
                                 </div>
                             </div>
                         </div>

@@ -92,8 +92,7 @@ require_once("configs/init.php");
             <th>کردارەکان</th>
         </tr>
     </thead>
-    <tbody id="addInfo"></tbody>
-    <tbody id="showTable">
-</tbody>
+    <tr id="addInfo"></tr>
+    <tbody id="showTable"></tbody>
 </table>
 </div>

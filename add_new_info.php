@@ -2,7 +2,7 @@
 
 <?php include('configs/init.php'); ?>
 
-<form action="" method="POST">
+
     <td>
         <?php 
     if(isset($_GET['teacher_id'])){
@@ -85,4 +85,3 @@
         <textarea name="" style="width:180px;" class="form-controll" id="note" rows="1"></textarea>
     </td>
     <td><button type="button" onclick="submit()" name="" id="add_info" class="btn btn-primary">زیادکردن</button></td>
-</form>

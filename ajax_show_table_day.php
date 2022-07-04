@@ -96,7 +96,6 @@ echo htmlspecialchars($department->department_name, ENT_QUOTES, 'UTF-8');
             <button type="button" id="btn-delete" class="btn btn-danger" onclick="deleteInfo(<?php $daily_info->id; ?>)"><i class="fas fa-trash"> </i></button>
 
          </td>
-
 </tr>
 
 <?php endforeach; 
