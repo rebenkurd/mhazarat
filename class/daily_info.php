@@ -42,13 +42,6 @@ class Daily_Info extends Db_Object{
         return self::find_by_query($sql);
     }
 
-    public static function find_daily_by_day($teacher_id=0,$day=0){
-        global $database;
-        $sql="SELECT * FROM ".self::$db_table;
-        $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND day=".$database->es($day);
-        return self::find_by_query($sql);
-    }
-
     public static function find_daily_by_month($teacher_id=0,$month=0){
         global $database;
         $sql="SELECT * FROM ".self::$db_table;
@@ -63,10 +56,10 @@ class Daily_Info extends Db_Object{
         return self::find_by_query($sql);
     }
 
-    public static function find_daily_by_day_month_year($teacher_id=0,$day=0,$year=0,$month=0){
+    public static function find_daily_by_month_year($teacher_id=0,$year=0,$month=0){
         global $database;
         $sql="SELECT * FROM ".self::$db_table;
-        $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND day=".$database->es($day)." AND year=".$database->es($year)." AND month=".$database->es($month);
+        $sql .=" WHERE teacher_id=".$database->es($teacher_id)." AND year=".$database->es($year)." AND month=".$database->es($month);
         return self::find_by_query($sql);
     }
 

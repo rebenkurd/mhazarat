@@ -776,7 +776,28 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-  width: 600px;
+  width:fit-content !important;
+  background-color: var(--main-bg-color);
+  height: fit-content !important;
+  padding: 2px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--theard-color);
+}
+.date-board select{
+  outline: none;
+  border-radius: 5px;
+  padding: 5px;
+  border: none !important;
+  font-size: .8rem;
+  background-color: var(--main-bg-color);
+  border: 1px solid var(--main-color);
+}
+.date-board select>option{
+  padding: 5px;
+  border: none !important;
+  outline: none !important;
+  font-size: .7rem;
+  border: 1px solid var(--main-color);
 }
 
 .image-flued{
@@ -1269,7 +1290,7 @@ font-family: var(--font-en);
 
 .report-page{
   display: block;
-  margin: 0 auto;
+  margin:0 auto;
   position: relative;
   width: 21cm;
   height: 29.7cm;
@@ -1293,7 +1314,18 @@ font-family: var(--font-en);
   color: #fff;
   font: size 1.1em;
 }
-
+.print{
+  position:absolute;
+  top: 0;
+  right: 10%;
+  margin-top: 40px;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.print button{
+  margin: 0 auto;
+  width: 100px;
+}
 .report-page .r-header-bottom{
   margin: 0px auto;
   width: 100%;

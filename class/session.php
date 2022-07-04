@@ -50,7 +50,7 @@ class Session{
         }
     }
 
-   public function ErrorMessage()
+    public function ErrorMessage()
     {
         if (isset($_SESSION['ErrorMessage'])) {
             $Output  = '<div class="alert alert-danger text-center role="alert"">';

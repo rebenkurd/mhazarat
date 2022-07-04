@@ -1,7 +1,8 @@
 
 
 <?php include('configs/init.php'); ?>
-<form method="POST">
+
+<form action="" method="POST">
     <td>
         <?php 
     if(isset($_GET['teacher_id'])){
@@ -11,12 +12,12 @@
         <input class="form-controll" style="width: 90px;" type="text" name="" id="teacher_id" placeholder="کۆدی وانەبێژ">
         <?php }?>
     </td>
-    <td><input class="form-controll" style="width: 100px;" type="date" name="" id="date"
+    <td><input class="form-controll" style="width: 120px;" type="date" onchange="change()" name="" id="dates"
             placeholder="بەرواری هاتن"></td>
-    <td><input class="form-controll" style="width: 100px;" type="text" name="" id="day"
+    <td><input class="form-controll" style="width: 100px;" type="text" name="" value="" id="day_name"
             placeholder="ڕۆژی هاتن"> </td>
-    <td><input class="form-controll" style="width: 100px;" type="text" name="" id="num_week"
-            placeholder="ژ.هەفتە"></td>
+    <td><input class="form-controll" style="width: 50px;" title="ژ.هەفتە" type="text" name="" id="num_week"
+            ></td>
     <td>
         <?php 
     if(isset($_GET['teacher_id'])){
@@ -30,8 +31,8 @@
     </td>
 
     <td>
-        <select name="" id="department" style="width:180px;" class="form-controll" id="">
-        <option value="" disabled selected>بەشێک هەڵبژێرە</option>
+        <select name="" id="department" style="width:180px;" onchange="department()" class="form-controll" id="">
+        <option value="">بەشێک هەڵبژێرە</option>
             <?php
         $departments=Department::find_all();
         foreach($departments as $department): 
@@ -53,7 +54,7 @@
 
     <td >
         <select name="" id="lesson" class="form-controll" style="width:180px;" >
-            <option value="" disabled selected>وانەیەک هەڵبژێرە</option>
+            <option value="" selected>وانەیەک هەڵبژێرە</option>
         </select>
 
     </td>

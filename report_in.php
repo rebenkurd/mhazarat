@@ -21,7 +21,7 @@ if($teacher->contract !=0){
     <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 <body>
-    <div class="report-page">
+    <div class="report-page" id="report-page">
         <div class="r-header">
             <div class="r-header-top">
             <span>پەیمانگای تەکنیکی دوکان</span>
@@ -129,7 +129,11 @@ if($teacher->contract !=0){
 }
 
         ?> 
-        
+
     </div>
+     <div class="print">
+        <button class="btn btn-primary" onclick="printed()">Print</button>
+    </div> 
+    <script src="assets/lib/main.js"></script>
 </body>
 </html>

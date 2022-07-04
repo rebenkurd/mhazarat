@@ -32,6 +32,30 @@
 //   );
 
 
+function printed(){
+  var reportPage=document.querySelector('#report-page').outerHTML;
+  var orginalPage=document.body.innerHTML;
+  document.body.innerHTML=reportPage;
+  window.print({
+    headerTemplate: '',
+    footerTemplate: '',
+    printBackground: false,
+    scale: 1.0,
+    pageSize: 'A4',
+    orientation: 'portrait',
+    border: {
+      top: '0',
+      left: '0',
+      bottom: '0',
+      right: '0'
+  }
+
+
+  });
+
+  document.body.innerHTML=orginalPage;
+}
+
 
 
 // Toggle button
