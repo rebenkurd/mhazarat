@@ -27,8 +27,8 @@ if(empty($_GET['id'])){
         <div class="content">
 
         <form action="" class="form" method="POST">
-        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
-        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo $session->SuccessMessage(); ?>
+        <?php echo $session->ErrorMessage(); ?>
                  <div class="input-group">
                     <label for="name">ناوی ستاف</label>
                     <input class="form-controll" value="<?php echo $staff->name; ?>" type="text" placeholder="ناوی وانە" name="name" id="name">

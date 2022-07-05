@@ -20,8 +20,8 @@
     <div class="container">
         <h1>کاتەکان</h1>
         <div class="content">
-        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
-        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo $session->SuccessMessage(); ?>
+        <?php echo $session->ErrorMessage(); ?>
         <div class="recents">
                 <span>بینینی هەموو وانەکان</span>
                 <table id="table" class="display" style="width:100%">

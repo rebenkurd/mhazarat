@@ -4,13 +4,13 @@
 <?php
     if(isset($_GET['id'])){
         $user=User::find_by_id(htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8'));
-        htmlspecialchars($user->recycle=1, ENT_QUOTES, 'UTF-8') ;
+        htmlspecialchars($user->recycle=1, ENT_QUOTES, 'UTF-8');
         if($user->save()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی چوو بۆ بەشی سڕاوەکان";
             RedirectTo("users.php");
         }else{
-            $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
             RedirectTo("users.php");
+            $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
         }
     }
 
@@ -20,8 +20,8 @@
     <div class="container">
         <h1>بەکارهێنەرەکان</h1>
         <div class="content">
-        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
-        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo $session->SuccessMessage(); ?>
+        <?php echo $session->ErrorMessage(); ?>
         <div class="recents">
                 <span>بینینی هەموو بەکارهێنەرەکان</span>
                 <table id="table" class="display" style="width:100%">

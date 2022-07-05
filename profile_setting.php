@@ -23,8 +23,8 @@
         <div class="content">
 
         <form action="" class="form" method="POST" enctype="multipart/form-data">
-        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
-        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo $session->SuccessMessage(); ?>
+        <?php echo $session->ErrorMessage(); ?>
                  <div class="groups">
                  <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>

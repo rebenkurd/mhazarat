@@ -9,10 +9,9 @@ if(empty($_GET['id'])){
         htmlspecialchars($user->email=trim(filter_var($_POST['email'],FILTER_SANITIZE_EMAIL)), ENT_QUOTES, 'UTF-8');
         htmlspecialchars($user->first_name=trim(filter_var($_POST['first_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
         htmlspecialchars($user->last_name=trim(filter_var($_POST['last_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
-        htmlspecialchars($user->password=trim(filter_var($_POST['password'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+        htmlspecialchars($user->password=trim(filter_var(md5($_POST['password']),FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
         $user->set_file($_FILES['user_image']);
         if($user->save()){
-            $user->image_upload();
             $_SESSION['SuccessMessage']="بە سەرکەوتوی پاشەکەوتکرا";
             RedirectTo("users.php");
         }else{
@@ -30,8 +29,8 @@ if(empty($_GET['id'])){
         <div class="content">
 
         <form action="" class="form" method="POST" enctype="multipart/form-data">
-        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
-        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
+        <?php echo $session->SuccessMessage(); ?>
+        <?php echo $session->ErrorMessage(); ?>
                  <div class="groups">
                  <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>
@@ -52,7 +51,7 @@ if(empty($_GET['id'])){
                 </div>
                 <div class="input-group">
                     <label for="password">وشەی تێپەر</label>
-                    <input type="text" class="form-controll" value="<?php echo htmlspecialchars($user->password, ENT_QUOTES, 'UTF-8'); ?>" placeholder="وشەی تێپەر" name="password" id="password">
+                    <input type="password" class="form-controll" value="<?php echo htmlspecialchars($user->password, ENT_QUOTES, 'UTF-8'); ?>" placeholder="وشەی تێپەر" name="password" id="password">
                 </div>
                 <div class="input-group">
                     <img src="<?php echo htmlspecialchars($user->image_path(), ENT_QUOTES, 'UTF-8'); ?>" class="image-flued" alt="">

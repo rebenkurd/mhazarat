@@ -40,8 +40,8 @@
 <body class="light" id="btnBody">
 <div class="login_content">
     <form action="login.php" method="POST">
-            <?php echo $session->SuccessMessage(); ?>
-            <?php echo $session->ErrorMessage(); ?>
+    <?php echo $session->SuccessMessage(); ?>
+        <?php echo $session->ErrorMessage(); ?>
         <div class="img-login">
         <img src="img/login.svg">
         </div>
@@ -52,7 +52,7 @@
         </div>
         <div class="input-group">
             <label for="password">وشەی تێپەر</label>
-            <input type="text" placeholder="وشەی تێپەر" name="password" id="password">
+            <input type="password" placeholder="وشەی تێپەر" name="password" id="password">
         </div>
         <button type="submit" name="login" class="btn btn-primary width-50">چوونەژوورەوە</button>
     </form>

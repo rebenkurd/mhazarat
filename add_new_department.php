@@ -21,9 +21,9 @@
         <div class="content">
 
         <form action="" class="form" method="POST">
-        <?php echo htmlspecialchars($session->SuccessMessage(), ENT_QUOTES, 'UTF-8'); ?>
-        <?php echo htmlspecialchars($session->ErrorMessage(), ENT_QUOTES, 'UTF-8'); ?>
-                 <div class="input-group">
+        <?php echo $session->SuccessMessage(); ?>
+        <?php echo $session->ErrorMessage(); ?>
+                <div class="input-group">
                     <label for="department_name">ناوی بەش </label>
                     <input class="form-controll" type="text" placeholder="ناوی بەش" name="department_name" id="department_name">
                 </div>
