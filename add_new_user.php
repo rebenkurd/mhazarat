@@ -8,7 +8,7 @@
         $user->last_name=trim(filter_var($_POST['last_name'],FILTER_DEFAULT));
         $user->password=trim(filter_var(md5($_POST['password']),FILTER_DEFAULT));
         $user->set_file($_FILES['user_image']);
-        if($user->save()){
+        if($user->save_user()){
             $_SESSION['SuccessMessage']="بە سەرکەوتوی زیادکرا";
             RedirectTo("users.php");
         }else{

@@ -6,10 +6,7 @@
 
 <div class="main">
     <?php include('includes/side_nav.php'); ?>
-
     <div class="container">
-
-        
     <h1>زانیارییەکان</h1>
     <?php echo $session->SuccessMessage(); ?>
     <?php echo $session->ErrorMessage(); ?> 

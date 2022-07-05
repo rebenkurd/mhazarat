@@ -897,9 +897,11 @@ body {
 }
 
 .image-flued {
+  display: block;
   width: 40px;
+  object-fit: cover;
   height: 40px;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 
 /* Form */

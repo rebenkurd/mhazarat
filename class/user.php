@@ -45,7 +45,7 @@ class User extends Db_Object{
         }
     }
 
-    public function save(){
+    public function save_user(){
 
         if(!empty($this->errors)){
             return false;

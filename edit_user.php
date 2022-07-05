@@ -9,15 +9,26 @@ if(empty($_GET['id'])){
         htmlspecialchars($user->email=trim(filter_var($_POST['email'],FILTER_SANITIZE_EMAIL)), ENT_QUOTES, 'UTF-8');
         htmlspecialchars($user->first_name=trim(filter_var($_POST['first_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
         htmlspecialchars($user->last_name=trim(filter_var($_POST['last_name'],FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
-        htmlspecialchars($user->password=trim(filter_var(md5($_POST['password']),FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+
         $user->set_file($_FILES['user_image']);
         if($user->save()){
+            $user->save_user();
             $_SESSION['SuccessMessage']="بە سەرکەوتوی پاشەکەوتکرا";
             RedirectTo("users.php");
         }else{
             $_SESSION['ErrorMessage']=join("<br>",$user->errors);
             RedirectTo("edit_user.php");
         }
+    }
+    if(isset($_POST['change_password'])){
+    htmlspecialchars($user->password=trim(filter_var(md5($_POST['new_password']),FILTER_DEFAULT)), ENT_QUOTES, 'UTF-8');
+    if($user->save()){
+        $_SESSION['SuccessMessage']="بە سەرکەوتوی وسەی تێپەڕ گۆڕدرا";
+        RedirectTo("users.php");
+    }else{
+        $_SESSION['ErrorMessage']="تکایە دووبارە هەوڵبدەرەوە";
+        RedirectTo("edit_user.php");
+    }
     }
 }
 ?>
@@ -31,8 +42,8 @@ if(empty($_GET['id'])){
         <form action="" class="form" method="POST" enctype="multipart/form-data">
         <?php echo $session->SuccessMessage(); ?>
         <?php echo $session->ErrorMessage(); ?>
-                 <div class="groups">
-                 <div class="input-group">
+                <div class="groups">
+                <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>
                     <input type="text" class="form-controll" value="<?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?>" placeholder="ناوی یەکەم" name="first_name" id="first_name">
                 </div>
@@ -50,8 +61,25 @@ if(empty($_GET['id'])){
                     <input type="text" class="form-controll" value="<?php echo htmlspecialchars($user->email, ENT_QUOTES, 'UTF-8'); ?>" placeholder="ئیمەیڵی بەکارهێنەر" name="email" id="email">
                 </div>
                 <div class="input-group">
-                    <label for="password">وشەی تێپەر</label>
-                    <input type="password" class="form-controll" value="<?php echo htmlspecialchars($user->password, ENT_QUOTES, 'UTF-8'); ?>" placeholder="وشەی تێپەر" name="password" id="password">
+                    <label for="">گۆڕینی وشەی تێپەڕ</label>
+                    <button type="button" id="btn-model" class="btn btn-primary width-25 m-2">گۆڕین</button>
+                    <div class="back-model">
+                            <div class="model">
+                                <div class="model-header">
+                                    ئاگاداری
+                                </div>
+                                <div class="model-body">
+                                        <div class="input-group">
+                                            <label for="">وشەی تێپەڕی نوێ</label>
+                                            <input type="password" name="new_password" class="form-controll">
+                                        </div>
+                                </div>
+                                <div class="model-footer">
+                                    <button class="btn btn-success" type="submit" name="change_password">بەڵێ</button>
+                                    <button type="button" class="btn btn-danger" id="close-model">نەخێر</button>
+                                </div>
+                            </div>
+                    </div>
                 </div>
                 <div class="input-group">
                     <img src="<?php echo htmlspecialchars($user->image_path(), ENT_QUOTES, 'UTF-8'); ?>" class="image-flued" alt="">
@@ -60,6 +88,7 @@ if(empty($_GET['id'])){
                 </div>
                 <button type="submit" name="update" class="btn btn-success width-25">پاشەکەوتکردن</button>
             </form>
+        </div>
         </div>
     </div>
 
