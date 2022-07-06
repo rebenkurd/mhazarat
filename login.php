@@ -8,14 +8,13 @@
     if(isset($_POST['login'])){
         $username=trim(filter_var($_POST['username'],FILTER_DEFAULT));
         $password=trim(filter_var(md5($_POST['password']),FILTER_DEFAULT));
-      
         // Create Method to check database 
         
         if(empty($username) || empty($password)){
             $_SESSION['ErrorMessage']="نازناو و وشەی تیپەڕ بە تەواوی پڕبکەرەوە";
-        RedirectTo('login.php');
+            RedirectTo('login.php');
         }else{
-           $user_found=User::verify_user($username,$password);
+            $user_found=User::verify_user($username,$password);
             $session->login($user_found);
             $_SESSION['SuccessMessage']="بەخیربێیت";
             RedirectTo('index.php'); 

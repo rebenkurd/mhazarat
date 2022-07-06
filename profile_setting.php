@@ -25,8 +25,8 @@
         <form action="" class="form" method="POST" enctype="multipart/form-data">
         <?php echo $session->SuccessMessage(); ?>
         <?php echo $session->ErrorMessage(); ?>
-                 <div class="groups">
-                 <div class="input-group">
+                <div class="groups">
+                <div class="input-group">
                     <label for="first_name">ناوی یەکەم</label>
                     <input class="form-controll" value="<?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?>" type="text" placeholder="ناوی یەکەم" name="first_name" id="first_name">
                 </div>

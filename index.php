@@ -38,8 +38,7 @@
         </a>
         <a href="lessons.php">
             <div class="card">
-                <div class="iconbx">
-                    <i class="fas fa-book"></i>
+                <div class="iconbx"><i class="fas fa-book"></i>
                 </div>
                 <div>
                     <span class="card-name">وانەکان</span>

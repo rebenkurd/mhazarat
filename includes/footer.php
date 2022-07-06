@@ -8,6 +8,12 @@
     $('#table').DataTable({        
         
     });
+    $('#tableInfo').DataTable({    
+        paging: false,
+        info: false,
+        sort:false,
+        searching:false
+    });
 } );
 </script>
 </body>

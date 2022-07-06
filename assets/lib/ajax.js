@@ -152,7 +152,6 @@ if(teacher_id==''){
 //show list of lessons by department id
 function department() {
   var did = $('#department').val();
-  console.log(did);
   $.ajax({
     url: 'ajax_lesson.php',
     type: "GET",
@@ -161,9 +160,6 @@ function department() {
     },
     success: function (result) {
       $('#lesson').html(result);
-    },
-    error: function () {
-      alert("بەسەرکەوتووی زیادکرا");
     }
   })
 }

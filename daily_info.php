@@ -73,26 +73,36 @@ require_once("configs/init.php");
 </div>
 
 </div>
-
-<div class="recent"></div>
-<table id="table" class="display" style="width:100%">
+<div class="add-new-info m-2">
+    <button class="btn btn-primary" id="btn-model" type="button"><i class="fas fa-plus"></i>  زیادکردنی زانیاری ڕۆژانە</button>
+<div class="back-model">
+    <div class="model">
+        <div class="model-header">
+            ئاگاداری
+        </div>
+        <div class="model-body" id="addInfo"></div>
+    <div class="model-footer">
+        <button class="btn btn-success" type="button" onclick="submit()" id="add_info" name="">بەڵێ</button>
+        <button type="button" class="btn btn-danger" id="close-model">نەخێر</button>
+    </div>
+    </div>
+</div>
+</div>
+<table id="tableInfo" style="width:100%" >
 <thead>
-            <tr>
-            <th>کۆدی وانەبێژ</th>
-            <th>بەرواری هاتن</th>
-            <th>ڕۆژی هاتن</th>
-            <th>ژ.هەفتە</th>
-            <th>ناوی سیانی وانەبێژ</th>
-            <th>بەشی زانستی</th>
-            <th>قۆناغ</th>
-            <th>ناوی وانە</th>
-            <th>کاتی دەستپێک</th>
-            <th>کاتی تەواوبوون</th>
-            <th>تێبینی</th>
-            <th>کردارەکان</th>
-        </tr>
-    </thead>
-    <tr id="addInfo"></tr>
-    <tbody id="showTable"></tbody>
+    <th>کۆدی وانەبێژ</th>
+    <th>بەرواری هاتن</th>
+    <th>ڕۆژی هاتن</th>
+    <th>ژ.هەفتە</th>
+    <th>ناوی سیانی وانەبێژ</th>
+    <th>بەشی زانستی</th>
+    <th>قۆناغ</th>
+    <th>ناوی وانە</th>
+    <th>کاتی دەستپێک</th>
+    <th>کاتی تەواوبوون</th>
+    <th>تێبینی</th>
+    <th>کردارەکان</th>
+</thead>
+<tbody id="showTable"></tbody>
 </table>
 </div>

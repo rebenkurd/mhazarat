@@ -26,7 +26,7 @@
         <p>
         <?php 
         if($user->bio==""){
-            echo htmlspecialchars('<span class="text-danger">هیچ زانیارییەک نییە</span>', ENT_QUOTES, 'UTF-8');
+            echo '<span class="text-danger">هیچ زانیارییەک نییە</span>';
         }else{
             echo $user->bio; 
         }

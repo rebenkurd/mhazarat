@@ -131,4 +131,4 @@ if(!empty($daily_info->department)){
    </td> 
 </tr>
 <?php endforeach;
-}
+}?>
